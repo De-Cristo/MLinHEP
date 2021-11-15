@@ -13,16 +13,16 @@ def counter(_sample):
         for _zmass_name, _zmass in Zmass_region_dict.items():
             for _btag_name, _btag in btag_multiplicity_dict.items():
                 print('{0}_Zll_{1}_{2}_{3} : '.format(_sample, _rhh_name, _btag_name, _zmass_name) + ' Start Checking...')
-#                 rdf_dict['{0}_Zll_{1}_{2}_{3}'.format(_sample, _rhh_name, _btag_name, _zmass_name)] = rdf_dict[_sample].Filter(Zll).Filter(_rhh).Filter(_btag).Filter(_zmass)
-#                 print('{0}_Zll_{1}_{2}_{3} : '.format(_sample, _rhh_name, _btag_name, _zmass_name) + str(rdf_dict['{0}_Zll_{1}_{2}_{3}'.format(_sample, _rhh_name, _btag_name, _zmass_name)].Count().GetValue())+'\n')
-                rdf_dict['{0}_Zll_{1}_{2}_{3}'.format(_sample, _rhh_name, _btag_name, _zmass_name)] = rdf_dict[_sample].Filter(Zll).Filter(_rhh).Filter(_btag).Filter(_zmass).Filter("weight<4").Snapshot("Tree_Events", "./temp/{0}_Zll_{1}_{2}_{3}.root".format(_sample, _rhh_name, _btag_name, _zmass_name),rwt_Vars)
+                rdf_dict['{0}_Zll_{1}_{2}_{3}'.format(_sample, _rhh_name, _btag_name, _zmass_name)] = rdf_dict[_sample].Filter(Zll).Filter(_rhh).Filter(_btag).Filter(_zmass)
+                print('Raw events number: {0}_Zll_{1}_{2}_{3} : '.format(_sample, _rhh_name, _btag_name, _zmass_name) + str(rdf_dict['{0}_Zll_{1}_{2}_{3}'.format(_sample, _rhh_name, _btag_name, _zmass_name)].Count().GetValue())+'\n')
+                print('Events number: {0}_Zll_{1}_{2}_{3} : '.format(_sample, _rhh_name, _btag_name, _zmass_name) + str(rdf_dict['{0}_Zll_{1}_{2}_{3}'.format(_sample, _rhh_name, _btag_name, _zmass_name)].Filter('weight<4').Sum('weight').GetValue())+'\n')
+                print('Events number(Keep large weight events): {0}_Zll_{1}_{2}_{3} : '.format(_sample, _rhh_name, _btag_name, _zmass_name) + str(rdf_dict['{0}_Zll_{1}_{2}_{3}'.format(_sample, _rhh_name, _btag_name, _zmass_name)].Filter('weight<4').Sum('weight').GetValue())+'\n')
                 print('{0}_Zll_{1}_{2}_{3} : '.format(_sample, _rhh_name, _btag_name, _zmass_name) + ' Done :)')
                 
 def subprocessWrapper(c):
     subprocess.call(c, shell=True)
     
 parser = argparse.ArgumentParser()
-parser.add_argument("-t", "--BDTtype",       dest="bdt",  default='C2V',   help="samples for which BDT type (default = C2V)" )
 parser.add_argument("-d", "--NtupleDir",     dest="ndir", default='/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL/',   help="Ntuple direction (default = /data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL/)" )
 parser.add_argument("-l", "--Lepchan",       dest="lcha", default='Zll',   help="Which leptonic channel (default = Zll)" )
 args = parser.parse_args()
@@ -106,53 +106,15 @@ for _file in file_list_ZHH:
     rdf_dict[_file] = R.RDataFrame('Events','./{0}/{1}/*.root'.format(path,_file))
 print(string_list_for_ZHH)    
 
-rdf_dict['TT'] = R.RDataFrame('Events',string_list_for_TT).Filter('weight<4')
-rdf_dict['ttbb'] = R.RDataFrame('Events',string_list_for_ttbb).Filter('weight<4')
-rdf_dict['DY'] = R.RDataFrame('Events',string_list_for_DY).Filter('weight<4')
-rdf_dict['Other'] = R.RDataFrame('Events',string_list_for_Other).Filter('weight<4')
-rdf_dict['Data'] = R.RDataFrame('Events',string_list_for_Data).Filter('weight<4')
+rdf_dict['TT'] = R.RDataFrame('Events',string_list_for_TT)
+rdf_dict['ttbb'] = R.RDataFrame('Events',string_list_for_ttbb)
+rdf_dict['DY'] = R.RDataFrame('Events',string_list_for_DY)
+rdf_dict['Other'] = R.RDataFrame('Events',string_list_for_Other)
+rdf_dict['Data'] = R.RDataFrame('Events',string_list_for_Data)
 
-if args.bdt == 'C2V':
-    Vars = {'isZee','isZmm','isZnn','IsttB', 'VHH_nBJets',\
-            'VHH_H1_pT', 'VHH_H2_e','VHH_H2_eta',\
-            'VHH_H2_e','VHH_H2_eta',\
-            'VHH_HH_m', 'VHH_HH_e', 'VHH_HH_eta',\
-            'V_pt',\
-            'VHH_V_H2_dPhi', 'VHH_V_HH_dPhi',\
-            'VHH_HH_deta', 'VHH_HH_dR',\
-            'weight'}
-    os.system('mkdir -p ../C2V_BDT/c2v_sample_forTrain')
-    sample_list = ['Data']
-    sample_list+=file_list_ZHH
-    
-elif args.bdt == 'SvB':
-    Vars = {'isZee','isZmm','isZnn','IsttB', 'VHH_nBJets',\
-            'VHH_H1_BJet1_pT','VHH_H2_BJet1_pT',\
-            'VHH_H1_m', 'VHH_H1_pT', 'VHH_H1_e',\
-            'VHH_HH_m', 'VHH_HH_e', 'VHH_HH_pT',\
-            'V_pt', 'V_mass', 'VHH_Vreco4j_HT',\
-            'VHH_V_H1_dPhi', 'VHH_V_HH_dPhi',\
-            'VHH_HH_deta', 'VHH_HH_dR',\
-            'weight'}
-    os.system('mkdir -p ../SvB_BDT/svb_sample_forTrain')
-    sample_list = ['TT', 'ttbb', 'DY', 'Other', 'Data']
-    sample_list+=file_list_ZHH
 
-elif args.bdt == 'RwT':
-    Vars = {'isZee','isZmm','isZnn','IsttB', 'VHH_nBJets',\
-            'VHH_H1_BJet1_pT','VHH_H2_BJet1_pT',\
-            'VHH_H1_m', 'VHH_H1_pT', 'VHH_H1_e',\
-            'VHH_HH_m', 'VHH_HH_e', 'VHH_HH_pT',\
-            'V_pt', 'V_mass', 'VHH_Vreco4j_HT',\
-            'VHH_V_H1_dPhi', 'VHH_V_HH_dPhi',\
-            'VHH_HH_deta', 'VHH_HH_dR',\
-            'weight'}
-    os.system('mkdir -p ../RwT_BDT/rwt_sample_forTrain')
-    sample_list = ['TT', 'ttbb', 'DY', 'Other', 'Data']
-    
-else:
-    print('Using the wrong BDT type... Please CHECK and try again.')
-    exit(0)
+sample_list = ['TT', 'ttbb', 'DY', 'Other', 'Data']
+sample_list+=file_list_ZHH
 
 print(sample_list)
 

@@ -106,11 +106,11 @@ for _file in file_list_ZHH:
     rdf_dict[_file] = R.RDataFrame('Events','./{0}/{1}/*.root'.format(path,_file))
 print(string_list_for_ZHH)    
 
-rdf_dict['TT'] = R.RDataFrame('Events',string_list_for_TT)
-rdf_dict['ttbb'] = R.RDataFrame('Events',string_list_for_ttbb)
-rdf_dict['DY'] = R.RDataFrame('Events',string_list_for_DY)
-rdf_dict['Other'] = R.RDataFrame('Events',string_list_for_Other)
-rdf_dict['Data'] = R.RDataFrame('Events',string_list_for_Data)
+rdf_dict['TT'] = R.RDataFrame('Events',string_list_for_TT).Filter('weight<4')
+rdf_dict['ttbb'] = R.RDataFrame('Events',string_list_for_ttbb).Filter('weight<4')
+rdf_dict['DY'] = R.RDataFrame('Events',string_list_for_DY).Filter('weight<4')
+rdf_dict['Other'] = R.RDataFrame('Events',string_list_for_Other).Filter('weight<4')
+rdf_dict['Data'] = R.RDataFrame('Events',string_list_for_Data).Filter('weight<4')
 
 if args.bdt == 'C2V':
     Vars = {'isZee','isZmm','isZnn','IsttB', 'VHH_nBJets',\
