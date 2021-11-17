@@ -13,9 +13,13 @@ def counter(_sample):
         for _zmass_name, _zmass in Zmass_region_dict.items():
             for _btag_name, _btag in btag_multiplicity_dict.items():
                 print('{0}_Zll_{1}_{2}_{3} : '.format(_sample, _rhh_name, _btag_name, _zmass_name) + ' Start Checking...')
-#                 rdf_dict['{0}_Zll_{1}_{2}_{3}'.format(_sample, _rhh_name, _btag_name, _zmass_name)] = rdf_dict[_sample].Filter(Zll).Filter(_rhh).Filter(_btag).Filter(_zmass)
-#                 print('{0}_Zll_{1}_{2}_{3} : '.format(_sample, _rhh_name, _btag_name, _zmass_name) + str(rdf_dict['{0}_Zll_{1}_{2}_{3}'.format(_sample, _rhh_name, _btag_name, _zmass_name)].Count().GetValue())+'\n')
-                rdf_dict['{0}_Zll_{1}_{2}_{3}'.format(_sample, _rhh_name, _btag_name, _zmass_name)] = rdf_dict[_sample].Filter(Zll).Filter(_rhh).Filter(_btag).Filter(_zmass).Filter("weight<4").Snapshot("Tree_Events", "./temp/{0}_Zll_{1}_{2}_{3}.root".format(_sample, _rhh_name, _btag_name, _zmass_name),rwt_Vars)
+                if args.bdt == 'scale':
+                    rdf_dict['{0}_Zll_{1}_{2}_{3}'.format(_sample, _rhh_name, _btag_name, _zmass_name)] = rdf_dict[_sample].Filter(Zll).Filter(_rhh).Filter(_btag).Filter(_zmass).Filter("weight<4").Define("No3_btag_score", "float _bts = 0;\
+                                                        if(VHH_H1_BJet2_btag>VHH_H2_BJet1_btag){_bts = VHH_H2_BJet1_btag;}\
+                                                        else{if(VHH_H1_BJet2_btag>VHH_H2_BJet1_btag){_bts = VHH_H1_BJet2_btag;}else{_bts = VHH_H2_BJet1_btag;}}\
+                                                        return _bts;").Snapshot("Tree_Events", "./temp/{0}_Zll_{1}_{2}_{3}.root".format(_sample, _rhh_name, _btag_name, _zmass_name),rwt_Vars)
+                else:
+                    rdf_dict['{0}_Zll_{1}_{2}_{3}'.format(_sample, _rhh_name, _btag_name, _zmass_name)] = rdf_dict[_sample].Filter(Zll).Filter(_rhh).Filter(_btag).Filter(_zmass).Filter("weight<4").Snapshot("Tree_Events", "./temp/{0}_Zll_{1}_{2}_{3}.root".format(_sample, _rhh_name, _btag_name, _zmass_name),rwt_Vars)
                 print('{0}_Zll_{1}_{2}_{3} : '.format(_sample, _rhh_name, _btag_name, _zmass_name) + ' Done :)')
                 
 def subprocessWrapper(c):
@@ -148,6 +152,12 @@ elif args.bdt == 'RwT':
             'VHH_HH_deta', 'VHH_HH_dR',\
             'weight'}
     os.system('mkdir -p ../RwT_BDT/rwt_sample_forTrain')
+    sample_list = ['TT', 'ttbb', 'DY', 'Other', 'Data']
+    
+elif args.bdt == 'scale':
+    Vars = {'isZee','isZmm','isZnn','IsttB', 'VHH_nBJets',\
+            'weight', 'No3_btag_score'}
+    os.system('mkdir -p ../RwT_BDT/sample_forScale')
     sample_list = ['TT', 'ttbb', 'DY', 'Other', 'Data']
     
 else:
