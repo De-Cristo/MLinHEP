@@ -6,7 +6,7 @@ from multiprocessing import Pool
 import subprocess
 import argparse
 
-R.EnableImplicitMT(8)
+R.EnableImplicitMT(16)
 
 def counter(_sample):
     for _rhh_name, _rhh in rHH_region_dict.items():
@@ -14,12 +14,12 @@ def counter(_sample):
             for _btag_name, _btag in btag_multiplicity_dict.items():
                 print('{0}_Zll_{1}_{2}_{3} : '.format(_sample, _rhh_name, _btag_name, _zmass_name) + ' Start Checking...')
                 if args.bdt == 'scale':
-                    rdf_dict['{0}_Zll_{1}_{2}_{3}'.format(_sample, _rhh_name, _btag_name, _zmass_name)] = rdf_dict[_sample].Filter(lepton_channel).Filter(_rhh).Filter(_btag).Filter(_zmass).Filter("weight<4").Define("No3_btag_score", "float _bts = 0;\
+                    rdf_dict[_sample].Filter(lepton_channel).Filter(_rhh).Filter(_btag).Filter(_zmass).Filter("weight<4").Define("No3_btag_score", "float _bts = 0;\
                                                         if(VHH_H1_BJet2_btag>VHH_H2_BJet1_btag){_bts = VHH_H2_BJet1_btag;}\
                                                         else{if(VHH_H1_BJet2_btag>VHH_H2_BJet1_btag){_bts = VHH_H1_BJet2_btag;}else{_bts = VHH_H2_BJet1_btag;}}\
-                                                        return _bts;").Snapshot("Tree_Events", "./temp/{0}_Zll_{1}_{2}_{3}.root".format(_sample, _rhh_name, _btag_name, _zmass_name),rwt_Vars)
+                                                        return _bts;").Snapshot("Tree_Events", "../scaleFactor/sample_forScale/{0}_Zll_{1}_{2}_{3}.root".format(_sample, _rhh_name, _btag_name, _zmass_name),Vars)
                 else:
-                    rdf_dict['{0}_Zll_{1}_{2}_{3}'.format(_sample, _rhh_name, _btag_name, _zmass_name)] = rdf_dict[_sample].Filter(lepton_channel).Filter(_rhh).Filter(_btag).Filter(_zmass).Filter("weight<4").Snapshot("Tree_Events", "./temp/{0}_Zll_{1}_{2}_{3}.root".format(_sample, _rhh_name, _btag_name, _zmass_name),rwt_Vars)
+                    rdf_dict[_sample].Filter(lepton_channel).Filter(_rhh).Filter(_btag).Filter(_zmass).Filter("weight<4").Snapshot("Tree_Events", newpath+"/{0}_Zll_{1}_{2}_{3}.root".format(_sample, _rhh_name, _btag_name, _zmass_name),Vars)
                 print('{0}_Zll_{1}_{2}_{3} : '.format(_sample, _rhh_name, _btag_name, _zmass_name) + ' Done :)')
                 
 def subprocessWrapper(c):
@@ -86,28 +86,28 @@ string_list_for_ZHH = []
 string_list_for_Data = []
 
 for _file in file_list_for_TT:
-    string_list_for_TT.append('./{0}/{1}/*.root'.format(path,_file))
+    string_list_for_TT.append('{0}/{1}/*.root'.format(path,_file))
 print(string_list_for_TT)
 
 for _file in file_list_for_ttbb:
-    string_list_for_ttbb.append('./{0}/{1}/*.root'.format(path,_file))
+    string_list_for_ttbb.append('{0}/{1}/*.root'.format(path,_file))
 print(string_list_for_ttbb)
 
 for _file in file_list_DY:
-    string_list_for_DY.append('./{0}/{1}/*.root'.format(path,_file))
+    string_list_for_DY.append('{0}/{1}/*.root'.format(path,_file))
 print(string_list_for_DY)
 
 for _file in file_list_Other:
-    string_list_for_Other.append('./{0}/{1}/*.root'.format(path,_file))
+    string_list_for_Other.append('{0}/{1}/*.root'.format(path,_file))
 print(string_list_for_Other)
 
 for _file in file_list_Data:
-    string_list_for_Data.append('./{0}/{1}/*.root'.format(path,_file))
+    string_list_for_Data.append('{0}/{1}/*.root'.format(path,_file))
 print(string_list_for_Data)
 
 for _file in file_list_ZHH:
-    string_list_for_ZHH.append('./{0}/{1}/*.root'.format(path,_file))
-    rdf_dict[_file] = R.RDataFrame('Events','./{0}/{1}/*.root'.format(path,_file))
+    string_list_for_ZHH.append('{0}/{1}/*.root'.format(path,_file))
+    rdf_dict[_file] = R.RDataFrame('Events','{0}/{1}/*.root'.format(path,_file))
 print(string_list_for_ZHH)    
 
 rdf_dict['TT'] = R.RDataFrame('Events',string_list_for_TT).Filter('weight<4')
@@ -126,8 +126,8 @@ if args.bdt == 'C2V':
             'VHH_HH_deta', 'VHH_HH_dR',\
             'weight'}
     os.system('mkdir -p ../C2V_BDT/c2v_sample_forTrain')
-    sample_list = ['Data']
-    sample_list+=file_list_ZHH
+    newpath = './C2V_BDT/c2v_sample_forTrain'
+    sample_list=file_list_ZHH
     
 elif args.bdt == 'SvB':
     Vars = {'isZee','isZmm','isZnn','IsttB', 'VHH_nBJets',\
@@ -139,6 +139,7 @@ elif args.bdt == 'SvB':
             'VHH_HH_deta', 'VHH_HH_dR',\
             'weight'}
     os.system('mkdir -p ../SvB_BDT/svb_sample_forTrain')
+    newpath = '../SvB_BDT/svb_sample_forTrain'
     sample_list = ['TT', 'ttbb', 'DY', 'Other', 'Data']
     sample_list+=file_list_ZHH
 
@@ -152,12 +153,13 @@ elif args.bdt == 'RwT':
             'VHH_HH_deta', 'VHH_HH_dR',\
             'weight'}
     os.system('mkdir -p ../RwT_BDT/rwt_sample_forTrain')
+    newpath = '../RwT_BDT/rwt_sample_forTrain'
     sample_list = ['TT', 'ttbb', 'DY', 'Other', 'Data']
     
 elif args.bdt == 'scale':
     Vars = {'isZee','isZmm','isZnn','IsttB', 'VHH_nBJets',\
             'weight', 'No3_btag_score'}
-    os.system('mkdir -p ../RwT_BDT/sample_forScale')
+    os.system('mkdir -p ../scaleFactor/sample_forScale')
     sample_list = ['TT', 'ttbb', 'DY', 'Other', 'Data']
     
 else:
@@ -166,7 +168,7 @@ else:
 
 print(sample_list)
 
-with Pool(12) as p:
+with Pool(10) as p:
     p.map(counter, sample_list)
 
 # p = multiprocessing.Pool(20)
