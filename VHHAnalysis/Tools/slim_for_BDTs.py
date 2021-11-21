@@ -50,14 +50,14 @@ canvas_dict = {}
 legend_dict = {}
 
 rHH_region_dict = {
-#         'rHH_SR' : "VHH_rHH<25",
-#         'rHH_CR' : "VHH_rHH>25 && VHH_rHH<50",
+         'rHH_SR' : "VHH_rHH<25",
+         'rHH_CR' : "VHH_rHH>25 && VHH_rHH<50",
         'rHH_SB' : "VHH_rHH>50",
 }
 
 Zmass_region_dict = {
-        'TT_CR'  : "V_mass<75 || V_mass>105",
-        'Z_mass'  : "V_mass>75 && V_mass<105",
+        'TT_CR'  : "0==0 || 0==0",
+        'Z_mass'  : "0==0 && 0==0",
 }
 
 btag_multiplicity_dict = {
@@ -126,7 +126,7 @@ if args.bdt == 'C2V':
             'VHH_HH_deta', 'VHH_HH_dR',\
             'weight'}
     os.system('mkdir -p ../C2V_BDT/c2v_sample_forTrain')
-    newpath = './C2V_BDT/c2v_sample_forTrain'
+    newpath = '../C2V_BDT/c2v_sample_forTrain'
     sample_list=file_list_ZHH
     
 elif args.bdt == 'SvB':
