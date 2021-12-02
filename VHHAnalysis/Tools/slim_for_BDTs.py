@@ -12,15 +12,15 @@ def counter(_sample):
     for _rhh_name, _rhh in rHH_region_dict.items():
         for _zmass_name, _zmass in Zmass_region_dict.items():
             for _btag_name, _btag in btag_multiplicity_dict.items():
-                print('{0}_Zll_{1}_{2}_{3} : '.format(_sample, _rhh_name, _btag_name, _zmass_name) + ' Start Checking...')
+                print('{0}_Z_{1}_{2}_{3} : '.format(_sample, _rhh_name, _btag_name, _zmass_name) + ' Start Checking...')
                 if args.bdt == 'scale':
                     rdf_dict[_sample].Filter(lepton_channel).Filter(_rhh).Filter(_btag).Filter(_zmass).Filter("weight<4").Define("No3_btag_score", "float _bts = 0;\
                                                         if(VHH_H1_BJet2_btag>VHH_H2_BJet1_btag){_bts = VHH_H2_BJet1_btag;}\
                                                         else{if(VHH_H1_BJet2_btag>VHH_H2_BJet1_btag){_bts = VHH_H1_BJet2_btag;}else{_bts = VHH_H2_BJet1_btag;}}\
-                                                        return _bts;").Snapshot("Tree_Events", "../scaleFactor/sample_forScale/{0}_Zll_{1}_{2}_{3}.root".format(_sample, _rhh_name, _btag_name, _zmass_name),Vars)
+                                                        return _bts;").Snapshot("Tree_Events", "../scaleFactor/sample_forScale/{0}_Z_{1}_{2}_{3}.root".format(_sample, _rhh_name, _btag_name, _zmass_name),Vars)
                 else:
-                    rdf_dict[_sample].Filter(lepton_channel).Filter(_rhh).Filter(_btag).Filter(_zmass).Filter("weight<4").Snapshot("Tree_Events", newpath+"/{0}_Zll_{1}_{2}_{3}.root".format(_sample, _rhh_name, _btag_name, _zmass_name),Vars)
-                print('{0}_Zll_{1}_{2}_{3} : '.format(_sample, _rhh_name, _btag_name, _zmass_name) + ' Done :)')
+                    rdf_dict[_sample].Filter(lepton_channel).Filter(_rhh).Filter(_btag).Filter(_zmass).Filter("weight<4").Snapshot("Tree_Events", newpath+"/{0}_Z_{1}_{2}_{3}.root".format(_sample, _rhh_name, _btag_name, _zmass_name),Vars)
+                print('{0}_Z_{1}_{2}_{3} : '.format(_sample, _rhh_name, _btag_name, _zmass_name) + ' Done :)')
                 
 def subprocessWrapper(c):
     subprocess.call(c, shell=True)
@@ -50,8 +50,8 @@ canvas_dict = {}
 legend_dict = {}
 
 rHH_region_dict = {
-#         'rHH_SR' : "VHH_rHH<25",
-#         'rHH_CR' : "VHH_rHH>25 && VHH_rHH<50",
+        'rHH_SR' : "VHH_rHH<25",
+        'rHH_CR' : "VHH_rHH>25 && VHH_rHH<50",
         'rHH_SB' : "VHH_rHH>50",
 }
 
@@ -126,7 +126,7 @@ if args.bdt == 'C2V':
             'VHH_HH_deta', 'VHH_HH_dR',\
             'weight'}
     os.system('mkdir -p ../C2V_BDT/c2v_sample_forTrain')
-    newpath = './C2V_BDT/c2v_sample_forTrain'
+    newpath = '../C2V_BDT/c2v_sample_forTrain'
     sample_list=file_list_ZHH
     
 elif args.bdt == 'SvB':

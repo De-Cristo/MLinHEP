@@ -1,0 +1,1 @@
+export Zll_SvBbdt_flatten_UL_rwt_CARD="$(echo /afs/cern.ch/work/l/lichengz/private/VHH/sandbox/CMSSW_10_2_13/src/MyWorkArea/*b_rwt.txt | sed 's/ /,/g' )"

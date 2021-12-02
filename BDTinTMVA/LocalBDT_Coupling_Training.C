@@ -25,6 +25,8 @@ int LocalBDT_Coupling_Training( TString myMethodList = "" ){
     
     std::map<std::string,int> Use; // Default MVA methods to be trained + tested
     
+//     ROOT::EnableImplicitMT();
+    
     // Boosted Decision Trees
     Use["BDT"]             = 0; // uses Adaptive Boost
     Use["BDTG"]            = 1; // uses Gradient Boost
