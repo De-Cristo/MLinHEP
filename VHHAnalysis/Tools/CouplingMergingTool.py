@@ -30,6 +30,8 @@ import sys
 import os
 from util import convert_coupling_diagramweight, Save_Temp_Components
 import argparse
+import matplotlib.pyplot as plt
+
 
 # R.gInterpreter.Declare('#include "assist_vhh.C"')
 
@@ -73,15 +75,17 @@ path_remote = '/eos/user/l/lichengz/VHH4bAnalysisNtuples/TEST_2018_IHEPsite_2021
 
 # df_basis = R.RDataFrame('Events', file_list)
 
-listOfCouplings0 = np.array([[1,1,1],[0.5,1,1],[1,1,2],[1,0,1],[1,1,0],[1.5,1,1]])
-CrossSec0 = np.array([0.000363,0.0002278,0.000584,0.0001245,0.0002278,0.000790])
+listOfCouplings0 = np.array([[1,1,1],[0.5,1,1],[1,1,2],[1,0,1],[1,1,0],[1.5,1,1],[0.5,1,1]])
+CrossSec0 = np.array([0.000363,0.0002278,0.000584,0.0001245,0.0002278,0.000790,0.0002278])
 
 Coupling0 = convert_coupling_diagramweight(listOfCouplings0)
-CouplingInv0=np.linalg.inv(Coupling0)
+CouplingInv0=np.linalg.pinv(Coupling0)
 
 matrix_ele = np.matmul(CouplingInv0, CrossSec0)
 
-listOfCouplings = np.array([[0,1,1],[-0.5,1,1],[-1,1,1],[-1.5,1,1],[-2,1,1],[-3,1,1]])
+#print(matrix_ele)
+
+listOfCouplings = np.array([[1,1,20],[1,1,1],[-1,1,1],[-1.5,1,1],[-2,1,1]])
 strlistOfCouplings = ['-15_0', '-8_0', '-3_0', '3_0', '8_0', '15_0']
 
 NewCoupling = convert_coupling_diagramweight(listOfCouplings)
