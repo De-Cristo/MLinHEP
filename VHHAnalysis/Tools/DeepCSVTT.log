@@ -1,0 +1,28 @@
+nohup: 忽略输入
+['/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//TT_AllHadronic/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//TT_DiLep_NoPSWeights/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//TT_SingleLep/*.root']
+['/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//ttbb_AllHadronic/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//ttbb_DiLep/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//ttbb_SingleLep/*.root']
+['/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//DYToLL_M10-50_Inc_madgraph/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//DYToLL_M-50_Inc_madgraph/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//DYToLL_M-50_HT70to100_madgraph/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//DYToLL_M-50_HT100to200_madgraph/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//DYToLL_M-50_HT200to400_madgraph/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//DYToLL_M-50_HT400to600_madgraph/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//DYToLL_M-50_HT600to800_madgraph/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//DYToLL_M-50_HT800to1200_madgraph/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//DYToLL_M-50_HT1200to2500_madgraph/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//DYToLL_M-50_HT2500toInf_madgraph/*.root']
+['/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//ST_s-c_4f_lep/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//ST_t-channel_eleDecays/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//ST_t-channel_muDecays/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//ST_t-channel_tauDecays/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//ST_tW_antitop_5f_noFullHad/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//ST_tW_top_5f_noFullHad/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//ttHTobb_M125/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//TTWLNuJets/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//TTWQQJets/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//TTZLLNuNuJets/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//TTZQQJets/*.root']
+['/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//Run2018_DoubleMu_ReMiniAOD/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//Run2018_EG_ReMiniAOD/*.root']
+['/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL//ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0/*.root']
+[['TT', 'Zll', 'rHH_SR', 'two_btag', 'TT_CR', '(isZee || isZmm)', 'VHH_rHH<25', 'VHH_nBJets == 2', 'V_mass<75 || V_mass>105'], ['TT', 'Zll', 'rHH_SR', 'three_btag', 'TT_CR', '(isZee || isZmm)', 'VHH_rHH<25', 'VHH_nBJets == 3', 'V_mass<75 || V_mass>105'], ['TT', 'Zll', 'rHH_SR', 'four_btag', 'TT_CR', '(isZee || isZmm)', 'VHH_rHH<25', 'VHH_nBJets == 4', 'V_mass<75 || V_mass>105'], ['TT', 'Zll', 'rHH_SR', 'two_btag', 'Z_mass', '(isZee || isZmm)', 'VHH_rHH<25', 'VHH_nBJets == 2', 'V_mass>75 && V_mass<105'], ['TT', 'Zll', 'rHH_SR', 'three_btag', 'Z_mass', '(isZee || isZmm)', 'VHH_rHH<25', 'VHH_nBJets == 3', 'V_mass>75 && V_mass<105'], ['TT', 'Zll', 'rHH_SR', 'four_btag', 'Z_mass', '(isZee || isZmm)', 'VHH_rHH<25', 'VHH_nBJets == 4', 'V_mass>75 && V_mass<105']]
+TT_Zll_rHH_SR_two_btag_TT_CR :  Start Checking... 
+
+Events number: TT_Zll_rHH_SR_two_btag_TT_CR : 2862.7815614867286
+
+TT_Zll_rHH_SR_four_btag_TT_CR :  Start Checking... 
+
+Events number: TT_Zll_rHH_SR_four_btag_TT_CR : 7.89696507062763
+
+TT_Zll_rHH_SR_two_btag_Z_mass :  Start Checking... 
+
+Events number: TT_Zll_rHH_SR_two_btag_Z_mass : 778.0458373786532
+
+TT_Zll_rHH_SR_three_btag_Z_mass :  Start Checking... 
+
+Events number: TT_Zll_rHH_SR_three_btag_Z_mass : 52.25212850701064
+
+TT_Zll_rHH_SR_four_btag_Z_mass :  Start Checking... 
+
+Events number: TT_Zll_rHH_SR_four_btag_Z_mass : 1.9236553758382797
+

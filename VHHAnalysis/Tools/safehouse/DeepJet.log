@@ -1,0 +1,1195 @@
+nohup: 忽略输入
+['/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//TT_AllHadronic/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//TT_DiLep_NoPSWeights/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//TT_SingleLep/*.root']
+['/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//ttbb_AllHadronic/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//ttbb_DiLep/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//ttbb_SingleLep/*.root']
+['/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//DYToLL_M10-50_Inc_madgraph/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//DYToLL_M-50_Inc_madgraph/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//DYToLL_M-50_HT70to100_madgraph/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//DYToLL_M-50_HT100to200_madgraph/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//DYToLL_M-50_HT200to400_madgraph/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//DYToLL_M-50_HT400to600_madgraph/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//DYToLL_M-50_HT600to800_madgraph/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//DYToLL_M-50_HT800to1200_madgraph/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//DYToLL_M-50_HT1200to2500_madgraph/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//DYToLL_M-50_HT2500toInf_madgraph/*.root']
+['/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//ST_s-c_4f_lep/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//ST_t-channel_eleDecays/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//ST_t-channel_muDecays/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//ST_t-channel_tauDecays/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//ST_tW_antitop_5f_noFullHad/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//ST_tW_top_5f_noFullHad/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//ttHTobb_M125/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//TTWLNuJets/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//TTWQQJets/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//TTZLLNuNuJets/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//TTZQQJets/*.root']
+['/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//Run2018_DoubleMu_ReMiniAOD/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//Run2018_EG_ReMiniAOD/*.root']
+['/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0/*.root', '/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet//ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0/*.root']
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SR_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SR_two_btag_TT_CR : 9.163072854789789e-05
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SR_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SR_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SR_three_btag_TT_CR : 0.000220882091355179
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SR_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SR_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SR_four_btag_TT_CR : 0.00012595989754515813
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SR_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SR_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SR_two_btag_Z_mass : 0.0046845903020766855
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SR_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SR_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SR_three_btag_Z_mass : 0.009803364850746732
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SR_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SR_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SR_four_btag_Z_mass : 0.008287460491573029
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SR_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_CR_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_CR_two_btag_TT_CR : 0.0001435236428051212
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_CR_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_CR_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_CR_three_btag_TT_CR : 0.0002179104447179725
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_CR_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_CR_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_CR_four_btag_TT_CR : 7.681472993681382e-05
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_CR_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_CR_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_CR_two_btag_Z_mass : 0.0068590474451752925
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_CR_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_CR_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_CR_three_btag_Z_mass : 0.010730932034817897
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_CR_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_CR_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_CR_four_btag_Z_mass : 0.005945227998552127
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_CR_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SB_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SB_two_btag_TT_CR : 0.00033031751200951476
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SB_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SB_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SB_three_btag_TT_CR : 0.00038771544893734244
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SB_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SB_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SB_four_btag_TT_CR : 0.00011816512437690108
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SB_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SB_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SB_two_btag_Z_mass : 0.012027337130490423
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SB_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SB_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SB_three_btag_Z_mass : 0.014810811113520117
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SB_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SB_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SB_four_btag_Z_mass : 0.00517302812299647
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0_Zll_rHH_SB_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SR_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SR_two_btag_TT_CR : 9.77578198444462e-05
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SR_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SR_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SR_three_btag_TT_CR : 0.00015774388370459747
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SR_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SR_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SR_four_btag_TT_CR : 0.00012772908812053174
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SR_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SR_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SR_two_btag_Z_mass : 0.004043912660197435
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SR_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SR_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SR_three_btag_Z_mass : 0.009009169886102342
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SR_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SR_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SR_four_btag_Z_mass : 0.007808313078641049
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SR_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_CR_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_CR_two_btag_TT_CR : 0.00015428482981860725
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_CR_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_CR_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_CR_three_btag_TT_CR : 0.00016977697061548724
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_CR_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_CR_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_CR_four_btag_TT_CR : 9.521153026526008e-05
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_CR_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_CR_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_CR_two_btag_Z_mass : 0.005970805268390222
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_CR_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_CR_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_CR_three_btag_Z_mass : 0.009642086722276844
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_CR_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_CR_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_CR_four_btag_Z_mass : 0.005390628268372666
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_CR_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SB_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SB_two_btag_TT_CR : 0.0003074972260606046
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SB_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SB_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SB_three_btag_TT_CR : 0.00034496994246069335
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SB_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SB_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SB_four_btag_TT_CR : 0.00010287894090765803
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SB_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SB_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SB_two_btag_Z_mass : 0.01103852584481757
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SB_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SB_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SB_three_btag_Z_mass : 0.013312863183010393
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SB_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SB_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SB_four_btag_Z_mass : 0.00479262611417397
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0_Zll_rHH_SB_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SR_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SR_two_btag_TT_CR : 0.0001518940183586892
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SR_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SR_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SR_three_btag_TT_CR : 0.00037543915760807067
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SR_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SR_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SR_four_btag_TT_CR : 0.0003499680715322029
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SR_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SR_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SR_two_btag_Z_mass : 0.008903257039094115
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SR_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SR_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SR_three_btag_Z_mass : 0.019811754970049833
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SR_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SR_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SR_four_btag_Z_mass : 0.017885956125695657
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SR_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_CR_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_CR_two_btag_TT_CR : 0.00028063541088840793
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_CR_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_CR_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_CR_three_btag_TT_CR : 0.0003847370538778705
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_CR_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_CR_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_CR_four_btag_TT_CR : 0.0002570514862725304
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_CR_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_CR_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_CR_two_btag_Z_mass : 0.01152224530562762
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_CR_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_CR_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_CR_three_btag_Z_mass : 0.019809019769120084
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_CR_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_CR_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_CR_four_btag_Z_mass : 0.01193172901513151
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_CR_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SB_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SB_two_btag_TT_CR : 0.0006005782589681985
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SB_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SB_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SB_three_btag_TT_CR : 0.0006057798152596661
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SB_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SB_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SB_four_btag_TT_CR : 0.00024562288757579154
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SB_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SB_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SB_two_btag_Z_mass : 0.022969428185859897
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SB_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SB_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SB_three_btag_Z_mass : 0.028354387036898743
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SB_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SB_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SB_four_btag_Z_mass : 0.010029124649037158
+
+ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0_Zll_rHH_SB_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SR_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SR_two_btag_TT_CR : 5.2513814011945215e-05
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SR_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SR_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SR_three_btag_TT_CR : 0.00011606286875576188
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SR_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SR_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SR_four_btag_TT_CR : 8.231791110802078e-05
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SR_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SR_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SR_two_btag_Z_mass : 0.0025074944947363065
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SR_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SR_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SR_three_btag_Z_mass : 0.005583074421714684
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SR_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SR_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SR_four_btag_Z_mass : 0.004929261847173905
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SR_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_CR_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_CR_two_btag_TT_CR : 9.570157860139261e-05
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_CR_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_CR_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_CR_three_btag_TT_CR : 9.432199114201012e-05
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_CR_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_CR_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_CR_four_btag_TT_CR : 5.904521880495395e-05
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_CR_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_CR_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_CR_two_btag_Z_mass : 0.0032512646914319987
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_CR_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_CR_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_CR_three_btag_Z_mass : 0.005373854105942932
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_CR_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_CR_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_CR_four_btag_Z_mass : 0.0034157930619116428
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_CR_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SB_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SB_two_btag_TT_CR : 0.00015891086849251224
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SB_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SB_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SB_three_btag_TT_CR : 0.0001768051198212106
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SB_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SB_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SB_four_btag_TT_CR : 5.613739855903077e-05
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SB_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SB_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SB_two_btag_Z_mass : 0.006012480392811881
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SB_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SB_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SB_three_btag_Z_mass : 0.007623209228732719
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SB_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SB_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SB_four_btag_Z_mass : 0.002664155464326967
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0_Zll_rHH_SB_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SR_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SR_two_btag_TT_CR : 0.0003480062909488879
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SR_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SR_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SR_three_btag_TT_CR : 0.0007179477887575558
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SR_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SR_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SR_four_btag_TT_CR : 0.0004098290579577224
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SR_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SR_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SR_two_btag_Z_mass : 0.01129147411953113
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SR_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SR_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SR_three_btag_Z_mass : 0.024819116902634164
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SR_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SR_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SR_four_btag_Z_mass : 0.021454963496253754
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SR_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_CR_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_CR_two_btag_TT_CR : 0.00042099549375507195
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_CR_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_CR_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_CR_three_btag_TT_CR : 0.0005765205332863843
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_CR_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_CR_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_CR_four_btag_TT_CR : 0.0003760975866384797
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_CR_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_CR_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_CR_two_btag_Z_mass : 0.01614036855789891
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_CR_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_CR_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_CR_three_btag_Z_mass : 0.026660915573671673
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_CR_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_CR_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_CR_four_btag_Z_mass : 0.015812822182624586
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_CR_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SB_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SB_two_btag_TT_CR : 0.0008375797893336312
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SB_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SB_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SB_three_btag_TT_CR : 0.0009386011494711965
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SB_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SB_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SB_four_btag_TT_CR : 0.00033507027569612546
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SB_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SB_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SB_two_btag_Z_mass : 0.02988850219216488
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SB_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SB_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SB_three_btag_Z_mass : 0.0369337932274334
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SB_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SB_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SB_four_btag_Z_mass : 0.012517286235208758
+
+ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0_Zll_rHH_SB_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SR_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SR_two_btag_TT_CR : 6.892161843552458e-05
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SR_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SR_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SR_three_btag_TT_CR : 0.00013784437788899595
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SR_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SR_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SR_four_btag_TT_CR : 0.00012803202889699605
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SR_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SR_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SR_two_btag_Z_mass : 0.002917627288510971
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SR_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SR_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SR_three_btag_Z_mass : 0.0064243916508388565
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SR_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SR_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SR_four_btag_Z_mass : 0.005517731824674854
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SR_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_CR_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_CR_two_btag_TT_CR : 0.00011102619248504197
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_CR_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_CR_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_CR_three_btag_TT_CR : 0.00014715846566559776
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_CR_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_CR_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_CR_four_btag_TT_CR : 0.00010283658873788681
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_CR_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_CR_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_CR_two_btag_Z_mass : 0.004156829717935295
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_CR_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_CR_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_CR_three_btag_Z_mass : 0.006991397943856725
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_CR_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_CR_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_CR_four_btag_Z_mass : 0.0041278967409112965
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_CR_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SB_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SB_two_btag_TT_CR : 0.00021481480961327293
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SB_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SB_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SB_three_btag_TT_CR : 0.0002460991457198247
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SB_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SB_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SB_four_btag_TT_CR : 8.228018018030525e-05
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SB_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SB_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SB_two_btag_Z_mass : 0.007861130440709019
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SB_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SB_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SB_three_btag_Z_mass : 0.009737613825336666
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SB_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SB_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SB_four_btag_Z_mass : 0.0033650030866709812
+
+ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0_Zll_rHH_SB_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SR_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SR_two_btag_TT_CR : 1.3491046843228105e-05
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SR_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SR_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SR_three_btag_TT_CR : 1.9213563078324114e-05
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SR_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SR_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SR_four_btag_TT_CR : 2.2638157091137145e-05
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SR_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SR_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SR_two_btag_Z_mass : 0.0005558040815358822
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SR_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SR_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SR_three_btag_Z_mass : 0.0012638686744423921
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SR_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SR_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SR_four_btag_Z_mass : 0.0012599888111353152
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SR_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_CR_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_CR_two_btag_TT_CR : 1.7377907894911004e-05
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_CR_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_CR_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_CR_three_btag_TT_CR : 2.4875265893342657e-05
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_CR_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_CR_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_CR_four_btag_TT_CR : 1.8818946472265452e-05
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_CR_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_CR_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_CR_two_btag_Z_mass : 0.0007208875493454059
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_CR_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_CR_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_CR_three_btag_Z_mass : 0.0012816541427937977
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_CR_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_CR_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_CR_four_btag_Z_mass : 0.0007468274846438305
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_CR_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SB_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SB_two_btag_TT_CR : 4.342905774024075e-05
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SB_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SB_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SB_three_btag_TT_CR : 5.3550890548592633e-05
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SB_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SB_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SB_four_btag_TT_CR : 1.3018504702699829e-05
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SB_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SB_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SB_two_btag_Z_mass : 0.0014453381078354255
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SB_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SB_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SB_three_btag_Z_mass : 0.0019370664419327
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SB_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SB_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SB_four_btag_Z_mass : 0.0006312782739001932
+
+ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0_Zll_rHH_SB_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SR_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SR_two_btag_TT_CR : 0.005573524445935618
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SR_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SR_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SR_three_btag_TT_CR : 0.009848872387010488
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SR_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SR_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SR_four_btag_TT_CR : 0.006800059891247656
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SR_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SR_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SR_two_btag_Z_mass : 0.20404446894872308
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SR_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SR_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SR_three_btag_Z_mass : 0.40316298893731073
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SR_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SR_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SR_four_btag_Z_mass : 0.3120528146605466
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SR_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_CR_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_CR_two_btag_TT_CR : 0.008605070564954076
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_CR_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_CR_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_CR_three_btag_TT_CR : 0.01039436010432837
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_CR_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_CR_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_CR_four_btag_TT_CR : 0.005907317419769242
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_CR_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_CR_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_CR_two_btag_Z_mass : 0.2995469990055426
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_CR_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_CR_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_CR_three_btag_Z_mass : 0.46141705613331396
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_CR_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_CR_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_CR_four_btag_Z_mass : 0.25568810569984635
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_CR_four_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SB_two_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SB_two_btag_TT_CR : 0.015279184754035668
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SB_two_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SB_three_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SB_three_btag_TT_CR : 0.016291458105115453
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SB_three_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SB_four_btag_TT_CR :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SB_four_btag_TT_CR : 0.006788792596125859
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SB_four_btag_TT_CR :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SB_two_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SB_two_btag_Z_mass : 0.5474664173443671
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SB_two_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SB_three_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SB_three_btag_Z_mass : 0.6600306603017998
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SB_three_btag_Z_mass :  Done :) 
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SB_four_btag_Z_mass :  Start Checking... 
+
+Events number: ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SB_four_btag_Z_mass : 0.24401998681196346
+
+ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_Zll_rHH_SB_four_btag_Z_mass :  Done :) 
+
+Other_Zll_rHH_SR_two_btag_TT_CR :  Start Checking... 
+
+Events number: Other_Zll_rHH_SR_two_btag_TT_CR : 163.64953920924745
+
+Other_Zll_rHH_SR_two_btag_TT_CR :  Done :) 
+
+Other_Zll_rHH_SR_three_btag_TT_CR :  Start Checking... 
+
+Events number: Other_Zll_rHH_SR_three_btag_TT_CR : 29.344326589867705
+
+Other_Zll_rHH_SR_three_btag_TT_CR :  Done :) 
+
+Other_Zll_rHH_SR_four_btag_TT_CR :  Start Checking... 
+
+Events number: Other_Zll_rHH_SR_four_btag_TT_CR : 4.9534030981885735
+
+Other_Zll_rHH_SR_four_btag_TT_CR :  Done :) 
+
+Other_Zll_rHH_SR_two_btag_Z_mass :  Start Checking... 
+
+Events number: Other_Zll_rHH_SR_two_btag_Z_mass : 42.16587855909529
+
+Other_Zll_rHH_SR_two_btag_Z_mass :  Done :) 
+
+Other_Zll_rHH_SR_three_btag_Z_mass :  Start Checking... 
+
+Events number: Other_Zll_rHH_SR_three_btag_Z_mass : 6.144768134108745
+
+Other_Zll_rHH_SR_three_btag_Z_mass :  Done :) 
+
+Other_Zll_rHH_SR_four_btag_Z_mass :  Start Checking... 
+
+Events number: Other_Zll_rHH_SR_four_btag_Z_mass : 1.1292483288270887
+
+Other_Zll_rHH_SR_four_btag_Z_mass :  Done :) 
+
+Other_Zll_rHH_CR_two_btag_TT_CR :  Start Checking... 
+
+Events number: Other_Zll_rHH_CR_two_btag_TT_CR : 372.6999422808658
+
+Other_Zll_rHH_CR_two_btag_TT_CR :  Done :) 
+
+Other_Zll_rHH_CR_three_btag_TT_CR :  Start Checking... 
+
+Events number: Other_Zll_rHH_CR_three_btag_TT_CR : 57.99541719193803
+
+Other_Zll_rHH_CR_three_btag_TT_CR :  Done :) 
+
+Other_Zll_rHH_CR_four_btag_TT_CR :  Start Checking... 
+
+Events number: Other_Zll_rHH_CR_four_btag_TT_CR : 10.067115215664671
+
+Other_Zll_rHH_CR_four_btag_TT_CR :  Done :) 
+
+Other_Zll_rHH_CR_two_btag_Z_mass :  Start Checking... 
+
+Events number: Other_Zll_rHH_CR_two_btag_Z_mass : 84.97352690687694
+
+Other_Zll_rHH_CR_two_btag_Z_mass :  Done :) 
+
+Other_Zll_rHH_CR_three_btag_Z_mass :  Start Checking... 
+
+Events number: Other_Zll_rHH_CR_three_btag_Z_mass : 15.340147488808725
+
+Other_Zll_rHH_CR_three_btag_Z_mass :  Done :) 
+
+Other_Zll_rHH_CR_four_btag_Z_mass :  Start Checking... 
+
+Events number: Other_Zll_rHH_CR_four_btag_Z_mass : 2.2732055792293977
+
+Other_Zll_rHH_CR_four_btag_Z_mass :  Done :) 
+
+Other_Zll_rHH_SB_two_btag_TT_CR :  Start Checking... 
+
+Events number: Other_Zll_rHH_SB_two_btag_TT_CR : 1375.0831299829733
+
+Other_Zll_rHH_SB_two_btag_TT_CR :  Done :) 
+
+Other_Zll_rHH_SB_three_btag_TT_CR :  Start Checking... 
+
+Events number: Other_Zll_rHH_SB_three_btag_TT_CR : 212.6831099587289
+
+Other_Zll_rHH_SB_three_btag_TT_CR :  Done :) 
+
+Other_Zll_rHH_SB_four_btag_TT_CR :  Start Checking... 
+
+Events number: Other_Zll_rHH_SB_four_btag_TT_CR : 32.37335072401038
+
+Other_Zll_rHH_SB_four_btag_TT_CR :  Done :) 
+
+Other_Zll_rHH_SB_two_btag_Z_mass :  Start Checking... 
+
+Events number: Other_Zll_rHH_SB_two_btag_Z_mass : 316.8109066901234
+
+Other_Zll_rHH_SB_two_btag_Z_mass :  Done :) 
+
+Other_Zll_rHH_SB_three_btag_Z_mass :  Start Checking... 
+
+Events number: Other_Zll_rHH_SB_three_btag_Z_mass : 51.40559362489148
+
+Other_Zll_rHH_SB_three_btag_Z_mass :  Done :) 
+
+Other_Zll_rHH_SB_four_btag_Z_mass :  Start Checking... 
+
+Events number: Other_Zll_rHH_SB_four_btag_Z_mass : 8.4417309657656
+
+Other_Zll_rHH_SB_four_btag_Z_mass :  Done :) 
+
+ttbb_Zll_rHH_SR_two_btag_TT_CR :  Start Checking... 
+
+Events number: ttbb_Zll_rHH_SR_two_btag_TT_CR : 73.29742390790489
+
+ttbb_Zll_rHH_SR_two_btag_TT_CR :  Done :) 
+
+ttbb_Zll_rHH_SR_three_btag_TT_CR :  Start Checking... 
+
+Events number: ttbb_Zll_rHH_SR_three_btag_TT_CR : 80.68108172831126
+
+ttbb_Zll_rHH_SR_three_btag_TT_CR :  Done :) 
+
+ttbb_Zll_rHH_SR_four_btag_TT_CR :  Start Checking... 
+
+Events number: ttbb_Zll_rHH_SR_four_btag_TT_CR : 21.102428167825565
+
+ttbb_Zll_rHH_SR_four_btag_TT_CR :  Done :) 
+
+ttbb_Zll_rHH_SR_two_btag_Z_mass :  Start Checking... 
+
+Events number: ttbb_Zll_rHH_SR_two_btag_Z_mass : 21.572903340216726
+
+ttbb_Zll_rHH_SR_two_btag_Z_mass :  Done :) 
+
+ttbb_Zll_rHH_SR_three_btag_Z_mass :  Start Checking... 
+
+Events number: ttbb_Zll_rHH_SR_three_btag_Z_mass : 21.678046591579914
+
+ttbb_Zll_rHH_SR_three_btag_Z_mass :  Done :) 
+
+ttbb_Zll_rHH_SR_four_btag_Z_mass :  Start Checking... 
+
+Events number: ttbb_Zll_rHH_SR_four_btag_Z_mass : 5.82960709114559
+
+ttbb_Zll_rHH_SR_four_btag_Z_mass :  Done :) 
+
+ttbb_Zll_rHH_CR_two_btag_TT_CR :  Start Checking... 
+
+Events number: ttbb_Zll_rHH_CR_two_btag_TT_CR : 164.8565657461877
+
+ttbb_Zll_rHH_CR_two_btag_TT_CR :  Done :) 
+
+ttbb_Zll_rHH_CR_three_btag_TT_CR :  Start Checking... 
+
+Events number: ttbb_Zll_rHH_CR_three_btag_TT_CR : 171.56438561773393
+
+ttbb_Zll_rHH_CR_three_btag_TT_CR :  Done :) 
+
+ttbb_Zll_rHH_CR_four_btag_TT_CR :  Start Checking... 
+
+Events number: ttbb_Zll_rHH_CR_four_btag_TT_CR : 46.571245462837396
+
+ttbb_Zll_rHH_CR_four_btag_TT_CR :  Done :) 
+
+ttbb_Zll_rHH_CR_two_btag_Z_mass :  Start Checking... 
+
+Events number: ttbb_Zll_rHH_CR_two_btag_Z_mass : 44.68489891802892
+
+ttbb_Zll_rHH_CR_two_btag_Z_mass :  Done :) 
+
+ttbb_Zll_rHH_CR_three_btag_Z_mass :  Start Checking... 
+
+Events number: ttbb_Zll_rHH_CR_three_btag_Z_mass : 46.485210997168906
+
+ttbb_Zll_rHH_CR_three_btag_Z_mass :  Done :) 
+
+ttbb_Zll_rHH_CR_four_btag_Z_mass :  Start Checking... 
+
+Events number: ttbb_Zll_rHH_CR_four_btag_Z_mass : 12.49022221704945
+
+ttbb_Zll_rHH_CR_four_btag_Z_mass :  Done :) 
+
+ttbb_Zll_rHH_SB_two_btag_TT_CR :  Start Checking... 
+
+Events number: ttbb_Zll_rHH_SB_two_btag_TT_CR : 539.9344380149851
+
+ttbb_Zll_rHH_SB_two_btag_TT_CR :  Done :) 
+
+ttbb_Zll_rHH_SB_three_btag_TT_CR :  Start Checking... 
+
+Events number: ttbb_Zll_rHH_SB_three_btag_TT_CR : 548.2827244419605
+
+ttbb_Zll_rHH_SB_three_btag_TT_CR :  Done :) 
+
+ttbb_Zll_rHH_SB_four_btag_TT_CR :  Start Checking... 
+
+Events number: ttbb_Zll_rHH_SB_four_btag_TT_CR : 152.460411230335
+
+ttbb_Zll_rHH_SB_four_btag_TT_CR :  Done :) 
+
+ttbb_Zll_rHH_SB_two_btag_Z_mass :  Start Checking... 
+
+Events number: ttbb_Zll_rHH_SB_two_btag_Z_mass : 141.2309255336295
+
+ttbb_Zll_rHH_SB_two_btag_Z_mass :  Done :) 
+
+ttbb_Zll_rHH_SB_three_btag_Z_mass :  Start Checking... 
+
+Events number: ttbb_Zll_rHH_SB_three_btag_Z_mass : 143.00590466917492
+
+ttbb_Zll_rHH_SB_three_btag_Z_mass :  Done :) 
+
+ttbb_Zll_rHH_SB_four_btag_Z_mass :  Start Checking... 
+
+Events number: ttbb_Zll_rHH_SB_four_btag_Z_mass : 39.23193317395635
+
+ttbb_Zll_rHH_SB_four_btag_Z_mass :  Done :) 
+
+Data_Zll_rHH_SR_two_btag_TT_CR :  Start Checking... 
+
+Events number: Data_Zll_rHH_SR_two_btag_TT_CR : 3640.0
+
+Data_Zll_rHH_SR_two_btag_TT_CR :  Done :) 
+
+Data_Zll_rHH_SR_three_btag_TT_CR :  Start Checking... 
+
+Events number: Data_Zll_rHH_SR_three_btag_TT_CR : 524.0
+
+Data_Zll_rHH_SR_three_btag_TT_CR :  Done :) 
+
+Data_Zll_rHH_SR_four_btag_TT_CR :  Start Checking... 
+
+Events number: Data_Zll_rHH_SR_four_btag_TT_CR : 53.0
+
+Data_Zll_rHH_SR_four_btag_TT_CR :  Done :) 
+
+Data_Zll_rHH_SR_two_btag_Z_mass :  Start Checking... 
+
+Events number: Data_Zll_rHH_SR_two_btag_Z_mass : 2453.0
+
+Data_Zll_rHH_SR_two_btag_Z_mass :  Done :) 
+
+Data_Zll_rHH_SR_three_btag_Z_mass :  Start Checking... 
+
+Events number: Data_Zll_rHH_SR_three_btag_Z_mass : 314.0
+
+Data_Zll_rHH_SR_three_btag_Z_mass :  Done :) 
+
+Data_Zll_rHH_SR_four_btag_Z_mass :  Start Checking... 
+
+Events number: Data_Zll_rHH_SR_four_btag_Z_mass : 28.0
+
+Data_Zll_rHH_SR_four_btag_Z_mass :  Done :) 
+
+Data_Zll_rHH_CR_two_btag_TT_CR :  Start Checking... 
+
+Events number: Data_Zll_rHH_CR_two_btag_TT_CR : 7925.0
+
+Data_Zll_rHH_CR_two_btag_TT_CR :  Done :) 
+
+Data_Zll_rHH_CR_three_btag_TT_CR :  Start Checking... 
+
+Events number: Data_Zll_rHH_CR_three_btag_TT_CR : 1126.0
+
+Data_Zll_rHH_CR_three_btag_TT_CR :  Done :) 
+
+Data_Zll_rHH_CR_four_btag_TT_CR :  Start Checking... 
+
+Events number: Data_Zll_rHH_CR_four_btag_TT_CR : 118.0
+
+Data_Zll_rHH_CR_four_btag_TT_CR :  Done :) 
+
+Data_Zll_rHH_CR_two_btag_Z_mass :  Start Checking... 
+
+Events number: Data_Zll_rHH_CR_two_btag_Z_mass : 5626.0
+
+Data_Zll_rHH_CR_two_btag_Z_mass :  Done :) 
+
+Data_Zll_rHH_CR_three_btag_Z_mass :  Start Checking... 
+
+Events number: Data_Zll_rHH_CR_three_btag_Z_mass : 722.0
+
+Data_Zll_rHH_CR_three_btag_Z_mass :  Done :) 
+
+Data_Zll_rHH_CR_four_btag_Z_mass :  Start Checking... 
+
+Events number: Data_Zll_rHH_CR_four_btag_Z_mass : 54.0
+
+Data_Zll_rHH_CR_four_btag_Z_mass :  Done :) 
+
+Data_Zll_rHH_SB_two_btag_TT_CR :  Start Checking... 
+
+Events number: Data_Zll_rHH_SB_two_btag_TT_CR : 26618.0
+
+Data_Zll_rHH_SB_two_btag_TT_CR :  Done :) 
+
+Data_Zll_rHH_SB_three_btag_TT_CR :  Start Checking... 
+
+Events number: Data_Zll_rHH_SB_three_btag_TT_CR : 3763.0
+
+Data_Zll_rHH_SB_three_btag_TT_CR :  Done :) 
+
+Data_Zll_rHH_SB_four_btag_TT_CR :  Start Checking... 
+
+Events number: Data_Zll_rHH_SB_four_btag_TT_CR : 396.0
+
+Data_Zll_rHH_SB_four_btag_TT_CR :  Done :) 
+
+Data_Zll_rHH_SB_two_btag_Z_mass :  Start Checking... 
+
+Events number: Data_Zll_rHH_SB_two_btag_Z_mass : 23636.0
+
+Data_Zll_rHH_SB_two_btag_Z_mass :  Done :) 
+
+Data_Zll_rHH_SB_three_btag_Z_mass :  Start Checking... 
+
+Events number: Data_Zll_rHH_SB_three_btag_Z_mass : 2637.0
+
+Data_Zll_rHH_SB_three_btag_Z_mass :  Done :) 
+
+Data_Zll_rHH_SB_four_btag_Z_mass :  Start Checking... 
+
+Events number: Data_Zll_rHH_SB_four_btag_Z_mass : 222.0
+
+Data_Zll_rHH_SB_four_btag_Z_mass :  Done :) 
+
