@@ -38,14 +38,13 @@ legend_dict = {}
 
 rHH_region_dict = {
         'rHH_SR' : "VHH_rHH<25",
-#         'rHH_CR' : "VHH_rHH>25 && VHH_rHH<50",
-#         'rHH_SB' : "VHH_rHH>50",
+        'rHH_CR' : "VHH_rHH>25 && VHH_rHH<50",
+        'rHH_SB' : "VHH_rHH>50",
 }
 
 Zmass_region_dict = {
         'TT_CR'  : "V_mass<75 || V_mass>105",
         'Z_mass'  : "V_mass>75 && V_mass<105",
-#     'no_mass' : "weight>0"
 }
 
 btag_multiplicity_dict = {
@@ -106,11 +105,6 @@ rdf_dict['Data'] = R.RDataFrame('Events',string_list_for_Data)
 
 sample_list = ['TT', 'ttbb', 'DY', 'Other', 'Data']
 sample_list+=['ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0']
-
-# sample_list+=file_list_ZHH
-
-sample_list = ['TT', 'Data', 'ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0']
-sample_list = ['TT']
 loop = []
 
 for _sample in sample_list:
@@ -121,7 +115,7 @@ for _sample in sample_list:
 
 print(loop)
                 
-with Pool(52) as p:
+with Pool(1) as p:
     p.map(counter, loop)
 
 # p = multiprocessing.Pool(20)

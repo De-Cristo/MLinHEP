@@ -6,15 +6,16 @@ from util import convert_coupling_diagramweight, Save_Temp_Components
 import argparse
 import matplotlib.pyplot as plt
 
-
-# R.gInterpreter.Declare('#include "assist_vhh.C"')
-
 parser = argparse.ArgumentParser()
-parser.add_argument("-m", "--multiprocess",       dest="multi",  default=0, type=int,   help="enable multi-processing (defalt = 0)" )
-parser.add_argument("-v", "--verbose",            dest="verb",   default=0, type=int,   help="different verbose level (defalt = 0)" )
+parser.add_argument("-m", "--multiprocess",       dest="multi",  default=0, type=int,   help="enable multi-processing with n threads (default = 0)" )
+parser.add_argument("-v", "--verbose",            dest="verb",   default=0, type=int,   help="different verbose level (default = 0)" )
+parser.add_argument("-n", "--nBasicSamples",      dest="nBV",    default=6, type=int,   help="N basic samples (default = 6)" )
+parser.add_argument("-c", "--CouplingType",       dest="CType",  default="c2v", type=str,   help="Coupling type (default = c2v) cv/kl/kt ..." )
+parser.add_argument("-r", "--CouplingRange",      dest="cRange", nargs='+', help="[lower limit] [higher limit] (default = -30 30)")
+parser.add_argument("-d", "--ifDoCombine",        dest="doComb", default=0, type=int,   help="if do combination (default = 0)")
+parser.add_argument("-w", "--NewCoupling",        dest="newCoup",default=10,type=int,   help="The new coupling we need to combine (default = 10)")
+parser.add_argument("-p", "--IOpaths",            dest="path",   default='.',type=str,   help="I/O path of the basic/merged samples (default = .)")
 args = parser.parse_args()
-
-# dict_rdf    = dict()
 
 if args.multi != 0:
     R.EnableImplicitMT(args.multi)
@@ -22,114 +23,88 @@ if args.multi != 0:
 else:
     print('Disable MT Mode!')
     
-path = './Coupling_TEST'
-path_remote = '/eos/user/l/lichengz/VHH4bAnalysisNtuples/TEST_2018_IHEPsite_20210414/haddjobs'
-
-# file_list = {'{0}/sum_ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0.root'.format(path),\
-#              '{0}/sum_ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0.root'.format(path),\
-#              '{0}/sum_ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0.root'.format(path),\
-#              '{0}/sum_ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0.root'.format(path),\
-#              '{0}/sum_ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0.root'.format(path),\
-#              '{0}/sum_ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0.root'.format(path)
-#             }
-    
-# fin1 = R.TFile.Open('{0}/sum_ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0.root'.format(path_remote),'READ')
-# fin2 = R.TFile.Open('{0}/sum_ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0.root'.format(path_remote),'READ')
-# fin3 = R.TFile.Open('{0}/sum_ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0.root'.format(path_remote),'READ')
-# fin4 = R.TFile.Open('{0}/sum_ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0.root'.format(path_remote),'READ')
-# fin5 = R.TFile.Open('{0}/sum_ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0.root'.format(path_remote),'READ')
-# fin6 = R.TFile.Open('{0}/sum_ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0.root'.format(path_remote),'READ')
-
-# dict_rdf['ZHH_111'] = R.RDataFrame('Events', '{0}/sum_ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0.root'.format(path))
-# dict_rdf['ZHH_121'] = R.RDataFrame('Events', '{0}/sum_ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0.root'.format(path))
-# dict_rdf['ZHH_112'] = R.RDataFrame('Events', '{0}/sum_ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0.root'.format(path))
-# dict_rdf['ZHH_101'] = R.RDataFrame('Events', '{0}/sum_ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0.root'.format(path))
-# dict_rdf['ZHH_110'] = R.RDataFrame('Events', '{0}/sum_ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0.root'.format(path))
-# dict_rdf['ZHH_1p511'] = R.RDataFrame('Events', '{0}/sum_ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0.root'.format(path))
-
-# df_basis = R.RDataFrame('Events', file_list)
-
-
-listOfCouplings0 = np.array([[1,1,1],[0.5,1,1],[1,1,2],[1,0,1],[1,1,0],[1.5,1,1]])
-listOfCouplings1 = np.array([[1,1,1],[0.5,1,1],[1,1,2],[1,0,1],[1,1,0],[1.5,1,1],[0.5,1,1]])
-listOfCouplings2 = np.array([[1,1,1],[0.5,1,1],[1,1,2],[1,0,1],[1,1,0],[1.5,1,1],[0.5,1,1],[1,1,20]])
-
-CrossSec0 = np.array([0.000363,0.0002278,0.000584,0.0001245,0.0002278,0.000790])
-CrossSec1 = np.array([0.000363,0.0002278,0.000584,0.0001245,0.0002278,0.000790,0.0002278])
-CrossSec2 = np.array([0.000363,0.0002278,0.000584,0.0001245,0.0002278,0.000790,0.0002278,0.0165721])#Maybe some bias
+if args.nBV == 6:
+    listOfCouplings0 = np.array([[1,1,1],[0.5,1,1],[1,1,2],[1,0,1],[1,1,0],[1.5,1,1]])
+    CrossSec0 = np.array([0.000363,0.0002278,0.000584,0.0001245,0.000212,0.000790])
+elif args.nBV == 7:
+    listOfCouplings0 = np.array([[1,1,1],[0.5,1,1],[1,1,2],[1,0,1],[1,1,0],[1.5,1,1],[0.5,1,1]])
+    CrossSec0 = np.array([0.000363,0.0002278,0.000584,0.0001245,0.000212,0.000790,0.0002278])
+elif args.nBV == 8:
+    listOfCouplings0 = np.array([[1,1,1],[0.5,1,1],[1,1,2],[1,0,1],[1,1,0],[1.5,1,1],[0.5,1,1],[1,1,20]])
+    CrossSec0 = np.array([0.000363,0.0002278,0.000584,0.0001245,0.000212,0.000790,0.0002278,0.0165721])
+else:
+    print('There should be 6~8 samples to form the basic vectors, enforce to 6')
+    listOfCouplings0 = np.array([[1,1,1],[0.5,1,1],[1,1,2],[1,0,1],[1,1,0],[1.5,1,1]])
+    CrossSec0 = np.array([0.000363,0.0002278,0.000584,0.0001245,0.000212,0.000790])
 
 Coupling0 = convert_coupling_diagramweight(listOfCouplings0)
-Coupling1 = convert_coupling_diagramweight(listOfCouplings1)
-Coupling2 = convert_coupling_diagramweight(listOfCouplings2)
-
 CouplingInv0=np.linalg.pinv(Coupling0)
-CouplingInv1=np.linalg.pinv(Coupling1)
-CouplingInv2=np.linalg.pinv(Coupling2)
-
 matrix_ele0 = np.matmul(CouplingInv0, CrossSec0)
-print(CouplingInv1)
-print(CrossSec1)
-matrix_ele1 = np.matmul(CouplingInv1, CrossSec1)
-matrix_ele2 = np.matmul(CouplingInv2, CrossSec2)
 
-#print(matrix_ele)
-lowLimit = -30
-highLimit = 31
+print(CouplingInv0)
+print(CrossSec0)
+
+lowLimit = int(args.cRange[0])
+highLimit = int(args.cRange[1])
+
 numEle = highLimit - lowLimit
-#Coupling list of c2v [-30,30]
 longListOfCoupling = np.zeros(shape=(numEle,3))
 
 longListOfXSec0 = []
-longListOfXSec1 = []
-longListOfXSec2 = []
 
-for num in range(lowLimit,highLimit):
-    longListOfCoupling[num-lowLimit] = [1,1,num]
-
-
+if args.CType == 'c2v':
+    for num in range(lowLimit,highLimit):
+        longListOfCoupling[num-lowLimit] = [1,num,1]
+elif args.CType == 'kl':
+    for num in range(lowLimit,highLimit):
+        longListOfCoupling[num-lowLimit] = [1,1,num]
+elif args.CType == 'cv':
+    for num in range(lowLimit,highLimit):
+        longListOfCoupling[num-lowLimit] = [num,1,1]
+else:
+    print(args.CType + 'is not in SM coupling list or under developing, enforce to c2v')
+    for num in range(lowLimit,highLimit):
+        longListOfCoupling[num-lowLimit] = [1,num,1]
+        
 for element in longListOfCoupling:
     elementCoupling = convert_coupling_diagramweight(element.reshape(1,3))
     elementXsec = np.matmul(elementCoupling,matrix_ele0.reshape(6,1))
-    #print(elementXsec)
     longListOfXSec0.append(elementXsec[0,0])
 
-for element in longListOfCoupling:
-    elementCoupling = convert_coupling_diagramweight(element.reshape(1,3))
-    elementXsec = np.matmul(elementCoupling,matrix_ele1.reshape(6,1))
-    #print(elementXsec)
-    longListOfXSec1.append(elementXsec[0,0])
-
-for element in longListOfCoupling:
-    elementCoupling = convert_coupling_diagramweight(element.reshape(1,3))
-    elementXsec = np.matmul(elementCoupling,matrix_ele2.reshape(6,1))
-    #print(elementXsec)
-    longListOfXSec2.append(elementXsec[0,0])
-
-
-#print(longListOfXSec)
 x = np.arange(lowLimit,highLimit)
-plt.plot(x,longListOfXSec0,color='green',label='6 bases')
-plt.plot(x,longListOfXSec1,color='red',label='7 bases')
-plt.plot(x,longListOfXSec2,color='blue',label='8 bases')
-
+plt.plot(x,longListOfXSec0,color='green',label='{0} bases'.format(args.nBV))
 annotation = "Base [1,1,20]"
+new_annotation = "new point {0} = {1}".format(args.CType,args.newCoup)
 
-plt.xlabel("kl")
+print("c2v = 10, xs = "+str(np.argwhere(x == int(args.newCoup))))
+
+plt.xlabel(args.CType)
 plt.ylabel("XSec")
-plt.title("XSec variation with kl")
+plt.title("XSec variation with {0}".format(args.CType))
 plt.grid()
 plt.legend(loc='best',fontsize=12)
 plt.text(-20,0.035,'6 bases:[1,1,1],[0.5,1,1],[1,1,2],[1,0,1],[1,1,0],[1.5,1,1]\n7 bases: Add [0.5,1,1]\n8 bases: Add [1,1,20]\nAttention:The green and red line overlap',fontsize=12)
-plt.text(0,1,'cv=1,KL=1')
-plt.scatter(x=20,y=0.0165721,s=40,c='y',marker='^')
-plt.annotate(annotation,(20,0.0165721))
+plt.text(0,1,'other couplings are set to 1 (SM)')
+# plt.scatter(x=20,y=0.0165721,s=40,c='y',marker='^')
+# plt.annotate(annotation,(20,0.0165721))
+plt.scatter(x=args.newCoup,y=longListOfXSec0[np.argwhere(x == int(args.newCoup))[0][0]],s=40,c='y',marker='^')
+plt.annotate(new_annotation,(args.newCoup,longListOfXSec0[np.argwhere(x == int(args.newCoup))[0][0]]))
+plt.savefig('./MyFig.jpg')
 plt.show()
+plt.close()
 
-listOfCouplings = np.array([[1,1,20],[1,1,1],[-1,1,1],[-1.5,1,1],[-2,1,1]])
-strlistOfCouplings = ['-15_0', '-8_0', '-3_0', '3_0', '8_0', '15_0']
+if args.CType == 'c2v':
+    listOfCouplings = np.array([[1,args.newCoup,1]])
+elif args.CType == 'kl':
+    listOfCouplings = np.array([[1,1,args.newCoup]])
+elif args.CType == 'cv':
+    listOfCouplings = np.array([[args.newCoup,1,1]])
+else:
+    print(args.CType + 'is not in SM coupling list or under developing, enforce to c2v')
+    listOfCouplings = np.array([[1,args.newCoup,1]])
 
 NewCoupling = convert_coupling_diagramweight(listOfCouplings)
-newXsec = np.matmul(NewCoupling,matrix_ele.reshape(6,1))
+newXsec = np.matmul(NewCoupling,matrix_ele0.reshape(6,1))
 composition = np.matmul(NewCoupling, CouplingInv0)
 
 if args.verb == 0:
@@ -146,4 +121,11 @@ else:
     print("---------------------------- print composition of original samples:")
     print(composition)
 
-exit()
+    
+if args.doComb == 0:
+    exit(0)
+else:
+    print("Combination process starting...")
+
+#TODO
+# args.path

@@ -8,21 +8,9 @@ import argparse
 
 R.EnableImplicitMT()
 
-<<<<<<< HEAD
 def counter(_loop):
     print('{0}_{1}_{2}_{3}_{4} : '.format(_loop[0], _loop[1], _loop[2], _loop[3], _loop[4]) + ' Start Checking... \n')
     print('Events number: {0}_{1}_{2}_{3}_{4} : '.format(_loop[0], _loop[1], _loop[2], _loop[3], _loop[4]) + str(rdf_dict[_loop[0]].Filter(_loop[5]).Filter(_loop[6]).Filter(_loop[7]).Filter(_loop[8]).Filter('weight > 0 && weight<4').Sum('weight').GetValue())+'\n')
-=======
-def counter(_sample):
-    for _rhh_name, _rhh in rHH_region_dict.items():
-        for _zmass_name, _zmass in Zmass_region_dict.items():
-            for _btag_name, _btag in btag_multiplicity_dict.items():
-                print('{0}_{1}_{2}_{3}_{4} : '.format(_sample, args.lcha, _rhh_name, _btag_name, _zmass_name) + ' Start Checking... \n')
-                rdf_dict['{0}_{1}_{2}_{3}_{4}'.format(_sample, args.lcha, _rhh_name, _btag_name, _zmass_name)] = rdf_dict[_sample].Filter(lepton_channel).Filter(_rhh).Filter(_btag).Filter(_zmass)
-#                 print('Raw events number: {0}_{1}_{2}_{3}_{4} : '.format(_sample,args.lcha, _rhh_name, _btag_name, _zmass_name) + str(rdf_dict['{0}_{1}_{2}_{3}_{4}'.format(_sample,args.lcha, _rhh_name, _btag_name, _zmass_name)].Count().GetValue())+'\n')
-                print('Events number: {0}_{1}_{2}_{3}_{4} : '.format(_sample,args.lcha, _rhh_name, _btag_name, _zmass_name) + str(rdf_dict['{0}_{1}_{2}_{3}_{4}'.format(_sample,args.lcha, _rhh_name, _btag_name, _zmass_name)].Filter('weight > 0 && weight<4').Sum('weight').GetValue())+'\n')
-                print('{0}_{1}_{2}_{3}_{4} : '.format(_sample,args.lcha, _rhh_name, _btag_name, _zmass_name) + ' Done :) \n')
->>>>>>> 0ef5bf9cc0789f04324e764baebb2d268d82a569
                 
 def subprocessWrapper(c):
     subprocess.call(c, shell=True)
@@ -50,18 +38,17 @@ legend_dict = {}
 
 rHH_region_dict = {
         'rHH_SR' : "VHH_rHH<25",
-#         'rHH_CR' : "VHH_rHH>25 && VHH_rHH<50",
-#         'rHH_SB' : "VHH_rHH>50",
+        'rHH_CR' : "VHH_rHH>25 && VHH_rHH<50",
+        'rHH_SB' : "VHH_rHH>50",
 }
 
 Zmass_region_dict = {
-#         'TT_CR'  : "V_mass<75 || V_mass>105",
+        'TT_CR'  : "V_mass<75 || V_mass>105",
         'Z_mass'  : "V_mass>75 && V_mass<105",
-#     'no_mass' : "weight>0"
 }
 
 btag_multiplicity_dict = {
-#         'two_btag' : "VHH_nBJets == 2",
+        'two_btag' : "VHH_nBJets == 2",
         'three_btag' : "VHH_nBJets == 3",
         'four_btag' : "VHH_nBJets == 4",
 }
@@ -108,11 +95,6 @@ print(string_list_for_Data)
 for _file in file_list_ZHH:
     string_list_for_ZHH.append('{0}/{1}/*.root'.format(path,_file))
     rdf_dict[_file] = R.RDataFrame('Events','{0}/{1}/*.root'.format(path,_file))
-<<<<<<< HEAD
-print(string_list_for_ZHH)
-=======
-print(string_list_for_ZHH)    
->>>>>>> 0ef5bf9cc0789f04324e764baebb2d268d82a569
 
 rdf_dict['TT'] = R.RDataFrame('Events',string_list_for_TT).Filter(IsttB_TT)
 rdf_dict['ttbb'] = R.RDataFrame('Events',string_list_for_ttbb).Filter(IsttB_TTB)
@@ -122,15 +104,7 @@ rdf_dict['Data'] = R.RDataFrame('Events',string_list_for_Data)
 
 sample_list = ['TT', 'ttbb', 'DY', 'Other', 'Data']
 sample_list+=['ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0']
-
-# sample_list+=file_list_ZHH
-
-<<<<<<< HEAD
-sample_list = ['TT']
 loop = []
-=======
-sample_list = ['TT', 'ttbb', 'DY', 'ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0']
->>>>>>> 0ef5bf9cc0789f04324e764baebb2d268d82a569
 
 for _sample in sample_list:
     for _rhh_name, _rhh in rHH_region_dict.items():
@@ -140,7 +114,7 @@ for _sample in sample_list:
 
 print(loop)
                 
-with Pool(24) as p:
+with Pool(1) as p:
     p.map(counter, loop)
 
 # p = multiprocessing.Pool(20)
