@@ -1,0 +1,9 @@
+.ipynb_checkpoints/
+
+*.root
+
+*.log
+
+safehouse/
+
+test_plot*/

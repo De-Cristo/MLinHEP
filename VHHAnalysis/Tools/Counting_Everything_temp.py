@@ -16,7 +16,7 @@ def subprocessWrapper(c):
     subprocess.call(c, shell=True)
     
 parser = argparse.ArgumentParser()
-parser.add_argument("-d", "--NtupleDir",     dest="ndir", default='/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL/',   help="Ntuple direction (default = /data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL/)" )
+parser.add_argument("-d", "--NtupleDir",     dest="ndir", default='/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet/',   help="Ntuple direction (default = /data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1127_UL_DeepJet/)" )
 parser.add_argument("-l", "--Lepchan",       dest="lcha", default='Zll',   help="Which leptonic channel (default = Zll)" )
 args = parser.parse_args()
 
@@ -95,6 +95,7 @@ print(string_list_for_Data)
 for _file in file_list_ZHH:
     string_list_for_ZHH.append('{0}/{1}/*.root'.format(path,_file))
     rdf_dict[_file] = R.RDataFrame('Events','{0}/{1}/*.root'.format(path,_file))
+print(string_list_for_ZHH)
 
 rdf_dict['TT'] = R.RDataFrame('Events',string_list_for_TT).Filter(IsttB_TT)
 rdf_dict['ttbb'] = R.RDataFrame('Events',string_list_for_ttbb).Filter(IsttB_TTB)
