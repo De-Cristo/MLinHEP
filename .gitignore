@@ -4,6 +4,10 @@
 
 *.log
 
+*.pyc
+
 safehouse/
 
 test_plot*/
+
+Pre_SlimmedSample/

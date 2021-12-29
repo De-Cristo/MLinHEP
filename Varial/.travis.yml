@@ -1,0 +1,25 @@
+language: python
+# Python versions to test
+python:
+  - "2.7"
+# ROOT versions to test
+env:
+  - ROOT_VERSION=5.34.25
+  - ROOT_VERSION=6.03.02
+# Install GCC 4.8, required for ROOT 6
+before_install:
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-get update -qq
+  - sudo apt-get -y install gcc-4.8 g++-4.8
+  - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 20
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 20
+# Grab ROOT, extract it, and source its set up script
+install:
+  - wget http://downloads.sourceforge.net/project/travis-ci-root-builds/ROOT-${ROOT_VERSION}_Python-${TRAVIS_PYTHON_VERSION}.tar.gz
+  - tar xzf ROOT-${ROOT_VERSION}_Python-${TRAVIS_PYTHON_VERSION}.tar.gz
+  - mv ROOT-${ROOT_VERSION}_Python-${TRAVIS_PYTHON_VERSION}/root* root
+  - source root/bin/thisroot.sh
+script:
+  - root -l -q
+  - python -c "import ROOT; ROOT.TBrowser()"
+  - python setup.py test
