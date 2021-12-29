@@ -15,7 +15,7 @@ enable_reuse_step = True
 # Plot Settings #
 #################
 
-name = 'test_plot_HHbbmm_ggF'
+name = 'test_plot_HHbbmm_test'
 
 weight = 'weight'
 

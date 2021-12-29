@@ -1,0 +1,17 @@
+# copy or softlink this to .git/hooks/ in any project depending
+# on varial to store the varial version in each commit
+
+# where is your varial installation?
+varial_dir=~/dev/Varial
+
+cwd="$(pwd)"
+repo_base="$(git rev-parse --show-toplevel)"
+cd $varial_dir 
+git rev-parse --verify HEAD > VARIAL_VERSION 
+mv VARIAL_VERSION $repo_base
+cd $repo_base
+echo "Adding VARIAL_VERSION:"
+cat VARIAL_VERSION
+git add VARIAL_VERSION
+cd $cwd
+
