@@ -7,7 +7,7 @@ analysis_branches = {
     'V_pt','V_mass',\
     'VHH_V_H2_dPhi', 'VHH_V_HH_dPhi',\
     'VHH_HH_deta', 'VHH_HH_dR',\
-    'weight','VHH_rHH'
+    'weight','VHH_rHH','VHH_H1_BJet1_btag','VHH_H1_BJet2_btag','VHH_H2_BJet1_btag','VHH_H2_BJet2_btag',
 }
 
 # svb_training_branches = {
@@ -74,5 +74,12 @@ btag_multiplicity_dict = {
         'four_btag'  : "VHH_nBJets == 4",
 }
 
-IsttB_TT      = "IsttB == 0"
-IsttB_TTB     = "IsttB > 0"
+lepton_channel_dict = {
+        'Zll'   : "(isZee || isZmm)",
+        'Znn'   : "isZnn",
+}
+
+TT_MEb_dict = {
+    'IsttB_TT'      : "IsttB == 0",
+    'IsttB_TTB'     : "IsttB > 0",
+}

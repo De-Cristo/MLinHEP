@@ -225,8 +225,7 @@ th1    ('VHH_rHHZll',              '#DeltaM(jjjj) [GeV]',      50,     0,      5
 th1    ('VHH_rHHZnn',              '#DeltaM(jjjj) [GeV]',      50,     0,      500)
 th1    ('VHH_rHHWln',              '#DeltaM(jjjj) [GeV]',      50,     0,      500)
 
-def convert_coupling_diagramweight(coupling_nx3):
-    # coupling_nx3 is (cv, c2v, kl)
+def convert_coupling_diagramweight_VBF_VHH(coupling_nx3):
     nrow=len(coupling_nx3[:,0])
     cv = coupling_nx3[:,0].reshape(nrow,1)
     c2v = coupling_nx3[:,1].reshape(nrow,1)
@@ -240,81 +239,14 @@ def convert_coupling_diagramweight(coupling_nx3):
     weights[:,5] = np.multiply(np.power(cv,2),c2v)
     return weights
 
-
-
-def convert_coupling_diagramweight_cv1(coupling_nx3):
-    # coupling_nx3 is (cv, c2v, kl)
-    nrow=len(coupling_nx3[:,0])
-    cv = 1
-    c2v = coupling_nx3[:,0].reshape(nrow,1)
-    kl = coupling_nx3[:,1].reshape(nrow,1)
-    weights = np.matrix(np.zeros(nrow*6).reshape((nrow,6)),dtype=np.float64)
-    weights[:,0] = np.power(np.multiply(cv,kl),2)
-    weights[:,1] = np.power(cv,4)
-    weights[:,2] = np.power(c2v,2)
-    weights[:,3] = np.multiply(np.power(cv,3),kl)
-    weights[:,4] = np.multiply(np.multiply(cv,c2v),kl)
-    weights[:,5] = np.multiply(np.power(cv,2),c2v)
-    return weights
-    
-def convert_coupling_diagramweight_c2v1(coupling_nx3):
-    # coupling_nx3 is (cv, c2v, kl)
-    nrow=len(coupling_nx3[:,0])
-    cv = coupling_nx3[:,0].reshape(nrow,1)
-    c2v = 1 #coupling_nx3[:,0].reshape(nrow,1)
-    kl = coupling_nx3[:,1].reshape(nrow,1)
-    weights = np.matrix(np.zeros(nrow*6).reshape((nrow,6)),dtype=np.float64)
-    weights[:,0] = np.power(np.multiply(cv,kl),2)
-    weights[:,1] = np.power(cv,4)
-    weights[:,2] = np.power(c2v,2)
-    weights[:,3] = np.multiply(np.power(cv,3),kl)
-    weights[:,4] = np.multiply(np.multiply(cv,c2v),kl)
-    weights[:,5] = np.multiply(np.power(cv,2),c2v)
-    return weights
-    
-def convert_coupling_diagramweight_kl1(coupling_nx3):
-    # coupling_nx3 is (cv, c2v, kl)
-    nrow=len(coupling_nx3[:,0])
-    cv = coupling_nx3[:,0].reshape(nrow,1)
-    c2v = coupling_nx3[:,1].reshape(nrow,1)
-    kl = 1
-    weights = np.matrix(np.zeros(nrow*6).reshape((nrow,6)),dtype=np.float64)
-    weights[:,0] = np.power(np.multiply(cv,kl),2)
-    weights[:,1] = np.power(cv,4)
-    weights[:,2] = np.power(c2v,2)
-    weights[:,3] = np.multiply(np.power(cv,3),kl)
-    weights[:,4] = np.multiply(np.multiply(cv,c2v),kl)
-    weights[:,5] = np.multiply(np.power(cv,2),c2v)
-    return weights
-
-def convert_coupling_diagramweight_cv1_kl1(coupling_nx3):
-    # coupling_nx3 is (cv, c2v, kl)
-    nrow=len(coupling_nx3[:,0])
-    cv = 1
-    c2v = coupling_nx3[:,0].reshape(nrow,1)
-    kl = 1
-    weights = np.matrix(np.zeros(nrow*6).reshape((nrow,6)),dtype=np.float64)
-    weights[:,0] = np.power(np.multiply(cv,kl),2)
-    weights[:,1] = np.power(cv,4)
-    weights[:,2] = np.power(c2v,2)
-    weights[:,3] = np.multiply(np.power(cv,3),kl)
-    weights[:,4] = np.multiply(np.multiply(cv,c2v),kl)
-    weights[:,5] = np.multiply(np.power(cv,2),c2v)
-    return weights
-
-def convert_coupling_diagramweight_cv1_c2v1(coupling_nx3):
-    # coupling_nx3 is (cv, c2v, kl)
-    nrow=len(coupling_nx3[:,0])
-    cv = 1
-    c2v = 1
-    kl = coupling_nx3[:,0].reshape(nrow,1)
-    weights = np.matrix(np.zeros(nrow*6).reshape((nrow,6)),dtype=np.float64)
-    weights[:,0] = np.power(np.multiply(cv,kl),2)
-    weights[:,1] = np.power(cv,4)
-    weights[:,2] = np.power(c2v,2)
-    weights[:,3] = np.multiply(np.power(cv,3),kl)
-    weights[:,4] = np.multiply(np.multiply(cv,c2v),kl)
-    weights[:,5] = np.multiply(np.power(cv,2),c2v)
+def convert_coupling_diagramweight_GGF(coupling_nx2):
+    nrow=len(coupling_nx2[:,0])
+    kt = coupling_nx2[:,0].reshape(nrow,1)
+    kl = coupling_nx2[:,1].reshape(nrow,1)
+    weights = np.matrix(np.zeros(nrow*3).reshape((nrow,3)),dtype=np.float64)
+    weights[:,0] = np.power(kt,4)
+    weights[:,1] = np.power(np.multiply(kt,kl),2)
+    weights[:,2] = np.multiply(np.power(kt,3),kl)
     return weights
 
 def Save_Temp_Components(tree_in, bak_file, weight):
