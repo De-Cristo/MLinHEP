@@ -10,4 +10,6 @@ safehouse/
 
 test_plot*/
 
-Pre_SlimmedSample/
+Pre_*/
+
+__pycache__/
