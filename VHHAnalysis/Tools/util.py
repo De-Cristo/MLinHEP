@@ -3,11 +3,18 @@ import numpy as np
 from multiprocessing.dummy import Pool as ThreadPool
 import sys
 import array
+# import warnings
+import matplotlib.pyplot as plt
 from ctypes import *
 
 dict_th1    = dict()
 dict_canv   = dict()
 dict_leg    = dict()
+
+rdf_dict = {}
+np_rdf_dict = {}
+pd_rdf_dict = {}
+variables = {}
 
 canvas_list = ['VHH_HH_m', 'VHH_HH_pT', 'VHH_HH_eta', 'VHH_HH_phi', 'VHH_HH_e',\
                'VHH_H1_m', 'VHH_H1_pT', 'VHH_H1_eta', 'VHH_H1_phi', 'VHH_H1_e',\
@@ -81,149 +88,6 @@ def canv_sample_compare        ( name, lep_cha_1 , lep_cha_2 ):
     
     dict_canv[name].SaveAs(name + lep_cha_1 + 'VS' + lep_cha_2 +'.pdf')
 #end
-
-# th1    ('VHH_nBJets1',           'number of b-jets',         5,      0,      5)
-# th1    ('VHH_nBJets2',           'number of b-jets',         5,      0,      5)
-# th1    ('VHH_nBJets3',           'number of b-jets',         5,      0,      5)
-# th1    ('VHH_nBJets4',           'number of b-jets',         5,      0,      5)
-# th1    ('VHH_nBJetsZll',           'number of b-jets',         5,      0,      5)
-# th1    ('VHH_nBJetsZnn',           'number of b-jets',         5,      0,      5)
-# th1    ('VHH_nBJetsZll_LooseBWP',           'number of b-jets',         5,      0,      5)
-# th1    ('VHH_nBJetsZnn_LooseBWP',           'number of b-jets',         5,      0,      5)
-# th1    ('VHH_nBJetsWln',           'number of b-jets',         5,      0,      5)
-
-# th1    ('VHH_HH_m2',             'M(jjjj) [GeV]',            60,    0,      2000)
-# th1    ('VHH_HH_m3',             'M(jjjj) [GeV]',            60,    0,      2000)
-# th1    ('VHH_HH_m4',             'M(jjjj) [GeV]',            60,    0,      2000)
-# th1    ('VHH_HH_mZll',             'M(jjjj) [GeV]',            60,    0,      2000)
-# th1    ('VHH_HH_mZnn',             'M(jjjj) [GeV]',            60,    0,      2000)
-# th1    ('VHH_HH_mWln',             'M(jjjj) [GeV]',            60,    0,      2000)
-
-# th1    ('VHH_HH_pT2',            'p_{T}(jjjj) [GeV]',        50,    0,      1000)
-# th1    ('VHH_HH_pT3',            'p_{T}(jjjj) [GeV]',        50,    0,      1000)
-# th1    ('VHH_HH_pT4',            'p_{T}(jjjj) [GeV]',        50,    0,      1000)
-# th1    ('VHH_HH_pTZll',            'p_{T}(jjjj) [GeV]',        50,    0,      1000)
-# th1    ('VHH_HH_pTZnn',            'p_{T}(jjjj) [GeV]',        50,    0,      1000)
-# th1    ('VHH_HH_pTWln',            'p_{T}(jjjj) [GeV]',        50,    0,      1000)
-
-# th1    ('VHH_HH_eta2',           '#eta(HH)',                 90,    -4.5,    4.5)
-# th1    ('VHH_HH_eta3',           '#eta(HH)',                 90,    -4.5,    4.5)
-# th1    ('VHH_HH_eta4',           '#eta(HH)',                 90,    -4.5,    4.5)
-# th1    ('VHH_HH_etaZll',           '#eta(HH)',                 90,    -4.5,    4.5)
-# th1    ('VHH_HH_etaZnn',           '#eta(HH)',                 90,    -4.5,    4.5)
-# th1    ('VHH_HH_etaWln',           '#eta(HH)',                 90,    -4.5,    4.5)
-
-# th1    ('VHH_HH_phi2',           '#phi(HH)',                 64,    -3.2,   3.2)
-# th1    ('VHH_HH_phi3',           '#phi(HH)',                 64,    -3.2,   3.2)
-# th1    ('VHH_HH_phi4',           '#phi(HH)',                 64,    -3.2,   3.2)
-# th1    ('VHH_HH_phiZll',           '#phi(HH)',                 64,    -3.2,   3.2)
-# th1    ('VHH_HH_phiZnn',           '#phi(HH)',                 64,    -3.2,   3.2)
-# th1    ('VHH_HH_phiWln',           '#phi(HH)',                 64,    -3.2,   3.2)
-
-# th1    ('VHH_HH_e2',             'E(jjjj) [GeV]',            50,    0,      3500)
-# th1    ('VHH_HH_e3',             'E(jjjj) [GeV]',            50,    0,      3500)
-# th1    ('VHH_HH_e4',             'E(jjjj) [GeV]',            50,    0,      3500)
-# th1    ('VHH_HH_eZll',             'E(jjjj) [GeV]',            50,    0,      3500)
-# th1    ('VHH_HH_eZnn',             'E(jjjj) [GeV]',            50,    0,      3500)
-# th1    ('VHH_HH_eWln',             'E(jjjj) [GeV]',            50,    0,      3500)
-
-# th1    ('VHH_H1_m2',             'M1(jj) [GeV]',             150,    0,      1500)
-# th1    ('VHH_H1_m3',             'M1(jj) [GeV]',             150,    0,      1500)
-# th1    ('VHH_H1_m4',             'M1(jj) [GeV]',             150,    0,      1500)
-# th1    ('VHH_H1_mZll',             'M1(jj) [GeV]',             150,    0,      1500)
-# th1    ('VHH_H1_mZnn',             'M1(jj) [GeV]',             150,    0,      1500)
-# th1    ('VHH_H1_mWln',             'M1(jj) [GeV]',             150,    0,      1500)
-
-# th1    ('VHH_H1_pT2',            'p_{T}1(jj) [GeV]',         100,    0,      1000)
-# th1    ('VHH_H1_pT3',            'p_{T}1(jj) [GeV]',         100,    0,      1000)
-# th1    ('VHH_H1_pT4',            'p_{T}1(jj) [GeV]',         100,    0,      1000)
-# th1    ('VHH_H1_pTZll',            'p_{T}1(jj) [GeV]',         100,    0,      1000)
-# th1    ('VHH_H1_pTZnn',            'p_{T}1(jj) [GeV]',         100,    0,      1000)
-# th1    ('VHH_H1_pTWln',            'p_{T}1(jj) [GeV]',         100,    0,      1000)
-
-# th1    ('VHH_H1_eta2',           '#eta(H1)',                 90,    -4.5,     4.5)
-# th1    ('VHH_H1_eta3',           '#eta(H1)',                 90,    -4.5,     4.5)
-# th1    ('VHH_H1_eta4',           '#eta(H1)',                 90,    -4.5,     4.5)
-# th1    ('VHH_H1_etaZll',           '#eta(H1)',                 90,    -4.5,     4.5)
-# th1    ('VHH_H1_etaZnn',           '#eta(H1)',                 90,    -4.5,     4.5)
-# th1    ('VHH_H1_etaWln',           '#eta(H1)',                 90,    -4.5,     4.5)
-
-# th1    ('VHH_H1_phi2',           '#phi(H1)',                 64,    -3.2,     3.2)
-# th1    ('VHH_H1_phi3',           '#phi(H1)',                 64,    -3.2,     3.2)
-# th1    ('VHH_H1_phi4',           '#phi(H1)',                 64,    -3.2,     3.2)
-# th1    ('VHH_H1_phiZll',           '#phi(H1)',                 64,    -3.2,     3.2)
-# th1    ('VHH_H1_phiZnn',           '#phi(H1)',                 64,    -3.2,     3.2)
-# th1    ('VHH_H1_phiWln',           '#phi(H1)',                 64,    -3.2,     3.2)
-
-# th1    ('VHH_H1_e2',             'E1(jj) [GeV]',             175,    0,       3500)
-# th1    ('VHH_H1_e3',             'E1(jj) [GeV]',             175,    0,       3500)
-# th1    ('VHH_H1_e4',             'E1(jj) [GeV]',             175,    0,       3500)
-# th1    ('VHH_H1_eZll',             'E1(jj) [GeV]',             175,    0,       3500)
-# th1    ('VHH_H1_eZnn',             'E1(jj) [GeV]',             175,    0,       3500)
-# th1    ('VHH_H1_eWln',             'E1(jj) [GeV]',             175,    0,       3500)
-
-# th1    ('VHH_H2_m2',             'M2(jj) [GeV]',             150,    0,      1500)
-# th1    ('VHH_H2_m3',             'M2(jj) [GeV]',             150,    0,      1500)
-# th1    ('VHH_H2_m4',             'M2(jj) [GeV]',             150,    0,      1500)
-# th1    ('VHH_H2_mZll',             'M2(jj) [GeV]',             150,    0,      1500)
-# th1    ('VHH_H2_mZnn',             'M2(jj) [GeV]',             150,    0,      1500)
-# th1    ('VHH_H2_mWln',             'M2(jj) [GeV]',             150,    0,      1500)
-
-# th1    ('VHH_H2_pT2',            'p_{T}2(jj) [GeV]',         100,    0,      1000)
-# th1    ('VHH_H2_pT3',            'p_{T}2(jj) [GeV]',         100,    0,      1000)
-# th1    ('VHH_H2_pT4',            'p_{T}2(jj) [GeV]',         100,    0,      1000)
-# th1    ('VHH_H2_pTZll',            'p_{T}2(jj) [GeV]',         100,    0,      1000)
-# th1    ('VHH_H2_pTZnn',            'p_{T}2(jj) [GeV]',         100,    0,      1000)
-# th1    ('VHH_H2_pTWln',            'p_{T}2(jj) [GeV]',         100,    0,      1000)
-
-# th1    ('VHH_H2_eta2',           '#eta(H2)',                 90,    -4.5,     4.5)
-# th1    ('VHH_H2_eta3',           '#eta(H2)',                 90,    -4.5,     4.5)
-# th1    ('VHH_H2_eta4',           '#eta(H2)',                 90,    -4.5,     4.5)
-# th1    ('VHH_H2_etaZll',           '#eta(H2)',                 90,    -4.5,     4.5)
-# th1    ('VHH_H2_etaZnn',           '#eta(H2)',                 90,    -4.5,     4.5)
-# th1    ('VHH_H2_etaWln',           '#eta(H2)',                 90,    -4.5,     4.5)
-
-# th1    ('VHH_H2_phi2',           '#phi(H2)',                 64,    -3.2,     3.2)
-# th1    ('VHH_H2_phi3',           '#phi(H2)',                 64,    -3.2,     3.2)
-# th1    ('VHH_H2_phi4',           '#phi(H2)',                 64,    -3.2,     3.2)
-# th1    ('VHH_H2_phiZll',           '#phi(H2)',                 64,    -3.2,     3.2)
-# th1    ('VHH_H2_phiZnn',           '#phi(H2)',                 64,    -3.2,     3.2)
-# th1    ('VHH_H2_phiWln',           '#phi(H2)',                 64,    -3.2,     3.2)
-
-# th1    ('VHH_H2_e2',             'E2(jj) [GeV]',             175,    0,       3500)
-# th1    ('VHH_H2_e3',             'E2(jj) [GeV]',             175,    0,       3500)
-# th1    ('VHH_H2_e4',             'E2(jj) [GeV]',             175,    0,       3500)
-# th1    ('VHH_H2_eZll',             'E2(jj) [GeV]',             175,    0,       3500)
-# th1    ('VHH_H2_eZnn',             'E2(jj) [GeV]',             175,    0,       3500)
-# th1    ('VHH_H2_eWln',             'E2(jj) [GeV]',             175,    0,       3500)
-
-# th1    ('VHH_HH_dphi2',          '#Delta#phi(H1, H2)',       32,     0,      3.2)
-# th1    ('VHH_HH_dphi3',          '#Delta#phi(H1, H2)',       32,     0,      3.2)
-# th1    ('VHH_HH_dphi4',          '#Delta#phi(H1, H2)',       32,     0,      3.2)
-# th1    ('VHH_HH_dphiZll',          '#Delta#phi(H1, H2)',       32,     0,      3.2)
-# th1    ('VHH_HH_dphiZnn',          '#Delta#phi(H1, H2)',       32,     0,      3.2)
-# th1    ('VHH_HH_dphiWln',          '#Delta#phi(H1, H2)',       32,     0,      3.2)
-
-# th1    ('VHH_HH_deta2',          '#Delta#eta(H1, H2)',       45,     0,      4.5)
-# th1    ('VHH_HH_deta3',          '#Delta#eta(H1, H2)',       45,     0,      4.5)
-# th1    ('VHH_HH_deta4',          '#Delta#eta(H1, H2)',       45,     0,      4.5)
-# th1    ('VHH_HH_detaZll',          '#Delta#eta(H1, H2)',       45,     0,      4.5)
-# th1    ('VHH_HH_detaZnn',          '#Delta#eta(H1, H2)',       45,     0,      4.5)
-# th1    ('VHH_HH_detaWln',          '#Delta#eta(H1, H2)',       45,     0,      4.5)
-
-# th1    ('VHH_HH_dR2',            '#Delta#R(H1, H2)',         65,     0,      6.5)
-# th1    ('VHH_HH_dR3',            '#Delta#R(H1, H2)',         65,     0,      6.5)
-# th1    ('VHH_HH_dR4',            '#Delta#R(H1, H2)',         65,     0,      6.5)
-# th1    ('VHH_HH_dRZll',            '#Delta#R(H1, H2)',         65,     0,      6.5)
-# th1    ('VHH_HH_dRZnn',            '#Delta#R(H1, H2)',         65,     0,      6.5)
-# th1    ('VHH_HH_dRWln',            '#Delta#R(H1, H2)',         65,     0,      6.5)
-
-# th1    ('VHH_rHH2',              '#DeltaM(jjjj) [GeV]',      50,     0,      500)
-# th1    ('VHH_rHH3',              '#DeltaM(jjjj) [GeV]',      50,     0,      500)
-# th1    ('VHH_rHH4',              '#DeltaM(jjjj) [GeV]',      50,     0,      500)
-# th1    ('VHH_rHHZll',              '#DeltaM(jjjj) [GeV]',      50,     0,      500)
-# th1    ('VHH_rHHZnn',              '#DeltaM(jjjj) [GeV]',      50,     0,      500)
-# th1    ('VHH_rHHWln',              '#DeltaM(jjjj) [GeV]',      50,     0,      500)
 
 def convert_coupling_diagramweight_VBF_VHH(coupling_nx3):
     nrow=len(coupling_nx3[:,0])
@@ -334,11 +198,6 @@ def DF_HISTO1D(_rdf, _jet_filter, _other_filters, _name, _describe, _nbins, _xmi
     return _histo_weight
 #END
 
-rdf_dict = {}
-np_rdf_dict = {}
-pd_rdf_dict = {}
-variables = {}
-
 class variable:
     def __init__(self, name, title, binning=None):
         if binning is not None and (not isinstance(binning, list) or len(binning)!=3):
@@ -364,20 +223,77 @@ class variable:
         
 def plot_vars_as_ROOT_ML(sig_key,bkg_key,var_key,var_items,plot_path):
     #RDataFrame
-    model = R.RDF.TH1DModel(var_key, var_items.title, var_items.get_nbins(), var_items.get_xmin(), var_items.get_xmax())
+    model_sig = R.RDF.TH1DModel(var_key+sig_key, var_items.title, var_items.get_nbins(), var_items.get_xmin(), var_items.get_xmax())
+    model_bkg = R.RDF.TH1DModel(var_key+bkg_key, var_items.title, var_items.get_nbins(), var_items.get_xmin(), var_items.get_xmax())
     c_temp = R.TCanvas() #auto canvas 
     #TODO : weight
-    _histo_sig = rdf_dict['LC'].Histo1D(model, var_key, 'weight')
-    _histo_bkg = rdf_dict['HC'].Histo1D(model, var_key, 'new_weight_for_signal')
+    _histo_sig = rdf_dict[sig_key].Histo1D(model_sig, var_key, 'weight')
+    _histo_bkg = rdf_dict[bkg_key].Histo1D(model_bkg, var_key, 'new_weight_for_signal')
     
-    _histo_sig.SetFillColorAlpha(R.kRed, 0.3)
-    _histo_bkg.SetFillColorAlpha(R.kBlue, 0.3)
+    _histo_sig.SetFillColorAlpha(900, 0.5)
+    _histo_bkg.SetFillColorAlpha(860, 0.5)
+    _histo_sig.SetLineColorAlpha(616, 0.7)
+    _histo_bkg.SetLineColorAlpha(840, 0.7)
     
-    _histo_sig.DrawNormalized('histo')
-    _histo_bkg.DrawNormalized('histoSAME')
+    NormHisto(_histo_sig,1)
+    NormHisto(_histo_bkg,1)
+    
+    print('Plotting {0}.pdf & {0}.png'.format(var_key))
+    
+    _binheight = 0
+    for _bin in range(var_items.get_nbins()):
+        _binheight = max(_binheight,_histo_sig.GetBinContent(_bin),_histo_bkg.GetBinContent(_bin))
+
+    _histo_zoom = R.TH2F(var_key, var_items.title, var_items.get_nbins(), var_items.get_xmin(), var_items.get_xmax(),10,0.,_binheight*1.1)
+    _histo_zoom.SetStats(R.kFALSE)
+    _histo_zoom.Draw()
+    _histo_sig.Draw('histoSAME')
+    _histo_bkg.Draw('histoSAME')
+    
+    _legend = R.TLegend(0.15,0.7,0.35,0.85)
+    _legend.AddEntry(var_key+sig_key,sig_key,'f')
+    _legend.AddEntry(var_key+bkg_key,bkg_key,'f')
+    _legend.SetLineColor(0)
+    _legend.SetFillColorAlpha(0,0.5)
+    _legend.Draw('SAME')
+    
     c_temp.SaveAs('{0}/{1}.pdf'.format(plot_path,var_key))
     c_temp.SaveAs('{0}/{1}.png'.format(plot_path,var_key))
+    
     del c_temp
-    del model
+    del model_sig, model_bkg
     
+def correlations(data, extra_str, **kwds):
+    """Calculate pairwise correlation between features.
     
+    Extra arguments are passed on to DataFrame.corr()
+    """
+    # simply call df.corr() to get a table of
+    # correlation values if you do not need
+    # the fancy plotting
+    corrmat = data.corr(**kwds)
+
+    fig, ax1 = plt.subplots(ncols=1, figsize=(6,5))
+    
+    opts = {'cmap': plt.get_cmap("RdBu"),
+            'vmin': -1, 'vmax': +1}
+    heatmap1 = ax1.pcolor(corrmat, **opts)
+    plt.colorbar(heatmap1, ax=ax1)
+
+    ax1.set_title("Correlations_"+extra_str)
+
+    labels = corrmat.columns.values
+    for ax in (ax1,):
+        # shift location of ticks to center of the bins
+        ax.set_xticks(np.arange(len(labels))+0.5, minor=False)
+        ax.set_yticks(np.arange(len(labels))+0.5, minor=False)
+        ax.set_xticklabels(labels, minor=False, ha='right', rotation=70)
+        ax.set_yticklabels(labels, minor=False)
+        
+    plt.tight_layout()
+    save_plot_batch(extra_str+'corr.png')
+    
+def save_plot_batch( plot_str ):
+    plt.savefig(plot_str)
+    plt.show()
+    plt.close()

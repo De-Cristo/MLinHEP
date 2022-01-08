@@ -1,3 +1,7 @@
+# Calculate HH model and combine samples.
+# Author: Licheng ZHANG (licheng.zhang@cern.ch)
+#################################################
+
 import numpy as np
 import pandas as pd
 import ROOT as R
@@ -152,6 +156,9 @@ elif args.HHModel == 'GGF':
     NewCoupling = convert_coupling_diagramweight_GGF(listOfCouplings)
     newXsec = np.matmul(NewCoupling,matrix_ele0.reshape(3,1))
     composition = np.matmul(NewCoupling, CouplingInv0)
+else:
+    print(args.HHModel+" model not exist or haven't been developped, please further check.")
+    exit(0)
 
 if args.verb == 0:
     print('composition of basic files has been saved, now start merging! ... ')
@@ -175,61 +182,74 @@ else:
 #TODO Add VBF & GGF channels
 # args.path
 # if VHH
-slimmed_sample_path = 'Pre_SlimmedSample_temp'
-slimmed_signal_path = 'Pre_SlimmedSignal'
-os.system('mkdir -p Pre_SlimmedSignal')
+if args.HHModel == 'VHH':
+    slimmed_sample_path = VHH_Sample_path
+    slimmed_signal_path = VHH_Signal_path
+    os.system('mkdir -p ' + slimmed_signal_path)
 
-if args.nBV == 6:
-    file_list_ZHH = ['ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0','ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0',\
-                     'ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0','ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0']
-elif args.nBV == 7:
-    file_list_ZHH = ['ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0','ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0',\
-                     'ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0','ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0',\
-                     'ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0']
-elif args.nBV == 8:
-    file_list_ZHH = ['ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0','ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0',\
-                     'ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0','ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0',\
-                     'ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0']
+    if args.nBV == 6:
+        file_list_ZHH = ['ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0','ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0',\
+                         'ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0','ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0']
+    elif args.nBV == 7:
+        file_list_ZHH = ['ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0','ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0',\
+                         'ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0','ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0',\
+                         'ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0']
+    elif args.nBV == 8:
+        file_list_ZHH = ['ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0','ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0',\
+                         'ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0','ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0',\
+                         'ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0']
+    else:
+        print('There should be 6~8 samples to form the basic vectors, combine failed')
+        exit(0)
+
+    for _sig_file in file_list_ZHH:
+        haddcmd = 'hadd -f {0}/{1}.root {2}/{1}*.root'.format(slimmed_signal_path,_sig_file,slimmed_sample_path)
+        os.system(haddcmd)
+        rdf_dict[_sig_file] = R.RDataFrame('Events','{0}/{1}.root'.format(slimmed_signal_path,_sig_file))
+    #end
+
+    composition_string = []
+    for _comp in composition:
+        composition_string.append(str(_comp))
+
+    indexx = 0
+    for _sig_file in file_list_ZHH:
+        print('calculating new weight for '+_sig_file)
+        # TODO: remove benPlusHTWeight to make things simple.
+        rdf_dict[_sig_file] = rdf_dict[_sig_file].Define('new_weight_for_signal','weight/benPlusHTWeight*{0}'.format(composition[0,indexx])).Define('components','{0}'.format(composition[0,indexx]))
+        np_rdf_dict[_sig_file] = rdf_dict[_sig_file].AsNumpy()
+        pd_rdf_dict[_sig_file] = pd.DataFrame(np_rdf_dict[_sig_file])
+        pd_rdf_dict[_sig_file].drop(['weight'],axis=1,inplace=True)
+        pd_rdf_dict[_sig_file].rename(columns={'new_weight_for_signal': 'weight'})
+        data = {key: pd_rdf_dict[_sig_file][key].values for key in list(pd_rdf_dict[_sig_file])}
+        rdf_dict[_sig_file] = ROOT.RDF.MakeNumpyDataFrame(data)
+        rdf_dict[_sig_file].Snapshot('Events',_sig_file+'{}.root'.format('_new_sample'),)
+        indexx+=1
+    #end
+
+    if args.CType == 'c2v':
+        comb_filename = 'ZHHTo4B_CV_1_0_C2V_{0}_0_C3_1_0_new_sample_by_{1}'.format(str(args.newCoup),str(args.nBV))
+    elif args.CType == 'kl':
+        comb_filename = 'ZHHTo4B_CV_1_0_C2V_1_0_C3_{0}_0_new_sample_by_{1}'.format(str(args.newCoup),str(args.nBV))
+    elif args.CType == 'cv':
+        comb_filename = 'ZHHTo4B_CV_{0}_0_C2V_1_0_C3_1_0_new_sample_by_{1}'.format(str(args.newCoup),str(args.nBV))
+    else:
+        print(args.CType + 'is not in SM coupling list or under developing, enforce to c2v')
+        comb_filename = 'ZHHTo4B_CV_1_0_C2V_{0}_0_C3_1_0_new_sample_by_{1}'.format(str(args.newCoup),str(args.nBV))
+
+    haddcmd = 'hadd -f {0}/{1}.root {2}/*_new_sample.root'.format(slimmed_signal_path,comb_filename,slimmed_signal_path)
+    os.system(haddcmd)
+
+    rdf_dict['new'] = R.RDataFrame('Events', '{0}/{1}.root'.format(slimmed_signal_path,comb_filename))
+elif args.HHModel == 'VBF': 
+    
+elif args.HHModel == 'GGF': 
+    
 else:
-    print('There should be 6~8 samples to form the basic vectors, combine failed')
+    print(args.HHModel+" model not exist or haven't been developped, please further check.")
     exit(0)
     
-rdf_dict = {}
-for _sig_file in file_list_ZHH:
-    haddcmd = 'hadd -f {0}/{1}.root {2}/{1}*.root'.format(slimmed_signal_path,_sig_file,slimmed_sample_path)
-    os.system(haddcmd)
-    rdf_dict[_sig_file] = R.RDataFrame('Events','{0}/{1}.root'.format(slimmed_signal_path,_sig_file))
-#end
-
-composition_string = []
-for _comp in composition:
-    composition_string.append(str(_comp))
-
-indexx = 0
-for _sig_file in file_list_ZHH:
-    print('calculating new weight for '+_sig_file)
-    rdf_dict[_sig_file].Define('new_weight_for_signal','weight*{0}'.format(composition[0,indexx])).Snapshot('Events','{0}/{1}_new_weight.root'.format(slimmed_signal_path,_sig_file))
-    print(rdf_dict[_sig_file].Filter('VHH_nBJets==4').Sum('weight').GetValue())
-    print('weight*{0}'.format(composition[0,indexx]))
-    print(rdf_dict[_sig_file].Define('new_weight_for_signal','weight*{0}'.format(composition[0,indexx])).Sum('intWeight').GetValue())
-    indexx+=1
-#end
-
-if args.CType == 'c2v':
-    comb_filename = 'ZHHTo4B_CV_1_0_C2V_{0}_0_C3_1_0_new_sample_by_{1}'.format(str(args.newCoup),str(args.nBV))
-elif args.CType == 'kl':
-    comb_filename = 'ZHHTo4B_CV_1_0_C2V_1_0_C3_{0}_0_new_sample_by_{1}'.format(str(args.newCoup),str(args.nBV))
-elif args.CType == 'cv':
-    comb_filename = 'ZHHTo4B_CV_{0}_0_C2V_1_0_C3_1_0_new_sample_by_{1}'.format(str(args.newCoup),str(args.nBV))
-else:
-    print(args.CType + 'is not in SM coupling list or under developing, enforce to c2v')
-    comb_filename = 'ZHHTo4B_CV_1_0_C2V_{0}_0_C3_1_0_new_sample_by_{1}'.format(str(args.newCoup),str(args.nBV))
-    
-haddcmd = 'hadd -f {0}/{1}.root {2}/*_new_weight.root'.format(slimmed_signal_path,comb_filename,slimmed_signal_path)
-os.system(haddcmd)
-
-rdf_dict['new'] = R.RDataFrame('Events', '{0}/{1}.root'.format(slimmed_signal_path,comb_filename))
-
-rdf_dict['val'] = R.RDataFrame('Events', '{0}/ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0_val.root'.format(slimmed_signal_path))
-
-# rdf_dict.delete()
+del rdf_dict
+del np_rdf_dict
+del pd_rdf_dict
+del variables

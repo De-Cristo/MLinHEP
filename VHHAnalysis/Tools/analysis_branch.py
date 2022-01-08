@@ -7,35 +7,8 @@ analysis_branches = {
     'V_pt','V_mass',\
     'VHH_V_H2_dPhi', 'VHH_V_HH_dPhi',\
     'VHH_HH_deta', 'VHH_HH_dR',\
-    'weight','VHH_rHH','VHH_H1_BJet1_btag','VHH_H1_BJet2_btag','VHH_H2_BJet1_btag','VHH_H2_BJet2_btag',
+    'weight','VHH_rHH','VHH_H1_BJet1_btag','VHH_H1_BJet2_btag','VHH_H2_BJet1_btag','VHH_H2_BJet2_btag','intWeight','benPlusHTWeight'
 }
-
-# svb_training_branches = {
-#     'isZee','isZmm','isZnn','IsttB', 'VHH_nBJets',\
-#     'VHH_H1_BJet1_pT','VHH_H2_BJet1_pT',\
-#     'VHH_H1_m', 'VHH_H1_pT', 'VHH_H1_e',\
-#     'VHH_HH_m', 'VHH_HH_e', 'VHH_HH_pT',\
-#     'V_pt', 'V_mass', 'VHH_Vreco4j_HT',\
-#     'VHH_V_H1_dPhi', 'VHH_V_HH_dPhi',\
-#     'VHH_HH_deta', 'VHH_HH_dR',\
-#     'weight'
-# }
-
-# rwt_training_branches = {
-#     'isZee','isZmm','isZnn','IsttB', 'VHH_nBJets',\
-#     'VHH_H1_BJet1_pT','VHH_H2_BJet1_pT',\
-#     'VHH_H1_m', 'VHH_H1_pT', 'VHH_H1_e',\
-#     'VHH_HH_m', 'VHH_HH_e', 'VHH_HH_pT',\
-#     'V_pt', 'V_mass', 'VHH_Vreco4j_HT',\
-#     'VHH_V_H1_dPhi', 'VHH_V_HH_dPhi',\
-#     'VHH_HH_deta', 'VHH_HH_dR',\
-#     'weight'
-# }
-
-# scaling_branches = {
-#     'isZee','isZmm','isZnn','IsttB', 'VHH_nBJets',\
-#     'weight', 'No3_btag_score'
-# }
 
 file_list_for_TT      = ['TT_AllHadronic','TT_DiLep_NoPSWeights','TT_SingleLep']
 file_list_for_ttbb    = ['ttbb_AllHadronic','ttbb_DiLep','ttbb_SingleLep']
@@ -45,6 +18,10 @@ file_list_DY          = ['DYToLL_M10-50_Inc_madgraph','DYToLL_M-50_Inc_madgraph'
                          'DYToLL_M-50_HT200to400_madgraph','DYToLL_M-50_HT400to600_madgraph',\
                          'DYToLL_M-50_HT600to800_madgraph','DYToLL_M-50_HT800to1200_madgraph',\
                          'DYToLL_M-50_HT1200to2500_madgraph','DYToLL_M-50_HT2500toInf_madgraph']
+
+file_list_DY_NLO      = ['DYToLL_M-50_amcatnloFXFX','DYToLL_M-50_Pt-100To250_amcatnloFXFX',\
+                         'DYToLL_M-50_Pt-250To400_amcatnloFXFX','DYToLL_M-50_Pt-400To650_amcatnloFXFX',\
+                         'DYToLL_M-50_Pt-650ToInf_amcatnloFXFX','DYToLL_M-50_Pt-50To100_amcatnloFXFX']
 
 file_list_ZHH         = ['ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0',\
                          'ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0','ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0',\
@@ -83,3 +60,14 @@ TT_MEb_dict = {
     'IsttB_TT'      : "IsttB == 0",
     'IsttB_TTB'     : "IsttB > 0",
 }
+
+# These path names are defined manually.
+
+VHH_Sample_path = 'Pre_SlimmedSample_temp'
+VHH_Signal_path = 'Pre_SlimmedSignal'
+
+VBF_Sample_path = ''
+VBF_Signal_path = ''
+
+GGF_Sample_path = ''
+GGF_Signal_path = ''
