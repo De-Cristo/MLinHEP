@@ -14,6 +14,7 @@ dict_leg    = dict()
 rdf_dict = {}
 np_rdf_dict = {}
 pd_rdf_dict = {}
+histo_dict  = {}
 variables = {}
 
 canvas_list = ['VHH_HH_m', 'VHH_HH_pT', 'VHH_HH_eta', 'VHH_HH_phi', 'VHH_HH_e',\
@@ -228,7 +229,7 @@ def plot_vars_as_ROOT_ML(sig_key,bkg_key,var_key,var_items,plot_path):
     c_temp = R.TCanvas() #auto canvas 
     #TODO : weight
     _histo_sig = rdf_dict[sig_key].Histo1D(model_sig, var_key, 'weight')
-    _histo_bkg = rdf_dict[bkg_key].Histo1D(model_bkg, var_key, 'new_weight_for_signal')
+    _histo_bkg = rdf_dict[bkg_key].Histo1D(model_bkg, var_key, 'weight')
     
     _histo_sig.SetFillColorAlpha(900, 0.5)
     _histo_bkg.SetFillColorAlpha(860, 0.5)

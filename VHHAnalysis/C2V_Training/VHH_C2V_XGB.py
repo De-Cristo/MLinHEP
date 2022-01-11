@@ -51,9 +51,8 @@ R.gROOT.SetBatch(True)
 time_start=timer.time()
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-m", "--MultThread",dest="MT",  type=int, default=16,   help="How many threads will be used (default = 16)" )
-parser.add_argument("-v", "--Verbose",   dest="verb",type=int, default=0,    help="different verbose level (default = 0)" )
-parser.add_argument("-d", "--Direction", dest="dir", type=str, default='../Tools/Pre_SlimmedSignal', help="Direction of the training samples (default = ../Tools/Pre_SlimmedSignal)")
+parser.add_argument("-m", "--MultThread",dest="MT",    type=int, default=16,   help="How many threads will be used (default = 16)" )
+parser.add_argument("-d", "--Direction", dest="dir",   type=str, default='../Tools/Pre_SlimmedSignal', help="Direction of the training samples (default = ../Tools/Pre_SlimmedSignal)")
 parser.add_argument("-lc", "--LowCoupling", dest="LC", type=str, default='0', help="Low Coupling value (default = 0)")
 parser.add_argument("-hc", "--HighCoupling",dest="HC", type=str, default='10',help="High Coupling value (default = 10")
 args = parser.parse_args()
@@ -71,11 +70,10 @@ plot_path = os.path.abspath('./C2V_Variables_Plots')
 print('\033[1;34m Reading Data... \033[0m')
 sample_pool = os.listdir(path)
 for _sample in sample_pool:
-    if 'C2V_{}_0'.format(args.LC) in _sample and 'new_weight' in _sample:
+    if 'C2V_{}_0'.format(args.LC) in _sample:
         low_coupling_key = path+'/'+_sample
         print(low_coupling_key)
-#     elif 'C2V_{}_0'.format(args.HC) in _sample and 'new_sample' in _sample:
-    elif 'new_sample' in _sample:
+    elif 'C2V_{}_0'.format(args.HC) in _sample:
         high_coupling_key = path+'/'+_sample
         print(high_coupling_key)
     else:
@@ -89,10 +87,10 @@ variable("VHH_HH_m",      ";mass_HH(jjjj) [GeV];", [20, 0., 1600])
 variable("V_pt",          ";pT_V(ll/MET) [GeV];",  [20, 0., 1000])
 
 print('\033[1;34m Plotting Variables... \033[0m')
-# for key, items in variables.items():
-#     print('\033[1;33m Variable :: {} Checked \033[0m'.format(key))
-#     plot_vars_as_ROOT_ML('LC','HC',key,items,plot_path)
-# #end
+for key, items in variables.items():
+    print('\033[1;33m Variable :: {} Checked \033[0m'.format(key))
+    plot_vars_as_ROOT_ML('LC','HC',key,items,plot_path)
+#end
 
 print('\033[1;34m Preparing training matrix... \033[0m')
 np_rdf_dict['LC'] = rdf_dict['LC'].AsNumpy()
@@ -146,7 +144,8 @@ xgbc = XGBClassifier(
 eval_set = [(X_train, y_train), (X_test, y_test)]
 xgbc.fit(
     X=X_train, y=y_train['isSig'], 
-    sample_weight=w_train.map(lambda x: x*1000),
+#     sample_weight=w_train,
+    sample_weight=w_train.map(lambda x: x*10e5 if x*10e5>10e-5 else 0),
 #     eval_set = eval_set,
     eval_metric=["error", "logloss"], 
     verbose=True)

@@ -1,5 +1,6 @@
 from samples_HHbbmm import *
 import varial
+import wrappers
 
 ####################
 # General Settings #
@@ -71,5 +72,29 @@ def additional_input_hook(wrps):
                     w.histo.SetBinError(i, 0.)
         return w
     
+    def norm_to_integral(w, use_bin_width=False):
+    def norm_to_integral(w):
+        temp_histo = R.TH1()
+        if w.legend == 'DY':
+            
+        
+        
+        if not isinstance(w, wrappers.HistoWrapper):
+            raise WrongInputError(
+                "norm_to_integral needs argument of type HistoWrapper. histo: "
+                + str(w)
+            )
+        option = "width" if use_bin_width else ""
+        integr = w.histo.Integral(option) or 1.
+        if integr == 1.:
+            return w
+
+        histo = w.histo.Clone()
+        histo.Scale(1. / integr)
+        info = w.all_info()
+        info["lumi"] /= integr
+        return wrappers.HistoWrapper(histo, **info)
+        
     wrps = (blind_in_HmmWin(w) for w in wrps)
+    wrps = (norm_to_integral(w) for w in wrps)
     return wrps

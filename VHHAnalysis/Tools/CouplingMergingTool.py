@@ -10,10 +10,10 @@ import os
 import argparse
 import matplotlib.pyplot as plt
 from util import *
-from analysis_branch import file_list_ZHH
+from analysis_branch import *
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-m", "--multiprocess",       dest="multi",    default=0,     type=int,   help="enable multi-processing with n threads (default = 0)" )
+parser.add_argument("-m", "--multithread",       dest="multi",    default=0,     type=int,   help="enable multi-thread with n threads (default = 0)" )
 parser.add_argument("-v", "--verbose",            dest="verb",     default=0,     type=int,   help="different verbose level (default = 0)" )
 parser.add_argument("-n", "--nBasicSamples",      dest="nBV",      default=6,     type=int,   help="N basic samples (default = 6)" )
 parser.add_argument("-c", "--CouplingType",       dest="CType",    default="c2v", type=str,   help="Coupling type (default = c2v) cv/kl/kt ..." )
@@ -189,15 +189,15 @@ if args.HHModel == 'VHH':
 
     if args.nBV == 6:
         file_list_ZHH = ['ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0','ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0',\
-                         'ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0','ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0']
+                         'ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0','ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0']
     elif args.nBV == 7:
         file_list_ZHH = ['ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0','ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0',\
-                         'ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0','ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0',\
-                         'ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0']
+                         'ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0','ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0',\
+                         'ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0']
     elif args.nBV == 8:
         file_list_ZHH = ['ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0','ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0',\
-                         'ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0','ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0',\
-                         'ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0']
+                         'ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0','ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0',\
+                         'ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0','ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0']
     else:
         print('There should be 6~8 samples to form the basic vectors, combine failed')
         exit(0)
@@ -215,15 +215,14 @@ if args.HHModel == 'VHH':
     indexx = 0
     for _sig_file in file_list_ZHH:
         print('calculating new weight for '+_sig_file)
-        # TODO: remove benPlusHTWeight to make things simple.
-        rdf_dict[_sig_file] = rdf_dict[_sig_file].Define('new_weight_for_signal','weight/benPlusHTWeight*{0}'.format(composition[0,indexx])).Define('components','{0}'.format(composition[0,indexx]))
+        rdf_dict[_sig_file] = rdf_dict[_sig_file].Define('new_weight_for_signal','weight*{0}'.format(composition[0,indexx])).Define('components','{0}'.format(composition[0,indexx]))
         np_rdf_dict[_sig_file] = rdf_dict[_sig_file].AsNumpy()
         pd_rdf_dict[_sig_file] = pd.DataFrame(np_rdf_dict[_sig_file])
         pd_rdf_dict[_sig_file].drop(['weight'],axis=1,inplace=True)
-        pd_rdf_dict[_sig_file].rename(columns={'new_weight_for_signal': 'weight'})
+        pd_rdf_dict[_sig_file].rename(columns={'new_weight_for_signal' : 'weight'},inplace=True)
         data = {key: pd_rdf_dict[_sig_file][key].values for key in list(pd_rdf_dict[_sig_file])}
-        rdf_dict[_sig_file] = ROOT.RDF.MakeNumpyDataFrame(data)
-        rdf_dict[_sig_file].Snapshot('Events',_sig_file+'{}.root'.format('_new_sample'),)
+        rdf_dict[_sig_file] = R.RDF.MakeNumpyDataFrame(data)
+        rdf_dict[_sig_file].Snapshot('Events',VHH_Signal_path+'/'+_sig_file+'_new_sample.root')
         indexx+=1
     #end
 
@@ -239,12 +238,14 @@ if args.HHModel == 'VHH':
 
     haddcmd = 'hadd -f {0}/{1}.root {2}/*_new_sample.root'.format(slimmed_signal_path,comb_filename,slimmed_signal_path)
     os.system(haddcmd)
+    
+    rmcmd = 'rm -rfv {}/*_new_sample.root'.format(slimmed_signal_path)
+    os.system(rmcmd)
 
-    rdf_dict['new'] = R.RDataFrame('Events', '{0}/{1}.root'.format(slimmed_signal_path,comb_filename))
 elif args.HHModel == 'VBF': 
-    
+    print('VBF developing ^_^')
 elif args.HHModel == 'GGF': 
-    
+    print('GGF developing ^_^')
 else:
     print(args.HHModel+" model not exist or haven't been developped, please further check.")
     exit(0)
