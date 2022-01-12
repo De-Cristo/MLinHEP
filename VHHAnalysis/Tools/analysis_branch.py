@@ -1,13 +1,28 @@
+#VHH_vsptmassRatio
 
 analysis_branches = {
-    'isZee','isZmm','isZnn','IsttB', 'VHH_nBJets',\
-    'VHH_H1_pT', 'VHH_H2_e','VHH_H2_eta',\
-    'VHH_H2_e','VHH_H2_eta',\
-    'VHH_HH_m', 'VHH_HH_e', 'VHH_HH_eta',\
-    'V_pt','V_mass',\
-    'VHH_V_H2_dPhi', 'VHH_V_HH_dPhi',\
-    'VHH_HH_deta', 'VHH_HH_dR',\
-    'weight','VHH_rHH','VHH_H1_BJet1_btag','VHH_H1_BJet2_btag','VHH_H2_BJet1_btag','VHH_H2_BJet2_btag','intWeight','benPlusHTWeight'
+    'isZee','isZmm','isZnn','IsttB', 'VHH_nBJets','VHH_nBJets_loose','VHH_nBJets_tight','VHH_rHH','boostedCategory','cutFlow',\
+    
+    'VHH_H1_BJet1_e','VHH_H1_BJet1_pT','VHH_H1_BJet1_phi','VHH_H1_BJet2_e','VHH_H1_BJet2_pT','VHH_H1_BJet2_phi','VHH_H1_BJet_dR',\
+    'VHH_H1_pT', 'VHH_H1_e', 'VHH_H1_eta', 'VHH_H1_m', 'VHH_H1_phi',\
+    
+    'VHH_H2_BJet1_e','VHH_H2_BJet1_pT','VHH_H2_BJet1_phi','VHH_H2_BJet2_e','VHH_H2_BJet2_pT','VHH_H2_BJet2_phi','VHH_H2_BJet_dR',\
+    'VHH_H2_pT', 'VHH_H2_e', 'VHH_H2_eta', 'VHH_H2_m', 'VHH_H2_phi',\
+    
+    'VHH_HH_m', 'VHH_HH_e', 'VHH_HH_eta','VHH_HH_deta', 'VHH_HH_dR', 'VHH_HH_dphi', 'VHH_HH_pT', 'VHH_HH_phi',\
+    
+    'V_pt','V_mass','V_phi','V_mt',\
+    'VHH_V_e', 'VHH_V_m', 'VHH_V_phi',\
+    
+    'selLeptons_eta_0', 'selLeptons_eta_1', 'selLeptons_mass_0', 'selLeptons_mass_1', \
+    'selLeptons_pdgId_0', 'selLeptons_pdgId_1',\
+    'selLeptons_phi_0', 'selLeptons_phi_1', 'selLeptons_pt_0', 'selLeptons_pt_1', 
+    
+    'VHH_V_H1_dPhi', 'VHH_V_H2_dPhi', 'VHH_V_HH_dPhi','VHH_V_HH_pT_Ratio',\
+    
+    'VHH_H2H1_pt_ratio','VHH_Vreco4j_HT', 'VHH_mass',\
+    
+    'weight','VHH_H1_BJet1_btag','VHH_H1_BJet2_btag','VHH_H2_BJet1_btag','VHH_H2_BJet2_btag','intWeight'
 }
 
 file_list_for_TT      = ['TT_AllHadronic','TT_DiLep_NoPSWeights','TT_SingleLep']
@@ -63,7 +78,7 @@ TT_MEb_dict = {
 
 # These path names are defined manually.
 
-VHH_Sample_path = 'Pre_SlimmedSample_temp'
+VHH_Sample_path = 'Pre_SlimmedSample'
 VHH_Signal_path = 'Pre_SlimmedSignal'
 
 VBF_Sample_path = ''

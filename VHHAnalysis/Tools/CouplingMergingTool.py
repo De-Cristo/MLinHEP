@@ -127,7 +127,7 @@ plt.legend(loc='best',fontsize=12)
 # plt.annotate(annotation,(20,0.0165721))
 plt.scatter(x=args.newCoup,y=longListOfXSec0[np.argwhere(x == int(args.newCoup))[0][0]],s=40,c='y',marker='^')
 plt.annotate(new_annotation,(args.newCoup,longListOfXSec0[np.argwhere(x == int(args.newCoup))[0][0]]))
-plt.savefig('./MyFig.jpg')
+plt.savefig('./CouplingScan.jpg')
 plt.show()
 plt.close()
 
@@ -203,7 +203,7 @@ if args.HHModel == 'VHH':
         exit(0)
 
     for _sig_file in file_list_ZHH:
-        haddcmd = 'hadd -f {0}/{1}.root {2}/{1}*.root'.format(slimmed_signal_path,_sig_file,slimmed_sample_path)
+        haddcmd = 'hadd -f {0}/{1}.root {2}/{1}_Zll_*.root'.format(slimmed_signal_path,_sig_file,slimmed_sample_path)
         os.system(haddcmd)
         rdf_dict[_sig_file] = R.RDataFrame('Events','{0}/{1}.root'.format(slimmed_signal_path,_sig_file))
     #end
@@ -215,7 +215,9 @@ if args.HHModel == 'VHH':
     indexx = 0
     for _sig_file in file_list_ZHH:
         print('calculating new weight for '+_sig_file)
-        rdf_dict[_sig_file] = rdf_dict[_sig_file].Define('new_weight_for_signal','weight*{0}'.format(composition[0,indexx])).Define('components','{0}'.format(composition[0,indexx]))
+        rdf_dict[_sig_file] = rdf_dict[_sig_file].Define('new_weight_for_signal','weight*{0}'.format(composition[0,indexx]))\
+        .Define('components','{0}'.format(composition[0,indexx]))
+#         .Define('HH_ptRatio','float x = 0.; if(VHH_H1_pT!=0) {x = VHH_H2_pT/VHH_H1_pT;} else {x=x;} return x;')
         np_rdf_dict[_sig_file] = rdf_dict[_sig_file].AsNumpy()
         pd_rdf_dict[_sig_file] = pd.DataFrame(np_rdf_dict[_sig_file])
         pd_rdf_dict[_sig_file].drop(['weight'],axis=1,inplace=True)
@@ -238,9 +240,6 @@ if args.HHModel == 'VHH':
 
     haddcmd = 'hadd -f {0}/{1}.root {2}/*_new_sample.root'.format(slimmed_signal_path,comb_filename,slimmed_signal_path)
     os.system(haddcmd)
-    
-    rmcmd = 'rm -rfv {}/*_new_sample.root'.format(slimmed_signal_path)
-    os.system(rmcmd)
 
 elif args.HHModel == 'VBF': 
     print('VBF developing ^_^')

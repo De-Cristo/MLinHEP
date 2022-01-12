@@ -228,8 +228,8 @@ def plot_vars_as_ROOT_ML(sig_key,bkg_key,var_key,var_items,plot_path):
     model_bkg = R.RDF.TH1DModel(var_key+bkg_key, var_items.title, var_items.get_nbins(), var_items.get_xmin(), var_items.get_xmax())
     c_temp = R.TCanvas() #auto canvas 
     #TODO : weight
-    _histo_sig = rdf_dict[sig_key].Histo1D(model_sig, var_key, 'weight')
-    _histo_bkg = rdf_dict[bkg_key].Histo1D(model_bkg, var_key, 'weight')
+    _histo_sig = rdf_dict[sig_key].Histo1D(model_sig, var_key)
+    _histo_bkg = rdf_dict[bkg_key].Histo1D(model_bkg, var_key, 'components')
     
     _histo_sig.SetFillColorAlpha(900, 0.5)
     _histo_bkg.SetFillColorAlpha(860, 0.5)
@@ -245,7 +245,7 @@ def plot_vars_as_ROOT_ML(sig_key,bkg_key,var_key,var_items,plot_path):
     for _bin in range(var_items.get_nbins()):
         _binheight = max(_binheight,_histo_sig.GetBinContent(_bin),_histo_bkg.GetBinContent(_bin))
 
-    _histo_zoom = R.TH2F(var_key, var_items.title, var_items.get_nbins(), var_items.get_xmin(), var_items.get_xmax(),10,0.,_binheight*1.1)
+    _histo_zoom = R.TH2F(var_key, var_items.title, var_items.get_nbins(), var_items.get_xmin(), var_items.get_xmax(),10,-_binheight*1.1,_binheight*1.1)
     _histo_zoom.SetStats(R.kFALSE)
     _histo_zoom.Draw()
     _histo_sig.Draw('histoSAME')
