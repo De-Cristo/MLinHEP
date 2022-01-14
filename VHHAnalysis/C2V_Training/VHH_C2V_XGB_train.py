@@ -79,7 +79,7 @@ for _sample in sample_pool:
     if 'C2V_{}_0'.format(args.LC) in _sample and '_new_' in _sample:
         low_coupling_key = path+'/'+_sample
         print(low_coupling_key)
-#     elif 'C2V_{}_0'.format(args.HC) in _sample and '_new_sample_by_7' in _sample:
+#     elif 'C2V_{}_0'.format(args.HC) in _sample and '_new_sample_by_8' in _sample:
 #         high_coupling_key = path+'/'+_sample
 #         print(high_coupling_key)
     elif 'C3_20_0'.format(args.HC) in _sample and '_new_sample' in _sample:
@@ -92,15 +92,34 @@ rdf_dict['LC'] = R.RDataFrame('Events',low_coupling_key)
 rdf_dict['HC'] = R.RDataFrame('Events',high_coupling_key)
 
 variable("VHH_H1_BJet1_pT", ";pT(H1,B1) [GeV];",     [20, 0., 500])
+variable("VHH_H1_BJet2_pT", ";pT(H1,B2) [GeV];",     [20, 0., 500])
 variable("VHH_H1_BJet_dR",  ";#Delta R(H1B1,H1B2);", [20, 0., 5.])
 variable("VHH_H2_BJet_dR",  ";#Delta R(H2B1,H2B2);", [20, 0., 5.])
 
-variable("VHH_V_H2_dPhi", ";#Delta #Phi(V,H2);",   [20, 0., 3.2])
-variable("VHH_HH_m",      ";mass_HH(jjjj) [GeV];", [20, 0., 1600])
-variable("V_pt",          ";pT_V(ll/MET) [GeV];",  [20, 0., 1000])
-variable("selLeptons_pt_0", ";pT_Lep1 [GeV];",     [20, 0., 450])
-variable("selLeptons_pt_1", ";pT_Lep2 [GeV];",     [20, 0., 450])
-variable("VHH_H2H1_pt_ratio",    ";H2_pT/H1_pT;",  [20, 0., 1.])
+variable("VHH_H1_eta",      ";#Eta (H1);",           [20, 0., 3.])
+variable("VHH_H1_m",        ";Mass(H1) [GeV];",      [20, 0., 1000.])
+
+variable("VHH_H2_pT",       ";pT (H2);",             [20, 0., 600.])
+variable("VHH_H2_e",        ";Energy(H2) [GeV];",    [20, 0., 1000.])
+
+variable("VHH_HH_m",        ";Mass_HH(jjjj) [GeV];",   [20, 0., 1600])
+variable("VHH_HH_eta",      ";#Eta HH(jjjj) [GeV];",   [20, 0., 3.])
+variable("VHH_HH_deta",     ";#Delta #Eta (H1,H2);",   [20, 0., 3.])
+variable("VHH_HH_dR",       ";#Delta R (H1,H2);",      [20, 0., 5.])
+
+variable("V_pt",          ";pT_V(ll/MET) [GeV];",    [20, 0., 1000])
+# variable("V_mass",        ";Mass_V(ll/MET) [GeV];",  [20, 0., 1000])
+
+variable("VHH_V_H2_dPhi",     ";#Delta #Phi(V,H2);",     [20, 0., 3.2])
+variable("VHH_V_HH_dPhi",     ";#Delta #Phi(V,HH);",     [20, 0., 3.2])
+variable("VHH_V_HH_pT_Ratio", ";V_pT/HH_pT;",            [20, 0., 3.])
+
+variable("selLeptons_pt_0", ";pT_Lep1 [GeV];",       [20, 0., 450])
+variable("selLeptons_pt_1", ";pT_Lep2 [GeV];",       [20, 0., 450])
+
+variable("VHH_Vreco4j_HT",  ";HT_VHH(lljjjj) [GeV];",[20, 0., 3000.])
+
+variable("VHH_H2H1_pt_ratio",    ";H2_pT/H1_pT;",    [20, 0., 1.])
 
 print('\033[1;34m Plotting Variables... \033[0m')
 
@@ -150,16 +169,18 @@ all_data = pd.concat([pd_rdf_dict['LC'],pd_rdf_dict['HC']],axis=0)
 #              'VHH_H2H1_pt_ratio','VHH_Vreco4j_HT', 'VHH_mass',\
 #              'components'
 # ]
-train_var = [
+train_var = ['V_pt', 'VHH_HH_deta', 'VHH_H2_e', 'VHH_H2_pT',\
+             'VHH_HH_dR', 'VHH_HH_m', 'VHH_V_HH_pT_Ratio', 'VHH_Vreco4j_HT',\
              'VHH_H1_BJet1_pT','VHH_H1_BJet_dR','VHH_H2_BJet_dR',\
-             'VHH_V_H2_dPhi','VHH_HH_m','selLeptons_pt_0','selLeptons_pt_1', 'VHH_H2H1_pt_ratio',\
+             'VHH_V_H2_dPhi','VHH_V_HH_dPhi','selLeptons_pt_0','selLeptons_pt_1', 'VHH_H2H1_pt_ratio',\
              'components'
 ]
 
-corr_test_var = [
-             'VHH_H1_BJet1_pT','VHH_H1_BJet_dR','VHH_H2_BJet_dR',\
-             'VHH_V_H2_dPhi','VHH_HH_m','selLeptons_pt_0','selLeptons_pt_1', 'VHH_H2H1_pt_ratio',\
-             'isSig'
+corr_test_var = ['V_pt', 'VHH_HH_deta', 'VHH_H2_e', 'VHH_H2_pT',\
+                 'VHH_HH_dR', 'VHH_HH_m', 'VHH_V_HH_pT_Ratio', 'VHH_Vreco4j_HT',\
+                 'VHH_H1_BJet1_pT','VHH_H1_BJet_dR','VHH_H2_BJet_dR',\
+                 'VHH_V_H2_dPhi','VHH_V_HH_dPhi','selLeptons_pt_0','selLeptons_pt_1', 'VHH_H2H1_pt_ratio',\
+                 'isSig'
 ]
 
 corr_test = all_data[corr_test_var]
@@ -182,7 +203,7 @@ pos_scale_count = dict(y_train['isSig'].value_counts())
 print(pos_scale_count)
 pos_scale = pos_scale_count[False]/pos_scale_count[True]
 print('pos_scale = '+str(pos_scale))
-    
+
 X_train.drop('components',axis=1,inplace=True)
 X_test.drop('components',axis=1,inplace=True)
 
@@ -191,8 +212,8 @@ print('\033[1;33m Start training : \033[0m')
 
 xgbc = XGBClassifier(
     max_depth=3,
-    n_estimators=600,
-    learning_rate =0.08,
+    n_estimators=1000,
+    learning_rate =0.05,
     nthread=args.MT,
     scale_pos_weight=pos_scale,
 )
@@ -200,7 +221,6 @@ xgbc = XGBClassifier(
 eval_set = [(X_train, y_train), (X_test, y_test)]
 xgbc.fit(
     X=X_train, y=y_train['isSig'], 
-#     sample_weight=w_train,
     sample_weight=w_train.map(lambda x: x if x>0 else 0),
 #     eval_set = eval_set,
     eval_metric=["error", "logloss"], 
@@ -239,31 +259,32 @@ bins = 15
 plt.hist(train_score_xgb_sig,weights=w_train_score_sig,
          color='r', alpha=0.5, range=low_high, bins=bins,
          histtype='stepfilled', density=True,
-         label='S (train)')
+         label='LC (train)')
 plt.hist(train_score_xgb_bkg,weights=w_train_score_bkg,
          color='b', alpha=0.5, range=low_high, bins=bins,
          histtype='stepfilled', density=True,
-         label='B (train)')
+         label='HC (train)')
 
 hist, bins = np.histogram(test_score_xgb_sig, weights=w_test_score_sig, bins=bins, range=low_high, density=True)
 scale = len(test_score_xgb_sig) / sum(hist)
 err   = np.sqrt(hist * scale) / scale
 width = (bins[1] - bins[0])
 center = (bins[:-1] + bins[1:]) / 2
-plt.errorbar(center, hist, yerr=err, fmt='o', c='r', label='S (test)')
+plt.errorbar(center, hist, yerr=err, fmt='o', c='r', label='LC (test)')
 
 hist, bins = np.histogram(test_score_xgb_bkg, weights=w_test_score_bkg, bins=bins, range=low_high, density=True)
 scale = len(test_score_xgb_bkg) / sum(hist)
 err   = np.sqrt(hist * scale) / scale
 width = (bins[1] - bins[0])
 center = (bins[:-1] + bins[1:]) / 2
-plt.errorbar(center, hist, yerr=err, fmt='o', c='b', label='B (test)')
+plt.errorbar(center, hist, yerr=err, fmt='o', c='b', label='HC (test)')
 
 # plt.hist(test_score_xgb_bkg, weights=w_test_score_bkg, label="BKG_test", histtype="stepfilled", alpha=0.5, bins = np.linspace(0,1,15),density=True)
 # plt.hist(test_score_xgb_sig, weights=w_test_score_sig, label="SIG_test", histtype="stepfilled", alpha=0.5, bins = np.linspace(0,1,15),density=True)
 # plt.hist(train_score_xgb_bkg, weights=w_train_score_bkg, label="BKG_train", histtype="step", bins = np.linspace(0,1,15),density=True)
 # plt.hist(train_score_xgb_sig,  weights=w_train_score_sig, label="SIG_train", histtype="step", bins = np.linspace(0,1,15),density=True)
 
+plt.legend(loc='best',frameon=True,edgecolor='blue',facecolor='blue') 
 plt.legend()
 plt.xlabel("BDT output")
 plt.ylabel("Arbitrary units")
@@ -283,7 +304,7 @@ auc = auc/len(tpr_xgb)
 f, ax = plt.subplots(figsize=(8, 8))
 ax.plot(np.linspace(0, 1, 1000), np.linspace(0, 1, 1000), '--', label='random')
 ax.plot(fpr_xgb, tpr_xgb, label='XGBoost Classifier')
-plt.text(0.8,0.1,'AUC = {:0.3f}'.format(auc),fontsize=18)
+plt.text(0.6,0.1,'AUC = {:0.3f}'.format(auc),fontsize=18)
 ax.set_yscale('linear'); ax.set_xlim(0, 1); ax.set_ylim(1e-3, 1)
 ax.set_xlabel('SM Coupling efficiency', ha='right', x=1.0); ax.set_ylabel('High C2V efficiency', ha='right', y=1.0)
 ax.legend()

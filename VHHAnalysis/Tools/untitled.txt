@@ -1,0 +1,59 @@
+for _sample in sample_list:
+    model = R.RDF.TH1DModel(_sample+'_SB_2b_Z_var'+'No3_btag_score','No3_btag_score', 15, 0, 1)
+    histo_dict[_sample+'_SB_2b_Z_var'] = rdf_dict[_sample+'_SB_2b'].Filter('isZee||isZmm')\
+    .Filter('V_mass<75 || V_mass>105')\
+    .Histo1D(model,'No3_btag_score','weight')
+    
+    model = R.RDF.TH1DModel(_sample+'_SB_3b_Z_var'+'No3_btag_score','No3_btag_score', 15, 0, 1)
+    histo_dict[_sample+'_SB_3b_Z_var'] = rdf_dict[_sample+'_SB_3b'].Filter('isZee||isZmm')\
+    .Filter('V_mass<75 || V_mass>105')\
+    .Histo1D(model,'No3_btag_score','weight')
+    
+    model = R.RDF.TH1DModel(_sample+'_SB_4b_Z_var'+'No3_btag_score','No3_btag_score', 15, 0, 1)
+    histo_dict[_sample+'_SB_4b_Z_var'] = rdf_dict[_sample+'_SB_4b'].Filter('isZee||isZmm')\
+    .Filter('V_mass<75 || V_mass>105')\
+    .Histo1D(model,'No3_btag_score','weight')
+    
+    histo_dict[_sample+'_SB_2b_Z_var'].Write()
+    histo_dict[_sample+'_SB_3b_Z_var'].Write()
+    histo_dict[_sample+'_SB_4b_Z_var'].Write()
+    
+    
+    model = R.RDF.TH1DModel(_sample+'_CR_2b_Z_var'+'No3_btag_score','No3_btag_score', 15, 0, 1)
+    histo_dict[_sample+'_CR_2b_Z_var'] = rdf_dict[_sample+'_CR_2b'].Filter('isZee||isZmm')\
+    .Filter('V_mass<75 || V_mass>105')\
+    .Histo1D(model,'No3_btag_score','weight')
+    
+    model = R.RDF.TH1DModel(_sample+'_CR_3b_Z_var'+'No3_btag_score','No3_btag_score', 15, 0, 1)
+    histo_dict[_sample+'_CR_3b_Z_var'] = rdf_dict[_sample+'_CR_3b'].Filter('isZee||isZmm')\
+    .Filter('V_mass<75 || V_mass>105')\
+    .Histo1D(model,'No3_btag_score','weight')
+    
+    model = R.RDF.TH1DModel(_sample+'_CR_4b_Z_var'+'No3_btag_score','No3_btag_score', 15, 0, 1)
+    histo_dict[_sample+'_CR_4b_Z_var'] = rdf_dict[_sample+'_CR_4b'].Filter('isZee||isZmm')\
+    .Filter('V_mass<75 || V_mass>105')\
+    .Histo1D(model,'No3_btag_score','weight')
+    
+    histo_dict[_sample+'_CR_2b_Z_var'].Write()
+    histo_dict[_sample+'_CR_3b_Z_var'].Write()
+    histo_dict[_sample+'_CR_4b_Z_var'].Write()
+    
+    model = R.RDF.TH1DModel(_sample+'_SR_2b_Z_var'+'No3_btag_score','No3_btag_score', 15, 0, 1)
+    histo_dict[_sample+'_SR_2b_Z_var'] = rdf_dict[_sample+'_SR_2b'].Filter('isZee||isZmm')\
+    .Filter('V_mass<75 || V_mass>105')\
+    .Histo1D(model,'No3_btag_score','weight')
+    
+    model = R.RDF.TH1DModel(_sample+'_SR_3b_Z_var'+'No3_btag_score','No3_btag_score', 15, 0, 1)
+    histo_dict[_sample+'_SR_3b_Z_var'] = rdf_dict[_sample+'_SR_3b'].Filter('isZee||isZmm')\
+    .Filter('V_mass<75 || V_mass>105')\
+    .Histo1D(model,'No3_btag_score','weight')
+    
+    model = R.RDF.TH1DModel(_sample+'_SR_4b_Z_var'+'No3_btag_score','No3_btag_score', 15, 0, 1)
+    histo_dict[_sample+'_SR_4b_Z_var'] = rdf_dict[_sample+'_SR_4b'].Filter('isZee||isZmm')\
+    .Filter('V_mass<75 || V_mass>105')\
+    .Histo1D(model,'No3_btag_score','weight')
+    
+    histo_dict[_sample+'_SR_2b_Z_var'].Write()
+    histo_dict[_sample+'_SR_3b_Z_var'].Write()
+    histo_dict[_sample+'_SR_4b_Z_var'].Write()
+#END

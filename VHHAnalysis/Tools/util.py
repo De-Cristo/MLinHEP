@@ -245,7 +245,7 @@ def plot_vars_as_ROOT_ML(sig_key,bkg_key,var_key,var_items,plot_path):
     for _bin in range(var_items.get_nbins()):
         _binheight = max(_binheight,_histo_sig.GetBinContent(_bin),_histo_bkg.GetBinContent(_bin))
 
-    _histo_zoom = R.TH2F(var_key, var_items.title, var_items.get_nbins(), var_items.get_xmin(), var_items.get_xmax(),10,-_binheight*1.1,_binheight*1.1)
+    _histo_zoom = R.TH2F(var_key, var_items.title, var_items.get_nbins(), var_items.get_xmin(), var_items.get_xmax(),10,-_binheight*0.1,_binheight*1.1)
     _histo_zoom.SetStats(R.kFALSE)
     _histo_zoom.Draw()
     _histo_sig.Draw('histoSAME')
