@@ -1,11 +1,13 @@
 #!/bin/bash
 
-export X509_USER_PROXY=$1
-voms-proxy-info -all
-voms-proxy-info -all -file $1
+#export X509_USER_PROXY=$1
+#voms-proxy-info -all
+#voms-proxy-info -all -file $1
+
+
 
 #download gridpack
-wget --no-check-certificate --progress=bar "https://lichengz.web.cern.ch/lichengz/private_generation/private_gridpack/ZHH_CV_1_0_C2V_10_0_C3_1_0_13TeV-madgraph_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz"
+wget --no-check-certificate --progress=bar "https://lichengz.web.cern.ch/lichengz/private_generation/private_gridpack/${1}_13TeV-madgraph_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz"
 
 
 #################=================================#########################################
