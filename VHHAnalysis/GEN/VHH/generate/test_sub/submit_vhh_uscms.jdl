@@ -1,0 +1,11 @@
+Universe = vanilla
+Executable = wrapper_vhh.sh
+arguments = $(proc) 10
+request_cpus = 2
+should_transfer_files = YES
+Error = log/$(proc).err_$(Step)
+Output = log/$(proc).out_$(Step)
+Log = log/$(proc).log
+transfer_output_remaps = "HIG-RunIISummer20UL18NanoAODv2-00415.root = $(proc)_$(Cluster)_$(Step).root"
+when_to_transfer_output = ON_EXIT
+Queue 2 proc in (ZHH_C2V_10_0)
