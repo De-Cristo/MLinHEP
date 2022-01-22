@@ -4,7 +4,7 @@
 #voms-proxy-info -all
 #voms-proxy-info -all -file $1
 
-
+echo "STEP : ${1}"
 
 #download gridpack
 wget --no-check-certificate --progress=bar "https://lichengz.web.cern.ch/lichengz/private_generation/private_gridpack/${1}_13TeV-madgraph_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz"
