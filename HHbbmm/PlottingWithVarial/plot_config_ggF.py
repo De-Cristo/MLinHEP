@@ -1,6 +1,7 @@
 from samples_HHbbmm import *
 import varial
-import wrappers
+import ROOT as R
+# import wrappers
 
 ####################
 # General Settings #
@@ -16,18 +17,18 @@ enable_reuse_step = True
 # Plot Settings #
 #################
 
-name = 'test_plot_HHbbmm_test'
+name = 'test'
 
 weight = 'weight'
 
 plot_vars = {
-    'weight'           :           ('weight',             ';weight;',           100,     -1,      1),
+    'weight'           :           ('weight',             ';weight;',           5,     -1,      1),
 }
 
 # from Muon
 plot_vars.update({
-    'mu0_pt'           :           ('mu0_pt',             ';p_{T}_Mu1 [GeV];',  25,     0,      600),
-    'm_2mu'           :            ('m_2mu',              ';Mass_H(mm) [GeV];', 25,     50,     200),
+#     'mu0_pt'           :           ('mu0_pt',             ';p_{T}_Mu1 [GeV];',  25,     0,      600),
+#     'm_2mu'           :            ('m_2mu',              ';Mass_H(mm) [GeV];', 25,     50,     200),
 })
 
 #######################################
@@ -46,8 +47,8 @@ Hmm_win = "(m_2mu > 100 && m_2mu < 150)"
 
 regions = {
     "ALL"                  : '{0}'.format("0 == 0"),
-    "Hmm_win"              : '{0}'.format(Hmm_win),
-    "out_Hmm_win"          : '!{0}'.format(Hmm_win),
+#     "Hmm_win"              : '{0}'.format(Hmm_win),
+#     "out_Hmm_win"          : '!{0}'.format(Hmm_win),
 }
 
 selections = [
@@ -71,30 +72,6 @@ def additional_input_hook(wrps):
                     w.histo.SetBinContent(i, 0.)
                     w.histo.SetBinError(i, 0.)
         return w
-    
-    def norm_to_integral(w, use_bin_width=False):
-    def norm_to_integral(w):
-        temp_histo = R.TH1()
-        if w.legend == 'DY':
-            
-        
-        
-        if not isinstance(w, wrappers.HistoWrapper):
-            raise WrongInputError(
-                "norm_to_integral needs argument of type HistoWrapper. histo: "
-                + str(w)
-            )
-        option = "width" if use_bin_width else ""
-        integr = w.histo.Integral(option) or 1.
-        if integr == 1.:
-            return w
-
-        histo = w.histo.Clone()
-        histo.Scale(1. / integr)
-        info = w.all_info()
-        info["lumi"] /= integr
-        return wrappers.HistoWrapper(histo, **info)
         
     wrps = (blind_in_HmmWin(w) for w in wrps)
-    wrps = (norm_to_integral(w) for w in wrps)
     return wrps
