@@ -1,0 +1,15 @@
+Universe = vanilla
+Executable = wrapper.sh
+arguments = 10
+request_cpus = 4
++REQUIRED_OS = "rhel6"
++DESIRED_Sites="T2_CH_CERN,T2_US_Nebraska,T2_US_USCD,T1_US_FNAL"
+# Requirements = HAS_SINGULARITY == True
+# +SingularityImage = "/cvmfs/singularity.opensciencegrid.org/cmssw/cms:rhel6"
+should_transfer_files = YES
+Error = log/2016_step1.$(proc).err_$(Step)
+Output = log/2016_step1.$(proc).out_$(Step)
+Log = log/2016_step1.$(proc).log
+transfer_output_remaps = "SMP-RunIIAutumn18MiniAOD-00138.root = 2016_mini_$(proc)_$(Cluster)_$(Step).root"
+when_to_transfer_output = ON_EXIT
+Queue 200 proc in (HeavyN_SSWW)

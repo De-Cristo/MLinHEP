@@ -10,18 +10,23 @@ from analysis_branch import *
 def slimmer(_arg_list):
     print('Starting {0} {1} {2} {3}...\n'.format(_arg_list[0],_arg_list[1],_arg_list[2],_arg_list[3]))
     rdf_dict[_arg_list[0]].Filter(_arg_list[4]).Filter(_arg_list[5]).Filter(_arg_list[6])\
-    .Define("No3_btag_score", \
+    .Define("No3_btag_score",\
             "float _bts = 0;\
             float bts[4] = {VHH_H1_BJet1_btag, VHH_H1_BJet2_btag, VHH_H2_BJet1_btag, VHH_H2_BJet2_btag};\
             sort(bts,bts+4);\
             return _bts = bts[1];")\
-    .Define('new_weight', 'weight')\
+    .Define("SQRptSUMom", \
+            "float x = 0;\
+            float part[6] = {selLeptons_pt_0, selLeptons_pt_1, VHH_H1_BJet1_pT, VHH_H1_BJet2_pT, VHH_H2_BJet1_pT, VHH_H2_BJet2_pT};\
+            x = sqrt(pow(part[0],2)+pow(part[1],2)+pow(part[2],2)+pow(part[3],2)+pow(part[4],2)+pow(part[5],2))/VHH_mass;\
+            return x;")\
     .Snapshot('Events','{0}/{1}_{2}_{3}_{4}.root'.format(newpath,_arg_list[0],_arg_list[1],_arg_list[2],_arg_list[3]),Vars)
     print('Finishing {0} {1} {2} {3}...\n'.format(_arg_list[0],_arg_list[1],_arg_list[2],_arg_list[3]))
     
     
+
 parser = argparse.ArgumentParser()
-parser.add_argument("-d", "--NtupleDir",     dest="ndir", default='/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_1113UL',   help="Ntuple direction" )
+parser.add_argument("-d", "--NtupleDir",     dest="ndir", default='/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/TEST_0108_UL_DeepJet',   help="Ntuple direction" )
 parser.add_argument("-m", "--MultThread",    dest="MT",   type=int, default=16,   help="How many threads will be used (default = 16)" )
 parser.add_argument("-p", "--MultProc",      dest="MP",   type=int, default=8,    help="How many sub processes will be started (default = 8)" )
 args = parser.parse_args()
@@ -67,26 +72,24 @@ sample_list = ['TT', 'ttbb', 'DY', 'Other', 'Data']
 sample_list+=file_list_ZHH
 
 R.EnableImplicitMT(args.MT)
-rdf_dict['TT']     = R.RDataFrame('Events', string_list_for_TT, Vars)
-rdf_dict['ttbb']   = R.RDataFrame('Events', string_list_for_ttbb, Vars)
-rdf_dict['DY']     = R.RDataFrame('Events', string_list_for_DY, Vars)
-rdf_dict['Other']  = R.RDataFrame('Events', string_list_for_Other, Vars)
-rdf_dict['Data']   = R.RDataFrame('Events', string_list_for_Data, Vars)
+rdf_dict['TT']     = R.RDataFrame('Events', string_list_for_TT)
+rdf_dict['ttbb']   = R.RDataFrame('Events', string_list_for_ttbb)
+rdf_dict['DY']     = R.RDataFrame('Events', string_list_for_DY)
+rdf_dict['Other']  = R.RDataFrame('Events', string_list_for_Other)
+rdf_dict['Data']   = R.RDataFrame('Events', string_list_for_Data)
 
 for _zhh_sig in string_list_for_ZHH:
-    rdf_dict[_zhh_sig.split('/')[-2]] = R.RDataFrame('Events', _zhh_sig, Vars)
-
+    rdf_dict[_zhh_sig.split('/')[-2]] = R.RDataFrame('Events', _zhh_sig)
     
-# sample_list=file_list_ZHH
 arg_list = []
 for _sample in sample_list:
     for _rhh_name, _rhh in rHH_region_dict.items():
         for _btag_name, _btag in btag_multiplicity_dict.items():
             for _lepchan_name, _lepchan in lepton_channel_dict.items():
                 arg_list.append([_sample, _lepchan_name, _rhh_name, _btag_name, _lepchan, _rhh, _btag])
-
 # print(arg_list)
-Vars.update({"No3_btag_score","new_weight","intWeight"})
+
+Vars.update({"No3_btag_score","SQRptSUMom"})
 print(Vars)
 
 with Pool(args.MP) as p:

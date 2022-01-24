@@ -7,7 +7,7 @@ if [ $varial_nonexisting != 0 ]; then
     if [ -f Varial/setup.py ]; then
         echo "Updating Varial."
         cd Varial
-        git pull
+        #git pull
         cd -
     else
         echo "Installing Varial."

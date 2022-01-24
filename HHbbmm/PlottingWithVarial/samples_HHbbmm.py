@@ -21,17 +21,18 @@ def get_samples(channel, signal_overlay=True, **kwargs):
     ##########################################
     
     samples = {
-        'DY': ["weight>-99", sf_zjb*sf_lumi, 'DY', ['DY_Zpt100to200','DY_Zpt200toinf'],1],
-#         'DY': ["weight>-99", sf_zjb*sf_lumi, 'DY', ['DYToLL_M10-50_Inc_madgraph'],0],
+#         'DY': ["weight>-99", sf_zjb*sf_lumi, 'DY', ['DY_Zpt100to200','DY_Zpt200toinf'],1],
+        'DY': ["weight>-99", sf_zjb*sf_lumi, 'DY', ['DYToLL_M10-50_Inc_madgraph'],0],
         }
     if signal_overlay:
         samples.update({
-            'HHbbmmC3m05_0':  ["weight>-99", 1.*sf_lumi*0.01, 'HHbbmm(C3m05_0)*0.01',   ['HHbbmmC3m05_0'],1],
+#             'HHbbmmC3m05_0':  ["weight>-99", 1.*sf_lumi*0.01, 'HHbbmm(C3m05_0)*0.01',   ['HHbbmmC3m05_0'],1],
         })
         
     if channel == 'ggF':
         samples.update({
-            'Data': ["weight>-99", sf_zjb*sf_lumi, 'Data', ['DY_Zpt100to200','DY_Zpt200toinf'],1],
+            'Data': ["weight>-99", sf_zjb*sf_lumi, 'Data', ['DYToLL_M10-50_Inc_madgraph'],0],
+#             'Data': ["weight>-99", sf_zjb*sf_lumi, 'Data', ['DY_Zpt100to200','DY_Zpt200toinf'],1],
         })
     
     return samples
