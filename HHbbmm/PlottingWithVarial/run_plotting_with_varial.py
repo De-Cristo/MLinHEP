@@ -70,6 +70,11 @@ filenames = collections.OrderedDict(
     for s_name in ordered_s_names
 )
 
+# def plotter factory adds a hook for normalizing to hists
+def plotter_factory(**kws):
+    kws['hook_loaded_histos'] = varial.generators.gen_norm_to_integral
+    return varial.tools.Plotter(**kws)
+
 def make_weight_string(index):
     if isinstance(index, str):
         # specify cutstring to classify sample
@@ -215,8 +220,10 @@ def mk_plotter_and_webcreator():
         name='Plots',
         pattern=config.name+'/HistosFromTree/*/*.root',
         hook_loaded_histos=input_hook,
+        plotter_factory=plotter_factory,    # use own factory
         combine_files=True,
-        stack=True,
+        stack=False
+        #stack=True,
     )
     return [plotter, varial.tools.WebCreator()]
 

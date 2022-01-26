@@ -1,0 +1,8 @@
+#add new norm def only suit to overlay_signal rather than stack_bkg
+
+#line74-76:
+def plotter_factory(**kws):
+    kws['hook_loaded_histos'] = varial.generators.gen_norm_to_integral
+    return varial.tools.Plotter(**kws)
+#line223:
+plotter_factory=plotter_factory,    # use own factory
