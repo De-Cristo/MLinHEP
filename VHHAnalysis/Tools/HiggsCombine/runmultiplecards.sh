@@ -17,7 +17,9 @@ law run PlotMultipleUpperLimits --version dev --hh-model HHModelPinvVHH.model_de
 
 law run PlotMultipleUpperLimits --version dev --hh-model HHModelPinvVHH.model_default --multi-datacards $datacard --pois r_vhh --scan-parameters CV,-20,20,41 --show-parameters C2V,kl --workers 8 --y-log --xsec fb --datacard-names Zll_unrwt_UL
 
+law run PlotMultipleUpperLimits --version dev --hh-model hh_model.model_default_vhh --multi-datacards $datacard --pois r_vhh --scan-parameters C2V,-30,30,61 --show-parameters kl,CV --workers 16 --xsec fb --datacard-names Zll_2017_UL
 
+law run PlotMultipleUpperLimits --version dev --hh-model hh_model.model_default_vhh --multi-datacards $datacard --pois r_vhh --scan-parameters kl,-40,40,81 --show-parameters C2V,CV --workers 16 --xsec fb --datacard-names Zll_2017_UL
 
 # law run PlotMultipleSignificanceScans --version dev --hh-model HHModelPinvVHH.model_default --multi-datacards $datacard --pois r_vhh --scan-parameters C2V,-10,10,21 --show-parameters kl,CV --workers 4 --y-log --datacard-names SL,SL_new
 

@@ -227,9 +227,9 @@ def plot_vars_as_ROOT_ML(sig_key,bkg_key,var_key,var_items,plot_path):
     model_sig = R.RDF.TH1DModel(var_key+sig_key, var_items.title, var_items.get_nbins(), var_items.get_xmin(), var_items.get_xmax())
     model_bkg = R.RDF.TH1DModel(var_key+bkg_key, var_items.title, var_items.get_nbins(), var_items.get_xmin(), var_items.get_xmax())
     c_temp = R.TCanvas() #auto canvas 
-    #TODO : weight
-    _histo_sig = rdf_dict[sig_key].Histo1D(model_sig, var_key)
-    _histo_bkg = rdf_dict[bkg_key].Histo1D(model_bkg, var_key, 'components')
+
+    _histo_sig = rdf_dict[sig_key].Histo1D(model_sig, var_key, 'weight')
+    _histo_bkg = rdf_dict[bkg_key].Histo1D(model_bkg, var_key, 'weight')
     
     _histo_sig.SetFillColorAlpha(900, 0.5)
     _histo_bkg.SetFillColorAlpha(860, 0.5)
@@ -251,7 +251,7 @@ def plot_vars_as_ROOT_ML(sig_key,bkg_key,var_key,var_items,plot_path):
     _histo_sig.Draw('histoSAME')
     _histo_bkg.Draw('histoSAME')
     
-    _legend = R.TLegend(0.15,0.7,0.35,0.85)
+    _legend = R.TLegend(0.4,0.7,0.6,0.85)
     _legend.AddEntry(var_key+sig_key,sig_key,'f')
     _legend.AddEntry(var_key+bkg_key,bkg_key,'f')
     _legend.SetLineColor(0)

@@ -58,7 +58,7 @@ time_start=timer.time()
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-m", "--MultThread",dest="MT",    type=int, default=16,   help="How many threads will be used (default = 16)" )
-parser.add_argument("-d", "--Direction", dest="dir",   type=str, default='../Tools/Pre_SlimmedSignal', help="Direction of the training samples (default = ../Tools/Pre_SlimmedSignal)")
+parser.add_argument("-d", "--Direction", dest="dir",   type=str, default='./Training_Samples/', help="Direction of the training samples (default = ./Training_Samples/)")
 parser.add_argument("-lc", "--LowCoupling", dest="LC", type=str, default='0', help="Low Coupling value (default = 0)")
 parser.add_argument("-hc", "--HighCoupling",dest="HC", type=str, default='10',help="High Coupling value (default = 10")
 args = parser.parse_args()
@@ -72,53 +72,41 @@ else:
 path = os.path.abspath(args.dir)
 os.system('mkdir -p C2V_Variables_Plots')
 plot_path = os.path.abspath('./C2V_Variables_Plots')
+low_coupling_key = []
+high_coupling_key = []
 
 print('\033[1;34m Reading Data... \033[0m')
 sample_pool = os.listdir(path)
 for _sample in sample_pool:
-    if 'C2V_{}_0'.format(args.LC) in _sample and '_new_' in _sample:
-        low_coupling_key = path+'/'+_sample
+    if 'C2V_{}_0'.format(args.LC) in _sample:
+        low_coupling_key.append(path+'/'+_sample)
         print(low_coupling_key)
-#     elif 'C2V_{}_0'.format(args.HC) in _sample and '_new_sample_by_8' in _sample:
-#         high_coupling_key = path+'/'+_sample
-#         print(high_coupling_key)
-    elif 'C3_20_0'.format(args.HC) in _sample and '_new_sample' in _sample:
-        high_coupling_key = path+'/'+_sample
+    elif 'C2V_{}_0'.format(args.HC) in _sample:
+        high_coupling_key.append(path+'/'+_sample)
         print(high_coupling_key)
+#     elif 'C3_20_0' in _sample:
+#         high_coupling_key.append(path+'/'+_sample)
+#         print(high_coupling_key)
     else:
         continue
 
 rdf_dict['LC'] = R.RDataFrame('Events',low_coupling_key)
 rdf_dict['HC'] = R.RDataFrame('Events',high_coupling_key)
 
-variable("VHH_H1_BJet1_pT", ";pT(H1,B1) [GeV];",     [20, 0., 500])
-variable("VHH_H1_BJet2_pT", ";pT(H1,B2) [GeV];",     [20, 0., 500])
 variable("VHH_H1_BJet_dR",  ";#Delta R(H1B1,H1B2);", [20, 0., 5.])
 variable("VHH_H2_BJet_dR",  ";#Delta R(H2B1,H2B2);", [20, 0., 5.])
 
-variable("VHH_H1_eta",      ";#Eta (H1);",           [20, 0., 3.])
-variable("VHH_H1_m",        ";Mass(H1) [GeV];",      [20, 0., 1000.])
-
-variable("VHH_H2_pT",       ";pT (H2);",             [20, 0., 600.])
-variable("VHH_H2_e",        ";Energy(H2) [GeV];",    [20, 0., 1000.])
+variable("VHH_H1_pT",        ";pT(H1) [GeV];",    [20, 0., 1000.])
+variable("V_pt",        ";pT(V) [GeV];",    [20, 0., 1000.])
 
 variable("VHH_HH_m",        ";Mass_HH(jjjj) [GeV];",   [20, 0., 1600])
-variable("VHH_HH_eta",      ";#Eta HH(jjjj) [GeV];",   [20, 0., 3.])
-variable("VHH_HH_deta",     ";#Delta #Eta (H1,H2);",   [20, 0., 3.])
 variable("VHH_HH_dR",       ";#Delta R (H1,H2);",      [20, 0., 5.])
 
-variable("V_pt",          ";pT_V(ll/MET) [GeV];",    [20, 0., 1000])
-# variable("V_mass",        ";Mass_V(ll/MET) [GeV];",  [20, 0., 1000])
-
-variable("VHH_V_H2_dPhi",     ";#Delta #Phi(V,H2);",     [20, 0., 3.2])
-variable("VHH_V_HH_dPhi",     ";#Delta #Phi(V,HH);",     [20, 0., 3.2])
-variable("VHH_V_HH_pT_Ratio", ";V_pT/HH_pT;",            [20, 0., 3.])
+variable("VHH_V_H2_dPhi",     ";#Delta #phi(V,H2);",     [20, 0., 3.2])
+# variable("VHH_V_HH_dPhi",     ";#Delta #phi(V,HH);",     [20, 0., 3.2])
 
 variable("selLeptons_pt_0", ";pT_Lep1 [GeV];",       [20, 0., 450])
-variable("selLeptons_pt_1", ";pT_Lep2 [GeV];",       [20, 0., 450])
-
-variable("VHH_Vreco4j_HT",  ";HT_VHH(lljjjj) [GeV];",[20, 0., 3000.])
-
+# variable("VHH_Vreco4j_HT",  ";HT_VHH(lljjjj) [GeV];",[20, 0., 3000.])
 variable("VHH_H2H1_pt_ratio",    ";H2_pT/H1_pT;",    [20, 0., 1.])
 
 print('\033[1;34m Plotting Variables... \033[0m')
@@ -129,6 +117,8 @@ for key, items in variables.items():
 
 # with Pool(args.MT) as p:
 #     p.map(plotter, arg_list)
+
+# exit(0)
 
 print('\033[1;34m Preparing training matrix... \033[0m')
 
@@ -146,42 +136,20 @@ pd_rdf_dict['HC'].loc[:, "isBkg"] = True
 pd_rdf_dict['HC'].loc[pd_rdf_dict['HC'].isBkg==True,'components'] = 1.0
 
 all_data = pd.concat([pd_rdf_dict['LC'],pd_rdf_dict['HC']],axis=0)
-# all_data.insert(0, 'Event_ID', range(0, len(all_data)))
 
-# train_var = [
-# 'VHH_H1_BJet1_e','VHH_H1_BJet1_pT','VHH_H1_BJet1_phi','VHH_H1_BJet2_e','VHH_H1_BJet2_pT','VHH_H1_BJet2_phi','VHH_H1_BJet_dR',\
-#              'VHH_H1_pT', 'VHH_H1_e', 'VHH_H1_eta', 'VHH_H1_m', 'VHH_H1_phi',\
-    
-#              'VHH_H2_BJet1_e','VHH_H2_BJet1_pT','VHH_H2_BJet1_phi','VHH_H2_BJet2_e','VHH_H2_BJet2_pT','VHH_H2_BJet2_phi','VHH_H2_BJet_dR',\
-#              'VHH_H2_pT', 'VHH_H2_e', 'VHH_H2_eta', 'VHH_H2_m', 'VHH_H2_phi',\
-    
-#              'VHH_HH_m', 'VHH_HH_e', 'VHH_HH_eta','VHH_HH_deta', 'VHH_HH_dR', 'VHH_HH_dphi', 'VHH_HH_pT', 'VHH_HH_phi',\
-    
-#              'V_pt','V_mass','V_phi','V_mt',\
-#              'VHH_V_e', 'VHH_V_m', 'VHH_V_phi',\
-    
-#              'selLeptons_eta_0', 'selLeptons_eta_1', 'selLeptons_mass_0', 'selLeptons_mass_1', \
-#              'selLeptons_pdgId_0', 'selLeptons_pdgId_1',\
-#              'selLeptons_phi_0', 'selLeptons_phi_1', 'selLeptons_pt_0', 'selLeptons_pt_1', 
-    
-#              'VHH_V_H1_dPhi', 'VHH_V_H2_dPhi', 'VHH_V_HH_dPhi','VHH_V_HH_pT_Ratio',\
-    
-#              'VHH_H2H1_pt_ratio','VHH_Vreco4j_HT', 'VHH_mass',\
-#              'components'
-# ]
-train_var = ['V_pt', 'VHH_HH_deta', 'VHH_H2_e', 'VHH_H2_pT',\
-             'VHH_HH_dR', 'VHH_HH_m', 'VHH_V_HH_pT_Ratio', 'VHH_Vreco4j_HT',\
-             'VHH_H1_BJet1_pT','VHH_H1_BJet_dR','VHH_H2_BJet_dR',\
-             'VHH_V_H2_dPhi','VHH_V_HH_dPhi','selLeptons_pt_0','selLeptons_pt_1', 'VHH_H2H1_pt_ratio',\
-             'components'
-]
+train_var = ['VHH_H2H1_pt_ratio','VHH_HH_m','selLeptons_pt_0',\
+             'VHH_V_H2_dPhi', 'VHH_HH_dR', \
+             'VHH_H1_pT','V_pt', \
+             'VHH_H1_BJet_dR', 'VHH_H2_BJet_dR', \
+             'weight'
+            ]
 
-corr_test_var = ['V_pt', 'VHH_HH_deta', 'VHH_H2_e', 'VHH_H2_pT',\
-                 'VHH_HH_dR', 'VHH_HH_m', 'VHH_V_HH_pT_Ratio', 'VHH_Vreco4j_HT',\
-                 'VHH_H1_BJet1_pT','VHH_H1_BJet_dR','VHH_H2_BJet_dR',\
-                 'VHH_V_H2_dPhi','VHH_V_HH_dPhi','selLeptons_pt_0','selLeptons_pt_1', 'VHH_H2H1_pt_ratio',\
+corr_test_var = ['VHH_H2H1_pt_ratio','VHH_HH_m','selLeptons_pt_0',\
+                 'VHH_V_H2_dPhi', 'VHH_HH_dR', \
+                 'VHH_H1_pT','V_pt', \
+                 'VHH_H1_BJet_dR', 'VHH_H2_BJet_dR', \
                  'isSig'
-]
+                ]
 
 corr_test = all_data[corr_test_var]
 _bkg = corr_test.loc[corr_test["isSig"] == False]
@@ -194,39 +162,49 @@ del corr_test, _bkg, _sig
 X = all_data[train_var]
 y = all_data[['isSig','isBkg']]
 
-test_size=0.1
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1)
-w_train = X_train['components']
-w_test = X_test['components']
+test_size=0.2
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15)
+w_train = X_train['weight']
+w_test = X_test['weight']
 
 pos_scale_count = dict(y_train['isSig'].value_counts())
 print(pos_scale_count)
 pos_scale = pos_scale_count[False]/pos_scale_count[True]
 print('pos_scale = '+str(pos_scale))
 
-X_train.drop('components',axis=1,inplace=True)
-X_test.drop('components',axis=1,inplace=True)
+X_train.drop('weight',axis=1,inplace=True)
+X_test.drop('weight',axis=1,inplace=True)
 
 print('\033[1;33m Splitting train : test = {0} : {1} \033[0m'.format(str(1-test_size),str(test_size)))
 print('\033[1;33m Start training : \033[0m')
 
 xgbc = XGBClassifier(
+    booster='gbtree',
+    colsample_bytree=0.8, #prevent over training (0.5~1)
+    colsample_bylevel=0.8,
+    colsample_bynode=0.8,
+    reg_alpha=3, #accelerate at high dimention 0
+    reg_lambda=4, #prevent over training 1
+    subsample=0.8, #prevent over training
     max_depth=3,
-    n_estimators=1000,
-    learning_rate =0.05,
+    n_estimators=15000,
+    learning_rate =0.005,
+#     objective = 'binary:logistic',
     nthread=args.MT,
     scale_pos_weight=pos_scale,
 )
 
 eval_set = [(X_train, y_train), (X_test, y_test)]
 xgbc.fit(
-    X=X_train, y=y_train['isSig'], 
-    sample_weight=w_train.map(lambda x: x if x>0 else 0),
+    X=X_train, y=y_train['isSig'],
+#     sample_weight=w_train.map(lambda x: x*1e+5 if x>0 else 0),
 #     eval_set = eval_set,
     eval_metric=["error", "logloss"], 
-    verbose=True)
+#     eval_metric=["auc", "logloss"],
+#     eval_metric=["logloss"],
+    verbose=True
+)
 
-# exit(0)
 test_score_xgb = xgbc.predict_proba(X_test)
 test_score_xgb_sig = test_score_xgb[y_test['isSig']][:,1]
 test_score_xgb_bkg = test_score_xgb[y_test['isBkg']][:,1]
