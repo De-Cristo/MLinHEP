@@ -1,0 +1,1 @@
+for k in /eos/cms/store/group/phys_higgs/hbb/ntuples/VHbb_Run2Unblinding_Oct2020_AT/ntuples/2017_JER/*.root; do (echo "${k}"; source condor_runscript.sh "${k##*/}" 0 0 /eos/cms/store/group/phys_higgs/hbb/ntuples/VHbb_Run2Unblinding_Oct2020_AT/ntuples/2017_JER/ &); done
