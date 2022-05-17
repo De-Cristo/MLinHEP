@@ -1,7 +1,7 @@
 
 analysis_branches = {
-    'isZee','isZmm','isZnn','IsttB', \
-    'VHH_nBJets','VHH_nBJets_loose','VHH_nBJets_tight','VHH_rHH','boostedCategory','cutFlow','sampleIndex', \
+    'isZee','isZmm','IsttB', \
+    'VHH_nBJets','VHH_rHH','boostedCategory','cutFlow','sampleIndex', \
     
     'VHH_H1_BJet1_e','VHH_H1_BJet1_pT','VHH_H1_BJet1_phi','VHH_H1_BJet2_e','VHH_H1_BJet2_pT','VHH_H1_BJet2_phi','VHH_H1_BJet_dR',\
     'VHH_H1_BJet1_eta', 'VHH_H1_BJet2_eta', \
@@ -26,18 +26,21 @@ analysis_branches = {
     
     'weight','VHH_H1_BJet1_btag','VHH_H1_BJet2_btag','VHH_H2_BJet1_btag','VHH_H2_BJet2_btag','intWeight',\
     
-    'CMS_vhh_bdt_c2v_13TeV','CMS_vhh_bdt_SvB_sm_c2v_Zll_13TeV','CMS_vhh_bdt_SvB_strong_c2v_Zll_13TeV', \
-    'wlnRBDT_cate_kl20VSkl0_v2', 'znnRBDT_cate_kl20VSkl0_v2', \
-    
-    'boostedCategory', 'VHH_nFatJet', 'VHH_SemiB_nBJets', 'VHH_SuperB_nFatJet', 'VHH_SuperB_FatJetInd', \
-    'VHHFatJet1_ParticleNetMD_bbvsQCD', 'VHHFatJet2_ParticleNetMD_bbvsQCD', \
-    'VHHFatJet1_Pt', 'VHHFatJet1_eta', 'VHHFatJet1_phi', 'VHHFatJet1_Msoftdrop', 'VHHFatJet1_Msoftdrop', 'VHHFatJet1_e', \
-    'VHHFatJet2_Pt', 'VHHFatJet2_eta', 'VHHFatJet2_phi', 'VHHFatJet2_Msoftdrop', 'VHHFatJet2_Msoftdrop', 'VHHFatJet2_e', \
-    'VHH_SemiB_J1J2dPhi', 'VHH_SemiB_J1J2dPhi', 'VHHFatH1H2dPhi', 'VHHFatJet_mjj', 'VHH_jet34_mass', \
-    'VHHFatJet_HHe', 'VHHFatJet_HHPt', 'VHHFatJet_HHeta', 'VHHFatJet_HHdR' , 'VHHFatJet_H2H1_pt_ratio', \
-    'VHHFatJet1VdPhi', 'VHHFatJet1VdEta', 'VHHFatJet1VPtRatio', 'VHHFatJet2VdPhi', 'VHHFatJet2VdEta', 'VHHFatJet2VPtRatio', \
-    'VHH_SuperB_FatJet_Xbb', 'VHH_SuperB_FatJet_M', 'VHH_SuperB_FatJet_E', 'VHH_SuperB_FatJet_Pt', 'VHH_SuperB_FatJet_Pt', 'VHH_SuperB_FatJet_Eta', 'VHH_SuperB_FatJet_VdPhi', 'VHH_SuperB_FatJet_VdEta', \
+    'dilep_dPhi', 'dilep_dEta', 'ptl1OVERptl0', 'ptl0OVERV_mass',\
+    'No3_btag_pt', 'No4_btag_pt', \
+    'CMS_vhh_xgb_bdt_C2V_cat_13TeV',\
 }
+#     'CMS_vhh_bdt_c2v_13TeV','CMS_vhh_bdt_SvB_sm_c2v_Zll_13TeV','CMS_vhh_bdt_SvB_strong_c2v_Zll_13TeV', \
+#     'wlnRBDT_cate_kl20VSkl0_v2', 'znnRBDT_cate_kl20VSkl0_v2', \
+    
+#     'boostedCategory', 'VHH_nFatJet', 'VHH_SemiB_nBJets', 'VHH_SuperB_nFatJet', 'VHH_SuperB_FatJetInd', \
+#     'VHHFatJet1_ParticleNetMD_bbvsQCD', 'VHHFatJet2_ParticleNetMD_bbvsQCD', \
+#     'VHHFatJet1_Pt', 'VHHFatJet1_eta', 'VHHFatJet1_phi', 'VHHFatJet1_Msoftdrop', 'VHHFatJet1_Msoftdrop', 'VHHFatJet1_e', \
+#     'VHHFatJet2_Pt', 'VHHFatJet2_eta', 'VHHFatJet2_phi', 'VHHFatJet2_Msoftdrop', 'VHHFatJet2_Msoftdrop', 'VHHFatJet2_e', \
+#     'VHH_SemiB_J1J2dPhi', 'VHH_SemiB_J1J2dPhi', 'VHHFatH1H2dPhi', 'VHHFatJet_mjj', 'VHH_jet34_mass', \
+#     'VHHFatJet_HHe', 'VHHFatJet_HHPt', 'VHHFatJet_HHeta', 'VHHFatJet_HHdR' , 'VHHFatJet_H2H1_pt_ratio', \
+#     'VHHFatJet1VdPhi', 'VHHFatJet1VdEta', 'VHHFatJet1VPtRatio', 'VHHFatJet2VdPhi', 'VHHFatJet2VdEta', 'VHHFatJet2VPtRatio', \
+#     'VHH_SuperB_FatJet_Xbb', 'VHH_SuperB_FatJet_M', 'VHH_SuperB_FatJet_E', 'VHH_SuperB_FatJet_Pt', 'VHH_SuperB_FatJet_Pt', 'VHH_SuperB_FatJet_Eta', 'VHH_SuperB_FatJet_VdPhi', 'VHH_SuperB_FatJet_VdEta', \
 
 file_list_for_TT      = ['TT_AllHadronic','TT_DiLep_NoPSWeights','TT_SingleLep']
 file_list_for_TTBB    = ['TTBB_AllHadronic','TTBB_DiLep','TTBB_SingleLep']
@@ -77,8 +80,8 @@ file_list_all = file_list_for_TT + file_list_for_TTBB + file_list_DY + file_list
 file_list_bkg = file_list_for_TT + file_list_for_TTBB + file_list_DY + file_list_Other
 
 rHH_region_dict = {
-        'rHH_SR' : "VHH_rHH<25",
-        'rHH_CR' : "VHH_rHH>25 && VHH_rHH<50",
+#         'rHH_SR' : "VHH_rHH<25",
+#         'rHH_CR' : "VHH_rHH>25 && VHH_rHH<50",
         'rHH_SB' : "VHH_rHH>50",
 }
 

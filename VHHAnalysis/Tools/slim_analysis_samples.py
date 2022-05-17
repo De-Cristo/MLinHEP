@@ -7,17 +7,6 @@ import subprocess
 import argparse
 from analysis_branch import *
 
-#     .Define("No3_btag_score",\
-#             "float _bts = 0;\
-#             float bts[4] = {VHH_H1_BJet1_btag, VHH_H1_BJet2_btag, VHH_H2_BJet1_btag, VHH_H2_BJet2_btag};\
-#             sort(bts,bts+4);\
-#             return _bts = bts[1];")\
-#     .Define("No4_btag_score",\
-#             "float _bts = 0;\
-#             float bts[4] = {VHH_H1_BJet1_btag, VHH_H1_BJet2_btag, VHH_H2_BJet1_btag, VHH_H2_BJet2_btag};\
-#             sort(bts,bts+4);\
-#             return _bts = bts[0];")\
-
 def slimmer(_arg_list):
     print('Starting {0} {1} {2} {3}...\n'.format(_arg_list[0],_arg_list[1],_arg_list[2],_arg_list[3]))
     rdf_dict[_arg_list[0]].Filter(_arg_list[4]).Filter(_arg_list[5]).Filter(_arg_list[6])\
@@ -30,16 +19,6 @@ def slimmer(_arg_list):
              std::reverse(_idx_sorted.begin(), _idx_sorted.end());\
              return bts[_idx_sorted[2]];'
            )\
-    .Define("No3_btag_pt",\
-            'std::map<float, int> _jpt_idx;\
-             std::vector<int> _idx_sorted;\
-             float bts[4] = {VHH_H1_BJet1_btag, VHH_H1_BJet2_btag, VHH_H2_BJet1_btag, VHH_H2_BJet2_btag};\
-             float bpt[4] = {VHH_H1_BJet1_pT, VHH_H1_BJet2_pT, VHH_H2_BJet1_pT, VHH_H2_BJet2_pT};\
-             for (int i = 0; i < 4; ++i){ _jpt_idx[bts[i]] = i;}\
-             for (auto _kc : _jpt_idx){_idx_sorted.push_back(_kc.second);}\
-             std::reverse(_idx_sorted.begin(), _idx_sorted.end());\
-             return bpt[_idx_sorted[2]];'
-            )\
     .Define("No3_btag_eta",\
             'std::map<float, int> _jpt_idx;\
              std::vector<int> _idx_sorted;\
@@ -69,16 +48,6 @@ def slimmer(_arg_list):
              std::reverse(_idx_sorted.begin(), _idx_sorted.end());\
              return bts[_idx_sorted[3]];'
            )\
-    .Define("No4_btag_pt",\
-            'std::map<float, int> _jpt_idx;\
-             std::vector<int> _idx_sorted;\
-             float bts[4] = {VHH_H1_BJet1_btag, VHH_H1_BJet2_btag, VHH_H2_BJet1_btag, VHH_H2_BJet2_btag};\
-             float bpt[4] = {VHH_H1_BJet1_pT, VHH_H1_BJet2_pT, VHH_H2_BJet1_pT, VHH_H2_BJet2_pT};\
-             for (int i = 0; i < 4; ++i){ _jpt_idx[bts[i]] = i;}\
-             for (auto _kc : _jpt_idx){_idx_sorted.push_back(_kc.second);}\
-             std::reverse(_idx_sorted.begin(), _idx_sorted.end());\
-             return bpt[_idx_sorted[3]];'
-           )\
     .Define("No4_btag_eta",\
             'std::map<float, int> _jpt_idx;\
              std::vector<int> _idx_sorted;\
@@ -99,7 +68,7 @@ def slimmer(_arg_list):
              std::reverse(_idx_sorted.begin(), _idx_sorted.end());\
              return bphi[_idx_sorted[3]];'
            )\
-    .Snapshot('Events','{0}/{1}_{2}_{3}_{4}.root'.format(newpath,_arg_list[0],_arg_list[1],_arg_list[2],_arg_list[3]),Vars)
+    .Snapshot('Events', '{0}/{1}_{2}_{3}_{4}.root'.format(newpath,_arg_list[0],_arg_list[1],_arg_list[2],_arg_list[3]), Vars)
     print('Finishing {0} {1} {2} {3}...\n'.format(_arg_list[0],_arg_list[1],_arg_list[2],_arg_list[3]))
 
 parser = argparse.ArgumentParser()
@@ -149,32 +118,38 @@ newpath = args.odir
 os.system('rm -rfv {0}'.format(newpath))
 os.system('mkdir -p {0}'.format(newpath))
 sample_list = ['TT', 'TTBB', 'DY', 'Other', 'Data']
-sample_list+=file_list_ZHH_update
+# sample_list+=file_list_ZHH_update
+sample_list = ['Other']
 
 R.EnableImplicitMT(args.MT)
-rdf_dict['TT']     = R.RDataFrame('Events', string_list_for_TT)
-rdf_dict['TTBB']   = R.RDataFrame('Events', string_list_for_TTBB)
+rdf_dict['TT']     = R.RDataFrame('Events', string_list_for_TT).Filter('IsttB==0')
+rdf_dict['TTBB']   = R.RDataFrame('Events', string_list_for_TTBB).Filter('IsttB>0')
 rdf_dict['DY']     = R.RDataFrame('Events', string_list_for_DY)
 rdf_dict['Other']  = R.RDataFrame('Events', string_list_for_Other)
 rdf_dict['Data']   = R.RDataFrame('Events', string_list_for_Data)
 
 for _zhh_sig in string_list_for_ZHH:
+    print(_zhh_sig.split('/')[-2])
     rdf_dict[_zhh_sig.split('/')[-2]] = R.RDataFrame('Events', _zhh_sig)
-    
+
 arg_list = []
 for _sample in sample_list:
     for _rhh_name, _rhh in rHH_region_dict.items():
         for _btag_name, _btag in btag_multiplicity_dict.items():
             for _lepchan_name, _lepchan in lepton_channel_dict.items():
                 arg_list.append([_sample, _lepchan_name, _rhh_name, _btag_name, _lepchan, _rhh, _btag])
-# print(arg_list)
-Vars.update({"No3_btag_score","No3_btag_pt","No3_btag_eta","No3_btag_phi",\
-             "No4_btag_score","No4_btag_pt","No4_btag_eta","No4_btag_phi",\
+print(arg_list)
+
+Vars = {    
+    'dilep_dPhi', 'dilep_dEta', 'ptl1OVERptl0', 'ptl0OVERV_mass','VHH_Vreco4j_HT','VHH_HH_dR','VHH_V_HH_pT_Ratio','V_mass','VHH_H1_pT','VHH_HH_pT','V_pt','VHH_H1_m',\
+    'VHH_HH_m','VHH_H1_e','VHH_HH_e','VHH_V_H1_dPhi','VHH_V_HH_dPhi','VHH_HH_deta',\
+    'No3_btag_pt', 'No4_btag_pt', 'CMS_vhh_bdt_Kl_SM_SvB_13TeV','weight'\
+    
+}
+
+Vars.update({"No3_btag_score","No3_btag_eta","No3_btag_phi",\
+             "No4_btag_score","No4_btag_eta","No4_btag_phi",\
             })
-
-#TODO: angle information from two leptons
-
-# print(Vars)
 
 with Pool(args.MP) as p:
     p.map(slimmer, arg_list)
