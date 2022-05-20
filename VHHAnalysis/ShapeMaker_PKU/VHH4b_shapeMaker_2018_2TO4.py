@@ -25,8 +25,8 @@ from ROOT import *
 gROOT.SetBatch(True)
 import argparse, os, sys
 from array import array
-from Dictionaries.VHH4b_fileDict_2018 import Zll_fileDict, Wln_fileDict, Znn_fileDict
-from Dictionaries.VHH4b_channelDict_2018 import channelDict
+from Dictionaries.VHH4b_fileDict_2018_2TO4_SM import Zll_fileDict, Wln_fileDict, Znn_fileDict
+from Dictionaries.VHH4b_channelDict_2018_2TO4 import channelDict
 from Dictionaries.VHH4b_sampleDict import Zll_sampleDict, Wln_sampleDict, Znn_sampleDict
 from Dictionaries.VHH4b_binsDict import binsDict
 from Dictionaries.VHH4b_reweightDict import reweightDict,reweightValueDict,reweightErrorDict
@@ -78,7 +78,7 @@ print args
 # 1) locally run the whole sample, -samp WHHTo4B_CV_1_0_C2V_1_0_C3_1_0,ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0
 # 2) condor, -samp WHHTo4B_CV_1_0_C2V_1_0_C3_1_0 -i WHHTo4B_CV_1_0_C2V_1_0_C3_1_0_1.root,WHHTo4B_CV_1_0_C2V_1_0_C3_1_0_2.root
 
-if args.multithread and usingRDF: ROOT.EnableImplicitMT(16)
+if args.multithread and usingRDF: ROOT.EnableImplicitMT(64)
 
 ifile = args.inputfile
 ipath = args.inputdir
@@ -107,7 +107,10 @@ if isamp != "":
         print "\n***** ERROR *****: No sample matches with the input file, %s.\n"%(isamp)
         sys.exit(1)
     else:
-        print("going to process "+ipath+"/"+isamp+"/*"+isamp+"*.root")
+        if year!='2016':
+            print("going to process "+ipath+"/"+isamp+"/*"+isamp+"*.root")
+        else:
+            print("going to process "+ipath+"_pre and _post/"+isamp+"/*"+isamp+"*.root")
     print('sampMatch', sampMatch)
 else:
     print "\n***** ERROR *****: Please provide inputfile and/or samplename as input."
@@ -117,11 +120,19 @@ outSuffix = ''.join(isamp.rstrip('.root').lstrip('sum_').split('_')) + '_'+args.
 
 if ifile=='':
     if ilist==[]:
-        elapsed("Using *%s* as input file(s) and %s as input sample name."%(isamp,isamp))
-        chain = TChain("Events")
-        chain.Add(ipath+"/"+isamp+"/*"+isamp+"*.root")
-        mainDF = ROOTDataFrame(chain)
-        print("tot Events :", int(mainDF.Count()))
+        if year!='2016':
+            elapsed("Using *%s* as input file(s) and %s as input sample name."%(isamp,isamp))
+            chain = TChain("Events")
+            chain.Add(ipath+"/"+isamp+"/*"+isamp+"*.root")
+            mainDF = ROOTDataFrame(chain)
+            print("tot Events :", int(mainDF.Count()))
+        else:
+            elapsed("Using *%s* as input file(s) and %s as input sample name."%(isamp,isamp))
+            chain = TChain("Events")
+            chain.Add(ipath+"/"+isamp+"_pre/*"+isamp+"*.root")
+            chain.Add(ipath+"/"+isamp+"_post/*"+isamp+"*.root")
+            mainDF = ROOTDataFrame(chain)
+            print("tot Events :", int(mainDF.Count()))
     else:
         #merge all the sample
         elapsed("Using %s as input files and %s as input sample name."%(str(ilist),isamp))
@@ -185,6 +196,7 @@ for iprocess, processArray in enumerate(processArrays):
     #run over process 
     processName = processArray[0]
     processIdx = processArray[1]
+    processSF  = processArray[2]
     elapsed("(%i of %i) Beginning with %s process."%(iprocess+1,len(processArrays),processName))
     if type(processIdx)==int:
         processCut = "sampleIndex==%i"%processIdx
@@ -305,10 +317,10 @@ for iprocess, processArray in enumerate(processArrays):
                                                             info ]
                                                            ) 
             if doEven and processName!="data_obs":
-                weight_string = "2.0*weight"
-                cutstring = presel + " && (event%2==0)"
+                weight_string = "2.0*weight*VHH_Zll_rwt_TO4b_weight*{}".format(str(processSF))
+                cutstring = presel + " && (event%1==0)"
             else:
-                weight_string = "weight"
+                weight_string = "weight*VHH_Zll_rwt_TO4b_weight*{}".format(str(processSF))
                 cutstring = presel
     
             cutstring += "&& ("+processCut+")"

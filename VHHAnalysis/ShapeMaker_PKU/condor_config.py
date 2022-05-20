@@ -4,7 +4,10 @@
 #indir = "/eos/home-y/yilai/VHH4bAnalysisNtuples/clean_bdt_tool_oct22/TEST_1116_updatebtagSF_resolved_realbtag"
 #indir = "/eos/user/y/yilai/VHH4bAnalysisNtuples/clean_bdt_tool_22jan17/TEST_220116_2018_skim_add_RBDT_cate/"
 #indir = '/eos/user/y/yilai/VHH4bAnalysisNtuples/clean_bdt_tool_22jan17/TEST_220122_2018_boosted_skim/'
-indir = "/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/2022/2018"
+indir = "/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/0425_2022/TEST_2018_TMVAv2_0418_hadd/"
+# indir = "/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/0425_2022/TEST_2017_TMVAv2_0425_hadd/"
+# indir = "/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/0425_2022/TEST_2016_TMVAv2_0425_hadd/"
+# indir = "/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/2022/2018"
 # indir = "/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/2022/2017"
 # indir = "/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/2022/2016"
 # indir = "/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/2022/2016Pre"

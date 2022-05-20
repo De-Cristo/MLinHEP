@@ -78,7 +78,7 @@ print args
 # 1) locally run the whole sample, -samp WHHTo4B_CV_1_0_C2V_1_0_C3_1_0,ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0
 # 2) condor, -samp WHHTo4B_CV_1_0_C2V_1_0_C3_1_0 -i WHHTo4B_CV_1_0_C2V_1_0_C3_1_0_1.root,WHHTo4B_CV_1_0_C2V_1_0_C3_1_0_2.root
 
-if args.multithread and usingRDF: ROOT.EnableImplicitMT(16)
+if args.multithread and usingRDF: ROOT.EnableImplicitMT(32)
 
 ifile = args.inputfile
 ipath = args.inputdir
@@ -306,7 +306,7 @@ for iprocess, processArray in enumerate(processArrays):
                                                            ) 
             if doEven and processName!="data_obs":
                 weight_string = "2.0*weight"
-                cutstring = presel + " && (event%2==0)"
+                cutstring = presel + " && (event%1==0)"
             else:
                 weight_string = "weight"
                 cutstring = presel
