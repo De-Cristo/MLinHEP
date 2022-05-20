@@ -107,10 +107,7 @@ if isamp != "":
         print "\n***** ERROR *****: No sample matches with the input file, %s.\n"%(isamp)
         sys.exit(1)
     else:
-        if year!='2016':
-            print("going to process "+ipath+"/"+isamp+"/*"+isamp+"*.root")
-        else:
-            print("going to process "+ipath+"_pre and _post/"+isamp+"/*"+isamp+"*.root")
+        print("going to process "+ipath+"/"+isamp+"/*"+isamp+"*.root")
     print('sampMatch', sampMatch)
 else:
     print "\n***** ERROR *****: Please provide inputfile and/or samplename as input."
@@ -120,20 +117,11 @@ outSuffix = ''.join(isamp.rstrip('.root').lstrip('sum_').split('_')) + '_'+args.
 
 if ifile=='':
     if ilist==[]:
-        if year!='2016':
-            elapsed("Using *%s* as input file(s) and %s as input sample name."%(isamp,isamp))
-            chain = TChain("Events")
-            chain.Add(ipath+"/"+isamp+"/*"+isamp+"*.root")
-            mainDF = ROOTDataFrame(chain)
-            print("tot Events :", int(mainDF.Count()))
-        else:
-            elapsed("Using *%s* as input file(s) and %s as input sample name."%(isamp,isamp))
-            chain = TChain("Events")
-            chain.Add(ipath+"/"+isamp+"_pre/*"+isamp+"*.root")
-            chain.Add(ipath+"/"+isamp+"_post/*"+isamp+"*.root")
-            mainDF = ROOTDataFrame(chain)
-            print("tot Events :", int(mainDF.Count()))
-            
+        elapsed("Using *%s* as input file(s) and %s as input sample name."%(isamp,isamp))
+        chain = TChain("Events")
+        chain.Add(ipath+"/"+isamp+"/*"+isamp+"*.root")
+        mainDF = ROOTDataFrame(chain)
+        print("tot Events :", int(mainDF.Count()))       
     else:
         #merge all the sample
         elapsed("Using %s as input files and %s as input sample name."%(str(ilist),isamp))
@@ -221,7 +209,7 @@ for iprocess, processArray in enumerate(processArrays):
         elapsed("(%i of %i) Processing %s channel."%(ichannel+1,len(channelList),channel),1)
         subdict = channelDict[channel]
         doReweight = False
-        if "doReweight" in channelDict[channel].keys() and "TT" in processName :
+        if "doReweight" in channelDict[channel].keys() and ("TT" in processName):# or "ST" in processName) :
             if channelDict[channel]["doReweight"]==1:
                 doReweight = True
         if doReweight:
@@ -275,6 +263,8 @@ for iprocess, processArray in enumerate(processArrays):
                                 rewbinning = reweightDict[channel]['TTB']
                             elif 'TT' in hName:
                                 rewbinning = reweightDict[channel]['TT']
+                            elif 'ST' in hName:
+                                rewbinning = reweightDict[channel]['ST']
                             else:
                                 print('impossible, so far I only consider TT and TTB')
                                 exit()
@@ -318,12 +308,16 @@ for iprocess, processArray in enumerate(processArrays):
                                                             info ]
                                                            ) 
             if doEven and processName!="data_obs":
-                weight_string = "2.0*weight*VHH_Zll_rwt_TO3b_weight*{}".format(str(processSF))
+                weight_string = "2.0*weight*1.0*VHH_Zll_rwt_TO3b_weight*{}".format(str(processSF))
                 cutstring = presel + " && (event%1==0)"
             else:
-                weight_string = "weight*VHH_Zll_rwt_TO3b_weight*{}".format(str(processSF))
+                weight_string = "weight*1.0*VHH_Zll_rwt_TO3b_weight*{}".format(str(processSF))
+                # SF -- Yihui
+                if 'SPweight' in subdict.keys() and (processArray[0]=='TT' or processArray[0]=='TTB'):
+                    if subdict["SPweight"] !='':
+                        print(subdict["SPweight"])
+                        weight_string = subdict["SPweight"]
                 cutstring = presel
-    
             cutstring += "&& ("+processCut+")"
             #================================= Nominal =================================
             addcolumn(varName)
@@ -379,12 +373,6 @@ for iprocess, processArray in enumerate(processArrays):
             systNameList = [i[0] for i in systListofList]
             print("============= systListofList",systListofList)
             elapsed("Created pointer to nominal histogram, next I will plot %i systematics. "%(len(systNameList)),1)
-            #if doReweight and args.addBoostRewUnc:
-            #    # Actually everything is exactly the same, we will just apply different weight at the haddOutputs.py step
-            #    addHisto(cutstring+" && Pass_nominal", "%s_%sUp"%(processName,'CMS_BRewError1_13TeV_2018'), "CMS_BRewError1_13TeV_2018Up", varName,varname_tmp1, weight_string, "",subdict["rewvarNames"][0])
-            #    addHisto(cutstring+" && Pass_nominal", "%s_%sDown"%(processName,'CMS_BRewError1_13TeV_2018'), "CMS_BRewError1_13TeV_2018Down", varName,varname_tmp1, weight_string, "",subdict["rewvarNames"][0])
-            #    addHisto(cutstring+" && Pass_nominal", "%s_%sUp"%(processName,'CMS_BRewError2_13TeV_2018'), "CMS_BRewError2_13TeV_2018Up", varName,varname_tmp1, weight_string, "",subdict["rewvarNames"][0])
-            #    addHisto(cutstring+" && Pass_nominal", "%s_%sDown"%(processName,'CMS_BRewError2_13TeV_2018'), "CMS_BRewError2_13TeV_2018Down", varName,varname_tmp1, weight_string, "",subdict["rewvarNames"][0])
             for isyst, systList in enumerate(systListofList):
                 print "\n"
                 if "Zee" in channel or "Wen" in channel or "wenu" in channel:
@@ -418,35 +406,40 @@ for iprocess, processArray in enumerate(processArrays):
                 #FIXME when bS was called branchSuffix, the variable would get unset and I have no clue why
                 if bS != "":
                     if not drawFromNom:
-                        if '[' in varName:
+#                         if '[' in varName:
                             #bTagWeight_HFUp_pt1_eta0 et al break this convention
                             #btagweight_XUp_... or btagweight_XDown_...
-                            varNameUp = varName.replace('[',"_"+bS+"Up[")
-                            varNameDown = varName.replace('[',"_"+bS+"Down[")
+#                             varNameUp = varName.replace('[',"_"+bS+"Up[")
+#                             varNameDown = varName.replace('[',"_"+bS+"Down[")
                         if '_13TeV' in varName:
                             varNameUp = varName.replace('_13TeV',"_13TeV_"+bS+"Up")
                             varNameDown = varName.replace('_13TeV',"_13TeV_"+bS+"Down")
                         if '_v2' in varName:
                             varNameUp = varName.replace('_v2',"_v2_"+bS+"Up")
                             varNameDown = varName.replace('_v2',"_v2_"+bS+"Down")
-                        elif '[' not in varName and '_13TeV' not in varName:
-                            varNameUp = varName + "_%sUp"%bS
-                            varNameDown = varName + "_%sDown"%bS
+                        if '_v3' in varName:
+                            varNameUp = varName.replace('_v3',"_v3_"+bS+"Up")
+                            varNameDown = varName.replace('_v3',"_v3_"+bS+"Down")
+                        if '_v4' in varName:
+                            varNameUp = varName.replace('_v4',"_v4_"+bS+"Up")
+                            varNameDown = varName.replace('_v4',"_v4_"+bS+"Down")
+#                         elif '[' not in varName and '_13TeV' not in varName:
+#                             varNameUp = varName + "_%sUp"%bS
+#                             varNameDown = varName + "_%sDown"%bS
                     pSUp = "Pass_%sUp"%bS
                     pSDown = "Pass_%sDown"%bS
     
-                    for var in ["controlSample", "VZcontrolSample", "boostedControlSample", "VZboostedControlSample",
-                                "Jet_Pt", "hJetInd1", "hJetInd2",
-                                "HVdPhi", "HVdR", "H_pt", "V_pt", "MET_Pt",
-                                "H_mass", "H_mass_fit_fallback",
-                                "JetsCloseToMET", "dPhi_MET_TkMET",
-                                "htJet30", "HJ1_HJ2_dR",
-                                "nAddJetsFSRsub302p5_puid","_v2"]:
-                        cutstringUp = cutstringUp.replace(var, var+"_%sUp"%bS)
-                        cutstringDown = cutstringDown.replace(var, var+"_%sDown"%bS)
+                    if bS=='unclustEn':
+                        for var in ["MET_Phi", "MET_Pt", "controlSample","_v2","_v3","_v4"]:
+                            cutstringUp = cutstringUp.replace(var, var+"_%sUp"%bS)
+                            cutstringDown = cutstringDown.replace(var, var+"_%sDown"%bS)
+                    else:
+                        for var in ["controlSample","_v2","_v3","_v4"]:
+                            cutstringUp = cutstringUp.replace(var, var+"_%sUp"%bS)
+                            cutstringDown = cutstringDown.replace(var, var+"_%sDown"%bS)
     
-                    weight_stringUp = weight_string.replace("weight","weight_%sUp"%bS)
-                    weight_stringDown = weight_string.replace("weight","weight_%sDown"%bS)
+                    weight_stringUp = weight_string.replace("weight*1.0","weight_%sUp*1.0"%bS)
+                    weight_stringDown = weight_string.replace("weight*1.0","weight_%sDown*1.0"%bS)
                 else:
                 # systWeight is not 1.0
                     # name of syst branches, for example bTagWeight_JES
@@ -456,16 +449,6 @@ for iprocess, processArray in enumerate(processArrays):
                             #weight_PU==0 term prevents divide-by-zero resulting in Nans
                             weight_stringUp = "%s*(1./(weight_PU+1*(weight_PU==0)))*(%sUp)"%(weight_stringUp,systWeight)
                             weight_stringDown = "%s*(1./(weight_PU+1*(weight_PU==0)))*(%sDown)"%(weight_stringDown,systWeight)
-                        elif systWeight == "WJetNLOWeight":
-                            weight_stringUp = "%s*(WJetNLOWeight/1.153)"%weight_stringUp
-                            weight_stringDown = "%s*(1.153/WJetNLOWeight)"%weight_stringDown
-                            #Renormalizing to nominal.Integral() is done while writing the histograms (at the end of this code).
-                        elif systWeight == "recoZReWeight":
-                            weight_stringUp = "%s*(1./recoZReWeight)*(%sUp)"%(weight_stringUp,systWeight)
-                            weight_stringDown = "%s*(1./recoZReWeight)*(%sDown)"%(weight_stringDown,systWeight)
-                        elif systWeight == "recoWReWeight":
-                            weight_stringUp = "%s*(1./recoWReWeight)*(%sUp)"%(weight_stringUp,systWeight)
-                            weight_stringDown = "%s*(1./recoWReWeight)*(%sDown)"%(weight_stringDown,systWeight)
                         elif systWeight == "VJetsNLOvsLOWeight_p0" or systWeight == "VJetsNLOvsLOWeight_p1":
                             weight_stringUp = "%s*(1./VJetsNLOvsLOWeight)*(%sUp)"%(weight_stringUp,systWeight)
                             weight_stringDown = "%s*(1./VJetsNLOvsLOWeight)*(%sDown)"%(weight_stringDown,systWeight)
@@ -488,13 +471,49 @@ for iprocess, processArray in enumerate(processArrays):
                         # up and down branch may be separate
                         weight_stringUp = "%s*(%s)"%(weight_stringUp,systWeight.split(',')[1])
                         weight_stringDown = "%s*(%s)"%(weight_stringDown,systWeight.split(',')[0])
-                #print "branchSuffix " + (bS)
-                #print "varname " + (varName)
-                #print "varnameUp " + (varNameUp)
-                #print "varnameDown " + (varNameDown)
-                #print "weight_stringUp " + (weight_stringUp)
-                #print "weight_stringDown " + (weight_stringDown)
-                #print "systWeight " + (systWeight)
+                # For ZHH NNLO
+                if systWeight == 'ZHHNNLO':
+                    if 'sampleIndex==-21' in processIdx :
+                        addcolumn("LeadGenVBoson_pt")        
+                        weight_stringUp=weight_string+'*( ( (%f+%f*LeadGenVBoson_pt+%f*LeadGenVBoson_pt*LeadGenVBoson_pt)/(%f+%f*LeadGenVBoson_pt+%f*LeadGenVBoson_pt*LeadGenVBoson_pt) )*(LeadGenVBoson_pt>=0&&LeadGenVBoson_pt<=500)  + 0.969835*(LeadGenVBoson_pt>500) )'%(1.13151,-0.000566154,7.02718e-07,0.780538,0.0023697,-3.6377e-06)
+                        weight_stringDown=weight_string+'*( ( (%f+%f*LeadGenVBoson_pt+%f*LeadGenVBoson_pt*LeadGenVBoson_pt)/(%f+%f*LeadGenVBoson_pt+%f*LeadGenVBoson_pt*LeadGenVBoson_pt) )*(LeadGenVBoson_pt>=0&&LeadGenVBoson_pt<=500) + 1.03208*(LeadGenVBoson_pt>500) )'%(0.452161,0.00503546,-7.52023e-06,0.780538,0.0023697,-3.6377e-06)
+                    else:
+                        weight_stringUp=weight_stringUp
+                        weight_stringDown=weight_stringDown
+                # For DY RwT
+                if systWeight == 'CMS_DY_RwT':
+                    if '(sampleIndex/100)' in processIdx :
+                        addcolumn("CMS_vhh_bdt_RwT_DY_2TO3_13TeV")        
+                        weight_stringUp=weight_string+'*(exp({0}*CMS_vhh_bdt_RwT_DY_2TO3_13TeV)+{1})/(exp({2}*CMS_vhh_bdt_RwT_DY_2TO3_13TeV)+{1})'.format('2.2272','0.0100','2.4272')
+                        weight_stringDown=weight_string+'*(exp({0}*CMS_vhh_bdt_RwT_DY_2TO3_13TeV)+{1})/(exp({2}*CMS_vhh_bdt_RwT_DY_2TO3_13TeV)+{1})'.format('2.6272','0.0100','2.4272')
+                    else:
+                        weight_stringUp=weight_stringUp
+                        weight_stringDown=weight_stringDown
+                # For TT RwT
+                if systWeight == 'CMS_TT_RwT':
+                    if 'IsttB==0' in processIdx :
+                        addcolumn("CMS_vhh_bdt_RwT_TT_2TO3_13TeV")        
+                        weight_stringUp=weight_string+'*(exp({0}*CMS_vhh_bdt_RwT_TT_2TO3_13TeV)+{1})/(exp({2}*CMS_vhh_bdt_RwT_TT_2TO3_13TeV)+{1})'.format('1.7827','-0.0003','1.9827')
+                        weight_stringDown=weight_string+'*(exp({0}*CMS_vhh_bdt_RwT_TT_2TO3_13TeV)+{1})/(exp({2}*CMS_vhh_bdt_RwT_TT_2TO3_13TeV)+{1})'.format('2.1827','-0.0003','1.9827')
+                    else:
+                        weight_stringUp=weight_stringUp
+                        weight_stringDown=weight_stringDown
+                # For TTB RwT
+                if systWeight == 'CMS_TTB_RwT':
+                    if 'IsttB>0' in processIdx :
+                        addcolumn("CMS_vhh_bdt_RwT_TTBB_2TO3_13TeV")        
+                        weight_stringUp=weight_string+'*(exp({0}*CMS_vhh_bdt_RwT_TTBB_2TO3_13TeV)+{1})/(exp({2}*CMS_vhh_bdt_RwT_TTBB_2TO3_13TeV)+{1})'.format('1.8847','-0.0035','2.0847')
+                        weight_stringDown=weight_string+'*(exp({0}*CMS_vhh_bdt_RwT_TTBB_2TO3_13TeV)+{1})/(exp({2}*CMS_vhh_bdt_RwT_TTBB_2TO3_13TeV)+{1})'.format('2.2847','-0.0035','2.0847')
+                    else:
+                        weight_stringUp=weight_stringUp
+                        weight_stringDown=weight_stringDown
+                print "branchSuffix " + (bS)
+                print "varname " + (varName)
+                print "varnameUp " + (varNameUp)
+                print "varnameDown " + (varNameDown)
+                print "weight_stringUp " + (weight_stringUp)
+                print "weight_stringDown " + (weight_stringDown)
+                print "systWeight " + (systWeight)
                 addcolumn(varNameUp)
                 addcolumn(varNameDown)
                 addcolumn(weight_stringUp)

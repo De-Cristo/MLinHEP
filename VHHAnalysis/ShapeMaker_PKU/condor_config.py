@@ -4,7 +4,7 @@
 #indir = "/eos/home-y/yilai/VHH4bAnalysisNtuples/clean_bdt_tool_oct22/TEST_1116_updatebtagSF_resolved_realbtag"
 #indir = "/eos/user/y/yilai/VHH4bAnalysisNtuples/clean_bdt_tool_22jan17/TEST_220116_2018_skim_add_RBDT_cate/"
 #indir = '/eos/user/y/yilai/VHH4bAnalysisNtuples/clean_bdt_tool_22jan17/TEST_220122_2018_boosted_skim/'
-indir = "/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/0425_2022/TEST_2018_TMVAv2_0418_hadd/"
+# indir = "/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/0425_2022/TEST_2018_TMVAv2_0418_hadd/"
 # indir = "/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/0425_2022/TEST_2017_TMVAv2_0425_hadd/"
 # indir = "/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/0425_2022/TEST_2016_TMVAv2_0425_hadd/"
 # indir = "/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/2022/2018"
@@ -12,6 +12,8 @@ indir = "/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/0425_2022/TEST_2018
 # indir = "/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/2022/2016"
 # indir = "/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/2022/2016Pre"
 # indir = "/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/2022/2016Post"
+indir = "/eos/user/b/boguo/licheng/TEST_220506_2018_Full/"
+
 vptcut = ""                             # "" for none, "300" for 300 GeV
 nChannelsPerJob = 20 #was 14
 condorDir = "condor"
@@ -36,7 +38,7 @@ doSemiBoosted = False
 giveOverlapToBoosted = False
 addHists = False
 doJEROnly = False
-
+separateWZ = False
 skipList = [""]#sum_WW_0.root","sum_WW_1.root","sum_WW_2.root","sum_WW_3.root","sum_WZ_0.root","sum_WZ_1.root","sum_ZZ_0.root"]
 skipString = 'nothing'#'Run2018'                    # Files with this string in the filename will be skipped
 
