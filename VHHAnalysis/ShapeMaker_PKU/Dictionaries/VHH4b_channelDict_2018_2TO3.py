@@ -33,31 +33,31 @@ SR_4b = '&&VHH_rHH<25'
 
 Resolved_channel = {
     
-#     "R_Zll_Klbdt_SM_3b_bin_SR_Z": {
-#         "channelName": "Zll",
-#         "cutstring": "(isZee || isZmm) " + SR_3b +topology_sel2 + Zmasswindow + KlBDT_SMcouplingbin,
-#         "doEven": 1, 
-#         "doRebin": 1, 
-#         "doVV": 0, 
-#         "drawFromNom": 1, 
-#         "nBins": 9, 
-#         "varNames": ["(CMS_vhh_bdt_Kl_SM_SvB_13TeV+1)/2"],
-#         "xlow": "0",
-#         "xhigh": "1",
-#     },
-    
-    "R_Zll_Klbdt_High_3b_bin_SR_Z": {
+    "R_Zll_Klbdt_SM_3b_bin_SR_Z": {
         "channelName": "Zll",
-        "cutstring": "(isZee || isZmm) " + SR_3b + topology_sel2 + Zmasswindow + KlBDT_Strongcouplingbin,
-        "doEven": 1,
-        "doRebin": 1,
+        "cutstring": "(isZee || isZmm) " + SR_3b +topology_sel2 + Zmasswindow + KlBDT_SMcouplingbin,
+        "doEven": 1, 
+        "doRebin": 1, 
         "doVV": 0, 
         "drawFromNom": 1, 
-        "nBins": 5, 
-        "varNames": ["(CMS_vhh_bdt_Kl_High_SvB_13TeV+1)/2"],
+        "nBins": 9, 
+        "varNames": ["(CMS_vhh_bdt_Kl_SM_SvB_13TeV+1)/2"],
         "xlow": "0",
         "xhigh": "1",
     },
+    
+#     "R_Zll_Klbdt_High_3b_bin_SR_Z": {
+#         "channelName": "Zll",
+#         "cutstring": "(isZee || isZmm) " + SR_3b + topology_sel2 + Zmasswindow + KlBDT_Strongcouplingbin,
+#         "doEven": 1,
+#         "doRebin": 1,
+#         "doVV": 0, 
+#         "drawFromNom": 1, 
+#         "nBins": 5, 
+#         "varNames": ["(CMS_vhh_bdt_Kl_High_SvB_13TeV+1)/2"],
+#         "xlow": "0",
+#         "xhigh": "1",
+#     },
     
 #     "R_Zll_Klbdt_SM_4b_bin_SR_Z": {
 #         "channelName": "Zll",

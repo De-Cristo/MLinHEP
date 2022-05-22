@@ -89,17 +89,6 @@ for d in done:
         h = key[i].ReadObj()
         if h.ClassName() == 'TH1D' or h.ClassName() == 'TH1F':
             hnames[key[i].GetName()]=h.Clone()
-#             #mark!!!
-            if '2018' in d:
-                f_zll_rwt_err = R.TFile("./2018_histo_of_RwT_err.root","READ")
-                if 'SM_3b' in d:
-                    if "DY" in key[i].GetName():
-                        err_hist = 
-                        
-            
-#             if "DY" in key[i].GetName():
-#                 print("===================== DY2016 scale factor used ========================")
-#                 hnames[key[i].GetName()].Scale(1.4)
             if "data" in key[i].GetName():
                 hnames[key[i].GetName()].Scale(0)
         #Boosted

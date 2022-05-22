@@ -473,7 +473,7 @@ for iprocess, processArray in enumerate(processArrays):
                         weight_stringDown = "%s*(%s)"%(weight_stringDown,systWeight.split(',')[0])
                 # For ZHH NNLO
                 if systWeight == 'ZHHNNLO':
-                    if 'sampleIndex==-21' in processIdx :
+                    if 'sampleIndex==-2' in processIdx :
                         addcolumn("LeadGenVBoson_pt")        
                         weight_stringUp=weight_string+'*( ( (%f+%f*LeadGenVBoson_pt+%f*LeadGenVBoson_pt*LeadGenVBoson_pt)/(%f+%f*LeadGenVBoson_pt+%f*LeadGenVBoson_pt*LeadGenVBoson_pt) )*(LeadGenVBoson_pt>=0&&LeadGenVBoson_pt<=500)  + 0.969835*(LeadGenVBoson_pt>500) )'%(1.13151,-0.000566154,7.02718e-07,0.780538,0.0023697,-3.6377e-06)
                         weight_stringDown=weight_string+'*( ( (%f+%f*LeadGenVBoson_pt+%f*LeadGenVBoson_pt*LeadGenVBoson_pt)/(%f+%f*LeadGenVBoson_pt+%f*LeadGenVBoson_pt*LeadGenVBoson_pt) )*(LeadGenVBoson_pt>=0&&LeadGenVBoson_pt<=500) + 1.03208*(LeadGenVBoson_pt>500) )'%(0.452161,0.00503546,-7.52023e-06,0.780538,0.0023697,-3.6377e-06)

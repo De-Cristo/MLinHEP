@@ -25,7 +25,7 @@ from ROOT import *
 gROOT.SetBatch(True)
 import argparse, os, sys
 from array import array
-from Dictionaries.VHH4b_fileDict_2018_2TO4_SM import Zll_fileDict, Wln_fileDict, Znn_fileDict
+from Dictionaries.VHH4b_fileDict_2018_2TO4_High import Zll_fileDict, Wln_fileDict, Znn_fileDict
 from Dictionaries.VHH4b_channelDict_2018_2TO4 import channelDict
 from Dictionaries.VHH4b_sampleDict import Zll_sampleDict, Wln_sampleDict, Znn_sampleDict
 from Dictionaries.VHH4b_binsDict import binsDict
@@ -473,7 +473,7 @@ for iprocess, processArray in enumerate(processArrays):
                         weight_stringDown = "%s*(%s)"%(weight_stringDown,systWeight.split(',')[0])
                 # For ZHH NNLO
                 if systWeight == 'ZHHNNLO':
-                    if 'sampleIndex==-21' in processIdx :
+                    if 'sampleIndex==-2' in processIdx :
                         addcolumn("LeadGenVBoson_pt")        
                         weight_stringUp=weight_string+'*( ( (%f+%f*LeadGenVBoson_pt+%f*LeadGenVBoson_pt*LeadGenVBoson_pt)/(%f+%f*LeadGenVBoson_pt+%f*LeadGenVBoson_pt*LeadGenVBoson_pt) )*(LeadGenVBoson_pt>=0&&LeadGenVBoson_pt<=500)  + 0.969835*(LeadGenVBoson_pt>500) )'%(1.13151,-0.000566154,7.02718e-07,0.780538,0.0023697,-3.6377e-06)
                         weight_stringDown=weight_string+'*( ( (%f+%f*LeadGenVBoson_pt+%f*LeadGenVBoson_pt*LeadGenVBoson_pt)/(%f+%f*LeadGenVBoson_pt+%f*LeadGenVBoson_pt*LeadGenVBoson_pt) )*(LeadGenVBoson_pt>=0&&LeadGenVBoson_pt<=500) + 1.03208*(LeadGenVBoson_pt>500) )'%(0.452161,0.00503546,-7.52023e-06,0.780538,0.0023697,-3.6377e-06)
@@ -484,8 +484,8 @@ for iprocess, processArray in enumerate(processArrays):
                 if systWeight == 'CMS_DY_RwT':
                     if '(sampleIndex/100)' in processIdx :
                         addcolumn("CMS_vhh_bdt_RwT_DY_2TO4_13TeV")        
-                        weight_stringUp=weight_string+'*(exp({0}*CMS_vhh_bdt_RwT_DY_2TO4_13TeV)+{1})/(exp({2}*CMS_vhh_bdt_RwT_DY_2TO4_13TeV)+{1})'.format('1.3217','-0.1335','1.5217')
-                        weight_stringDown=weight_string+'*(exp({0}*CMS_vhh_bdt_RwT_DY_2TO4_13TeV)+{1})/(exp({2}*CMS_vhh_bdt_RwT_DY_2TO4_13TeV)+{1})'.format('1.7217','-0.1335','1.5217')
+                        weight_stringUp=weight_string+'*(exp({0}*CMS_vhh_bdt_RwT_DY_2TO4_13TeV)+{1})/(exp({2}*CMS_vhh_bdt_RwT_DY_2TO4_13TeV)+{1})'.format('2.6753','0.0425','2.8753')
+                        weight_stringDown=weight_string+'*(exp({0}*CMS_vhh_bdt_RwT_DY_2TO4_13TeV)+{1})/(exp({2}*CMS_vhh_bdt_RwT_DY_2TO4_13TeV)+{1})'.format('3.0753','0.0425','2.8753')
                     else:
                         weight_stringUp=weight_stringUp
                         weight_stringDown=weight_stringDown
@@ -493,8 +493,8 @@ for iprocess, processArray in enumerate(processArrays):
                 if systWeight == 'CMS_TT_RwT':
                     if 'IsttB==0' in processIdx :
                         addcolumn("CMS_vhh_bdt_RwT_TT_2TO4_13TeV")        
-                        weight_stringUp=weight_string+'*(exp({0}*CMS_vhh_bdt_RwT_TT_2TO4_13TeV)+{1})/(exp({2}*CMS_vhh_bdt_RwT_TT_2TO4_13TeV)+{1})'.format('2.0191','0.0056','2.2191')
-                        weight_stringDown=weight_string+'*(exp({0}*CMS_vhh_bdt_RwT_TT_2TO4_13TeV)+{1})/(exp({2}*CMS_vhh_bdt_RwT_TT_2TO4_13TeV)+{1})'.format('2.4191','0.0056','2.2191')
+                        weight_stringUp=weight_string+'*(exp({0}*CMS_vhh_bdt_RwT_TT_2TO4_13TeV)+{1})/(exp({2}*CMS_vhh_bdt_RwT_TT_2TO4_13TeV)+{1})'.format('2.0079','0.0048','2.2079')
+                        weight_stringDown=weight_string+'*(exp({0}*CMS_vhh_bdt_RwT_TT_2TO4_13TeV)+{1})/(exp({2}*CMS_vhh_bdt_RwT_TT_2TO4_13TeV)+{1})'.format('2.4079','0.0048','2.2079')
                     else:
                         weight_stringUp=weight_stringUp
                         weight_stringDown=weight_stringDown
@@ -502,8 +502,8 @@ for iprocess, processArray in enumerate(processArrays):
                 if systWeight == 'CMS_TTB_RwT':
                     if 'IsttB>0' in processIdx :
                         addcolumn("CMS_vhh_bdt_RwT_TTBB_2TO4_13TeV")        
-                        weight_stringUp=weight_string+'*(exp({0}*CMS_vhh_bdt_RwT_TTBB_2TO4_13TeV)+{1})/(exp({2}*CMS_vhh_bdt_RwT_TTBB_2TO4_13TeV)+{1})'.format('2.1240','-0.0031','2.3240')
-                        weight_stringDown=weight_string+'*(exp({0}*CMS_vhh_bdt_RwT_TTBB_2TO4_13TeV)+{1})/(exp({2}*CMS_vhh_bdt_RwT_TTBB_2TO4_13TeV)+{1})'.format('2.5240','-0.0031','2.3240')
+                        weight_stringUp=weight_string+'*(exp({0}*CMS_vhh_bdt_RwT_TTBB_2TO4_13TeV)+{1})/(exp({2}*CMS_vhh_bdt_RwT_TTBB_2TO4_13TeV)+{1})'.format('2.1153','-0.0022','2.3153')
+                        weight_stringDown=weight_string+'*(exp({0}*CMS_vhh_bdt_RwT_TTBB_2TO4_13TeV)+{1})/(exp({2}*CMS_vhh_bdt_RwT_TTBB_2TO4_13TeV)+{1})'.format('2.5153','-0.0022','2.3153')
                     else:
                         weight_stringUp=weight_stringUp
                         weight_stringDown=weight_stringDown

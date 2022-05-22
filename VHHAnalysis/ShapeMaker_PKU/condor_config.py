@@ -12,7 +12,7 @@
 # indir = "/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/2022/2016"
 # indir = "/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/2022/2016Pre"
 # indir = "/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/2022/2016Post"
-indir = "/eos/user/b/boguo/licheng/TEST_220506_2018_Full/"
+indir = "/data/pubfs/zhanglic/workspace/VHH4bAnalysisNtuples/0425_2022/TEST_2018_TMVAv2_0418_hadd/"
 
 vptcut = ""                             # "" for none, "300" for 300 GeV
 nChannelsPerJob = 20 #was 14
