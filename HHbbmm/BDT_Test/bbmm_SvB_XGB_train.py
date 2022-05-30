@@ -77,13 +77,6 @@ print('\033[1;34m Reading Data... \033[0m')
 rdf = R.RDataFrame('Events',file)
 
 rdf_dict['signal'] = rdf.Filter('dsid==002')
-
-hi = rdf_dict['signal'].Histo1D('deta_2mu2bj','weight')
-c = R.TCanvas()
-hi.Draw()
-c.SaveAs('test.png')
-exit(0)
-
 rdf_dict['background'] = rdf.Filter('dsid>215&&dsid<225')
 
 variable("deta_2mu2bj", ";#Delta #eta ;",     [25, 0., 5.])
@@ -105,18 +98,18 @@ exit(0)
 
 print('\033[1;34m Preparing training matrix... \033[0m')
 
-np_rdf_dict['target'] = rdf_dict['target'].AsNumpy()
-np_rdf_dict['sea'] = rdf_dict['sea'].AsNumpy()
+np_rdf_dict['signal'] = rdf_dict['signal'].AsNumpy()
+np_rdf_dict['background'] = rdf_dict['background'].AsNumpy()
 
-pd_rdf_dict['target'] = pd.DataFrame(np_rdf_dict['target'])
-pd_rdf_dict['sea'] = pd.DataFrame(np_rdf_dict['sea'])
+pd_rdf_dict['signal'] = pd.DataFrame(np_rdf_dict['signal'])
+pd_rdf_dict['background'] = pd.DataFrame(np_rdf_dict['background'])
 
-pd_rdf_dict['target'].loc[:, "isSig"] = True
-pd_rdf_dict['target'].loc[:, "isBkg"] = False
-pd_rdf_dict['sea'].loc[:, "isSig"] = False
-pd_rdf_dict['sea'].loc[:, "isBkg"] = True
+pd_rdf_dict['signal'].loc[:, "isSig"] = True
+pd_rdf_dict['signal'].loc[:, "isBkg"] = False
+pd_rdf_dict['background'].loc[:, "isSig"] = False
+pd_rdf_dict['background'].loc[:, "isBkg"] = True
 
-all_data = pd.concat([pd_rdf_dict['target'],pd_rdf_dict['sea']],axis=0)
+all_data = pd.concat([pd_rdf_dict['signal'],pd_rdf_dict['background']],axis=0)
 
 train_var = ['VHH_H1_BJet1_pT', 'VHH_H1_BJet2_pT', 'VHH_Vreco4j_HT', \
              'VHH_H1_pT', 'VHH_HH_pT', 'V_pt', \
@@ -216,24 +209,24 @@ scale = len(test_score_xgb_sig) / sum(hist)
 err   = np.sqrt(hist * scale) / scale
 width = (bins[1] - bins[0])
 center = (bins[:-1] + bins[1:]) / 2
-plt.errorbar(center, hist, yerr=err, fmt='o', c='r', label='target (test)')
+plt.errorbar(center, hist, yerr=err, fmt='o', c='r', label='signal (test)')
 
 hist, bins = np.histogram(test_score_xgb_bkg, weights=w_test_score_bkg, bins=bins, range=low_high, density=True)
 scale = len(test_score_xgb_bkg) / sum(hist)
 err   = np.sqrt(hist * scale) / scale
 width = (bins[1] - bins[0])
 center = (bins[:-1] + bins[1:]) / 2
-plt.errorbar(center, hist, yerr=err, fmt='o', c='b', label='sea (test)')
+plt.errorbar(center, hist, yerr=err, fmt='o', c='b', label='background (test)')
 
 plt.legend(loc='best',frameon=True,edgecolor='blue',facecolor='blue') 
 plt.legend()
 plt.xlabel("BDT output")
 plt.ylabel("Arbitrary units")
 # plt.xlim(0,1)
-save_plot_batch('./Test_Distribution_{0}_{1}.png'.format(args.bkg,args.target))
+save_plot_batch('./Test_Distribution.png')
 
 plot_importance(xgbc)
-save_plot_batch('./Variable_importance_{0}_{1}.png'.format(args.bkg,args.target))
+save_plot_batch('./Variable_importance.png')
 
 fpr_xgb, tpr_xgb, _thres = metrics.roc_curve(y_test['isSig'],test_score_xgb[:,1])
 
@@ -249,10 +242,10 @@ plt.text(0.6,0.1,'AUC = {:0.3f}'.format(auc),fontsize=18)
 ax.set_yscale('linear'); ax.set_xlim(0, 1); ax.set_ylim(1e-3, 1)
 ax.set_xlabel('target efficiency', ha='right', x=1.0); ax.set_ylabel('sea efficiency', ha='right', y=1.0)
 ax.legend()
-save_plot_batch('./ROC_curve_{0}_{1}.png'.format(args.bkg,args.target))
+save_plot_batch('./ROC_curve.png')
 
 os.system('mkdir -p XGB_Model')
-xgbc.save_model('XGB_Model/RwT_bdt_{0}_{1}.json'.format(args.bkg,args.target))
+xgbc.save_model('XGB_Model/RwT_bdt.json')
 print('\033[1;33m Saving models to XGB_Model \033[0m')
 
 time_end=timer.time()
