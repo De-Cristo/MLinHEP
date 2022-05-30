@@ -1,28 +1,30 @@
 #from Dictionaries.VHH4b_reweightDict_para_shift7 import reweightDict,reweightValueDict,reweightErrorDict
 # from Dictionaries.VHH4b_reweightDict_para_shift7 import reweightDict,reweightValueDict,reweightError1Dict,reweightError2Dict
 from Dictionaries.VHH4b_reweightDict import reweightDict,reweightValueDict
-from Dictionaries.VHH4b_binsDict import binsDict
+from Dictionaries.VHH4b_binsDict_rwt import binsDict
 import os, sys
 from array import array
 
 histfiles = [i for i in os.listdir('.') if i.startswith("hists_") and i.endswith(".root")]
-out = '2022_2018_Zll'
+out = 'DL_2018_rwt'
 os.system("mkdir -p "+out)
 done = []
 
-scaleFactorforAll= 2*137/58.8
+scaleFactorforAll = 137.0/137.0
 #2*137/36.6
 #2*137/41.53
 #2*137/58.8
 
 VHHfiles = [i for i in os.listdir('.') if i.startswith("hists_")  and "VHH_CV_1_C2V_1_kl_1_hbbhbb_idx-1" in i]
-# channel_list = ['hists_2018_R_Zll_c2vbdt_sm_bin_SR_Z', 'hists_2018_R_Zll_c2vbdt_strong_bin_SR_Z']
 
-channel_list = ['hists_2018_R_Zll_c2vbdt_sm_3b_bin_SR_Z', 'hists_2018_R_Zll_c2vbdt_strong_3b_bin_SR_Z',\
-                'hists_2018_R_Zll_c2vbdt_sm_4b_bin_SR_Z', 'hists_2018_R_Zll_c2vbdt_strong_4b_bin_SR_Z']
+channel_list = ['hists_2018_R_Zll_Klbdt_SM_3b_bin_SR_Z', 'hists_2018_R_Zll_Klbdt_High_3b_bin_SR_Z',\
+                'hists_2018_R_Zll_Klbdt_SM_4b_bin_SR_Z', 'hists_2018_R_Zll_Klbdt_High_4b_bin_SR_Z']
 
-# channel_list = ['hists_2018_R_Zee_c2vbdt_sm_bin_SR_Z', 'hists_2018_R_Zee_c2vbdt_strong_bin_SR_Z',\
-#                 'hists_2018_R_Zmm_c2vbdt_sm_bin_SR_Z', 'hists_2018_R_Zmm_c2vbdt_strong_bin_SR_Z']
+# channel_list = ['hists_2017_R_Zll_Klbdt_SM_3b_bin_SR_Z', 'hists_2017_R_Zll_Klbdt_High_3b_bin_SR_Z',\
+#                 'hists_2017_R_Zll_Klbdt_SM_4b_bin_SR_Z', 'hists_2017_R_Zll_Klbdt_High_4b_bin_SR_Z']
+
+# channel_list = ['hists_2016_R_Zll_Klbdt_SM_3b_bin_SR_Z', 'hists_2016_R_Zll_Klbdt_High_3b_bin_SR_Z',\
+#                 'hists_2016_R_Zll_Klbdt_SM_4b_bin_SR_Z', 'hists_2016_R_Zll_Klbdt_High_4b_bin_SR_Z']
 
 for fl in VHHfiles:
     if not (fl.split("_VHH_CV_1_C2V_1_kl_1_hbbhbb_idx-1")[0] in channel_list):
@@ -34,12 +36,22 @@ for fl in channel_list:
     if "2016" in fl:
         if "pre" in fl:
             cmd = "hadd -f "+out+"/sum_%s_raw.root %s_*"%(fl.replace("pre",""),fl.replace("pre","*"))
+            exe.write('VHHcard  '+fl.replace("pre","") +' '+out+'/sum_%s.root \n'%(fl.replace("pre","")))
+            print "Running command:", cmd
+            os.system(cmd)
+            done.append(out+"/sum_%s_raw.root"%(fl.replace("pre","")))
+        elif "post" in fl:
+            cmd = "hadd -f "+out+"/sum_%s_raw.root %s_*"%(fl.replace("post",""),fl.replace("post","*"))
+            exe.write('VHHcard  '+fl.replace("post","") +' '+out+'/sum_%s.root \n'%(fl.replace("post","")))
+            print "Running command:", cmd
+            os.system(cmd)
+            done.append(out+"/sum_%s_raw.root"%(fl.replace("post","")))
         else:
-            continue
-        exe.write('VHHcard  '+fl.replace("pre","") +' '+out+'/sum_%s.root \n'%(fl.replace("pre","")))
-        print "Running command:", cmd
-        os.system(cmd)
-        done.append(out+"/sum_%s_raw.root"%(fl.replace("pre","")))
+            cmd = "hadd -f "+out+"/sum_%s_raw.root %s_*"%(fl,fl)
+            exe.write('VHHcard  '+fl +' '+out+'/sum_%s.root \n'%(fl))
+            print "Running command:", cmd
+            os.system(cmd)
+            done.append(out+"/sum_%s_raw.root"%(fl))
     else:
         cmd = "hadd -f "+out+"/sum_%s_raw.root %s_*"%(fl,fl)
         exe.write('VHHcard  '+fl +' '+out+'/sum_%s.root \n'%(fl))
@@ -77,9 +89,6 @@ for d in done:
         h = key[i].ReadObj()
         if h.ClassName() == 'TH1D' or h.ClassName() == 'TH1F':
             hnames[key[i].GetName()]=h.Clone()
-            #if "TTB" in key[i].GetName():
-            #    print("===================== TTB scale factor used ========================")
-            #    hnames[key[i].GetName()].Scale(1.32)
             if "data" in key[i].GetName():
                 hnames[key[i].GetName()].Scale(0)
         #Boosted

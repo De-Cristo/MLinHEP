@@ -2,101 +2,101 @@
 
 DY_fileDict = {
     "DYToLL_M-50_Inc_madgraph": [
-        ["DY", "(sampleIndex/100)==120&&weight>0", 1.0 , "DYToLL_M-50_Inc_madgraph"]
+        ["DY", "(sampleIndex/100)==120&&weight>0&&weight<10&&VHH_nBJets==2", 1.004 * 80.934/877.797 , "DYToLL_M-50_Inc_madgraph"]
     ],
     
     "DYToLL_M-50_HT70to100_madgraph": [
-        ["DY", "(sampleIndex/100)==110&&weight>0 ", 1.0 , "DYToLL_M-50_HT70to100_madgraph"]
+        ["DY", "(sampleIndex/100)==110&&weight>0&&weight<10&&VHH_nBJets==2", 1.004 * 80.934/877.797 , "DYToLL_M-50_HT70to100_madgraph"]
     ],
     
     "DYToLL_M-50_HT100to200_madgraph": [
-        ["DY", "(sampleIndex/100)==111&&weight>0 ", 1.0 , "DYToLL_M-50_HT100to200_madgraph"]
+        ["DY", "(sampleIndex/100)==111&&weight>0&&weight<10&&VHH_nBJets==2", 1.004 * 80.934/877.797 , "DYToLL_M-50_HT100to200_madgraph"]
     ], 
     
     "DYToLL_M-50_HT200to400_madgraph": [
-        ["DY", "(sampleIndex/100)==112&&weight>0 ", 1.0 , "DYToLL_M-50_HT200to400_madgraph"]
+        ["DY", "(sampleIndex/100)==112&&weight>0&&weight<10&&VHH_nBJets==2", 1.004 * 80.934/877.797 , "DYToLL_M-50_HT200to400_madgraph"]
     ],
     
     "DYToLL_M-50_HT400to600_madgraph": [
-        ["DY", "(sampleIndex/100)==113&&weight>0 ", 1.0 , "DYToLL_M-50_HT400to600_madgraph"]
+        ["DY", "(sampleIndex/100)==113&&weight>0&&weight<10&&VHH_nBJets==2", 1.004 * 80.934/877.797 , "DYToLL_M-50_HT400to600_madgraph"]
     ],
     
     "DYToLL_M-50_HT600to800_madgraph": [
-        ["DY", "(sampleIndex/100)==114&&weight>0 ", 1.0 , "DYToLL_M-50_HT600to800_madgraph"]
+        ["DY", "(sampleIndex/100)==114&&weight>0&&weight<10&&VHH_nBJets==2", 1.004 * 80.934/877.797 , "DYToLL_M-50_HT600to800_madgraph"]
     ],
     
     "DYToLL_M-50_HT800to1200_madgraph": [
-        ["DY", "(sampleIndex/100)==115&&weight>0 ", 1.0 , "DYToLL_M-50_HT800to1200_madgraph"]
+        ["DY", "(sampleIndex/100)==115&&weight>0&&weight<10&&VHH_nBJets==2", 1.004 * 80.934/877.797 , "DYToLL_M-50_HT800to1200_madgraph"]
     ],
     
     "DYToLL_M-50_HT1200to2500_madgraph": [
-        ["DY", "(sampleIndex/100)==116&&weight>0 ", 1.0 , "DYToLL_M-50_HT1200to2500_madgraph"]
+        ["DY", "(sampleIndex/100)==116&&weight>0&&weight<10&&VHH_nBJets==2", 1.004 * 80.934/877.797 , "DYToLL_M-50_HT1200to2500_madgraph"]
     ],
     
     "DYToLL_M-50_HT2500toInf_madgraph": [
-        ["DY", "(sampleIndex/100)==117&&weight>0 ", 1.0 , "DYToLL_M-50_HT2500toInf_madgraph"]
+        ["DY", "(sampleIndex/100)==117&&weight>0&&weight<10&&VHH_nBJets==2", 1.004 * 80.934/877.797 , "DYToLL_M-50_HT2500toInf_madgraph"]
     ],
     
     "DYToLL_M10-50_Inc_madgraph": [
-        ["DY", "(sampleIndex/100)==119&&weight>0 ", 1.0 , "DYToLL_M10-50_Inc_madgraph"]
+        ["DY", "(sampleIndex/100)==119&&weight>0&&weight<10&&VHH_nBJets==2", 1.004 * 80.934/877.797 , "DYToLL_M10-50_Inc_madgraph"]
     ]
 }
 
 top_fileDict = {
     "ST_t-channel_eleDecays": [
-        ["s_Top", "sampleIndex==19", 1.0, "ST_t-channel_eleDecays"]
+        ["s_Top", "sampleIndex==19&&weight>0&&VHH_nBJets==3", 1.0, "ST_t-channel_eleDecays"]
     ], 
     "ST_t-channel_muDecays": [
-        ["s_Top", "sampleIndex==18", 1.0, "ST_t-channel_muDecays"]
+        ["s_Top", "sampleIndex==18&&weight>0&&VHH_nBJets==3", 1.0, "ST_t-channel_muDecays"]
     ], 
     "ST_t-channel_tauDecays": [
-        ["s_Top", "sampleIndex==17", 1.0, "ST_t-channel_tauDecays"]
+        ["s_Top", "sampleIndex==17&&weight>0&&VHH_nBJets==3", 1.0, "ST_t-channel_tauDecays"]
     ], 
     "ST_tW_antitop_5f_noFullHad": [
-        ["s_Top", "sampleIndex==21", 1.0, "ST_tW_antitop_5f_noFullHad"]
+        ["s_Top", "sampleIndex==21&&weight>0&&VHH_nBJets==3", 1.0, "ST_tW_antitop_5f_noFullHad"]
     ],
     "ST_tW_top_5f_noFullHad": [
-        ["s_Top", "sampleIndex==20", 1.0, "ST_tW_top_5f_noFullHad"]
+        ["s_Top", "sampleIndex==20&&weight>0&&VHH_nBJets==3", 1.0, "ST_tW_top_5f_noFullHad"]
     ],
     "ST_s-c_4f_lep": [
-        ["s_Top", "sampleIndex==16", 1.0, "ST_s-c_4f_lep"]
+        ["s_Top", "sampleIndex==16&&weight>0&&VHH_nBJets==3", 1.0, "ST_s-c_4f_lep"]
     ],
     
 
     "TT_AllHadronic": [
-        ["TT", "sampleIndex==212&&IsttB==0&&weight>0 ", 1.0, "TT_AllHadronic"]
+        ["TT", "sampleIndex==212&&IsttB==0&&weight>0&&VHH_nBJets==2 ", 0.989 * 149.144/1476.517, "TT_AllHadronic"]
     ], 
     "TT_DiLep_NoPSWeights": [
-        ["TT", "sampleIndex==202&&IsttB==0&&weight>0 ", 1.0, "TT_DiLep_NoPSWeights"]
+        ["TT", "sampleIndex==202&&IsttB==0&&weight>0&&VHH_nBJets==2 ", 0.989 * 149.144/1476.517, "TT_DiLep_NoPSWeights"]
     ], 
     "TT_SingleLep": [
-        ["TT", "sampleIndex==203&&IsttB==0&&weight>0 ", 1.0, "TT_SingleLep"]
+        ["TT", "sampleIndex==203&&IsttB==0&&weight>0&&VHH_nBJets==2 ", 0.989 * 149.144/1476.517, "TT_SingleLep"]
     ],
 
     "TTBB_AllHadronic": [
-        ["TTB", "sampleIndex==26&&IsttB>0&&weight>0 ", 1.0, "TTBB_AllHadronic"]
+        ["TTB", "sampleIndex==26&&IsttB>0&&weight>0&&VHH_nBJets==2 ", 0.989 * 63.185/61.984, "TTBB_AllHadronic"]
     ], 
     "TTBB_DiLep": [
-        ["TTB", "sampleIndex==25&&IsttB>0&&weight>0 ", 1.0, "TTBB_DiLep"]
+        ["TTB", "sampleIndex==25&&IsttB>0&&weight>0&&VHH_nBJets==2 ", 0.989 * 63.185/61.984, "TTBB_DiLep"]
     ], 
     "TTBB_SingleLep": [
-        ["TTB", "sampleIndex==24&&IsttB>0&&weight>0 ", 1.0, "TTBB_SingleLep"]
+        ["TTB", "sampleIndex==24&&IsttB>0&&weight>0&&VHH_nBJets==2 ", 0.989 * 63.185/61.984, "TTBB_SingleLep"]
     ],
         
     "TTWLNuJets": [
-        ["TTV","sampleIndex==205" , 1.0, "TTWLNuJets"]
+        ["TTV","sampleIndex==205&&weight>0&&VHH_nBJets==3" , 1.0, "TTWLNuJets"]
     ], 
     "TTWQQJets": [
-        ["TTV","sampleIndex==215" , 1.0, "TTWQQJets"]
+        ["TTV","sampleIndex==215&&weight>0&&VHH_nBJets==3" , 1.0, "TTWQQJets"]
     ],    
     "TTZLLNuNuJets": [
-        ["TTV","sampleIndex==216" , 1.0, "TTZLLNuNuJets"]
+        ["TTV","sampleIndex==216&&weight>0&&VHH_nBJets==3" , 1.0, "TTZLLNuNuJets"]
     ], 
     "TTZQQJets": [
-        ["TTV","sampleIndex==217" , 1.0, "TTZQQJets"]
+        ["TTV","sampleIndex==217&&weight>0&&VHH_nBJets==3" , 1.0, "TTZQQJets"]
     ],    
     "ttHTobb_M125": [
-        ["ttH","sampleIndex==22" , 1.0, "ttHTobb_M125"]
+        ["ttH","sampleIndex==22&&weight>0&&VHH_nBJets==3" , 1.0, "ttHTobb_M125"]
     ], 
 
 }
@@ -139,28 +139,28 @@ else:
     }
     ZHH4b_fileDict={
         "ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0": [
-                ["VHH_CV_1_C2V_1_kl_1_hbbhbb", "sampleIndex==-2101010 ", 1.0, "ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0"] 
-            ], 
+                ["VHH_CV_1_C2V_1_kl_1_hbbhbb", "sampleIndex==-2101010&&weight>0&&VHH_nBJets==3 ", 1.0, "ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0"] 
+            ],
         "ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0": [
-                ["VHH_CV_0p5_C2V_1_kl_1_hbbhbb", "sampleIndex==-2051010 ", 1.0, "ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0"] 
+                ["VHH_CV_0p5_C2V_1_kl_1_hbbhbb", "sampleIndex==-2051010&&weight>0&&VHH_nBJets==3 ", 1.0, "ZHHTo4B_CV_0_5_C2V_1_0_C3_1_0"] 
             ],
         "ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0": [
-                ["VHH_CV_1p5_C2V_1_kl_1_hbbhbb", "sampleIndex==-2151010 ", 1.0, "ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0"] 
+                ["VHH_CV_1p5_C2V_1_kl_1_hbbhbb", "sampleIndex==-2151010&&weight>0&&VHH_nBJets==3 ", 1.0, "ZHHTo4B_CV_1_5_C2V_1_0_C3_1_0"] 
             ],
         "ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0": [
-                ["VHH_CV_1_C2V_0_kl_1_hbbhbb", "sampleIndex==-2100010 ", 1.0, "ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0"] 
+                ["VHH_CV_1_C2V_0_kl_1_hbbhbb", "sampleIndex==-2100010&&weight>0&&VHH_nBJets==3 ", 1.0, "ZHHTo4B_CV_1_0_C2V_0_0_C3_1_0"] 
             ],
         "ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0": [
-                ["VHH_CV_1_C2V_2_kl_1_hbbhbb", "sampleIndex==-2102010 ", 1.0, "ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0"] 
+                ["VHH_CV_1_C2V_2_kl_1_hbbhbb", "sampleIndex==-2102010&&weight>0&&VHH_nBJets==3 ", 1.0, "ZHHTo4B_CV_1_0_C2V_2_0_C3_1_0"] 
             ],
         "ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0": [
-                ["VHH_CV_1_C2V_1_kl_0_hbbhbb", "sampleIndex==-2101000 ", 1.0, "ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0"] 
+                ["VHH_CV_1_C2V_1_kl_0_hbbhbb", "sampleIndex==-2101000&&weight>0&&VHH_nBJets==3 ", 1.0, "ZHHTo4B_CV_1_0_C2V_1_0_C3_0_0"] 
             ],
         "ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0": [
-                ["VHH_CV_1_C2V_1_kl_2_hbbhbb", "sampleIndex==-2101020 ", 1.0, "ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0"] 
+                ["VHH_CV_1_C2V_1_kl_2_hbbhbb", "sampleIndex==-2101020&&weight>0&&VHH_nBJets==3 ", 1.0, "ZHHTo4B_CV_1_0_C2V_1_0_C3_2_0"] 
             ],
         "ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0": [
-                ["VHH_CV_1_C2V_1_kl_20_hbbhbb", "sampleIndex==-21010200 ", 1.0, "ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0"] 
+                ["VHH_CV_1_C2V_1_kl_20_hbbhbb", "sampleIndex==-21010200&&weight>0&&VHH_nBJets==3 ", 1.0, "ZHHTo4B_CV_1_0_C2V_1_0_C3_20_0"] 
             ],
     }
 

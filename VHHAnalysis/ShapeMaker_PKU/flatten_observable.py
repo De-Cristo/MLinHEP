@@ -10,7 +10,7 @@ from condor_config import indir as ntuple_path
 #WH_signal = ["*WplusH125_powheg*.root","*WminusH125_powheg*.root"]
 #ZH_signal = ["*ZH125_ZLL_powheg*.root","*ZH125_ZNuNu_powheg*.root","*ggZH125_ZLL_powheg*.root","*ggZH125_ZNuNu_powheg*.root"]
 
-VHH_signal = ["/ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0/*root"]
+VHH_signal = ["/ZHHTo4B_CV_1_0_C2V_1_0_C3_1_0*/*root"]
 # VHH_signal = ["/WHHTo4B_CV_1_0_C2V_1_0_C3_20_0/*root"]
 
 #selection = "V_pt>=150&&isWenu&&controlSample==0&&V_pt<=250&&boostedCategory==0"
