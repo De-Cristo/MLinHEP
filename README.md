@@ -15,7 +15,7 @@ Contains the tools that mainly developed for VHH analysis on CMS experiment. But
 ### 1. XGBoost Tools
 BDT classifiers based on [XGBoost](https://xgboost.readthedocs.io/en/stable/tutorials/index.html) with the python sk-learn interface/API. They can be used for variable plotting, correlation calculation, etc. Also the training results are also visiable, such as variable importances, validation plots, etc.
 
-> Now the main parts of this tool has been independantly implemented in [BDT4HEP](#2.-BDT-Toolkits-(for-HEP), but you can still find examples in this [part](VHHAnalysis/).
+> Now the main parts of this tool has been independantly implemented in [BDT4HEP](#2.-BDT-Toolkits-(for-HEP)), but you can still find examples in this [part](VHHAnalysis/).
 
 ### 2. Standard generation process in CMSSW
 The implemented scripts to generate samples from the truth level until NANO-AOD files.
@@ -29,4 +29,7 @@ What's more, for official tools recommended by CMS higgs group, the [HiggsCombin
 ---
 ## 2. BDT Toolkits (for HEP)
 Boost Decision Tree is one of the most popular Reinforcement Learning technique adapted in Particle Physics experiment study. This repo provide the python interface to apply BDT to the HEP data.
+
+### 1. TMVA Classification
+TMVA is a machine learning interface in ROOT. This repo give an example about doing classification with TMVA with pyROOT. It is a very easy using and adapting tool for beginner. And a GUI micro based on ROOT can also be found to do the visialization and evaluation of the BDT training.
 
