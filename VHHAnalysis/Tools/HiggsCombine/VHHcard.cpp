@@ -112,13 +112,16 @@ int main(int argc, char *argv[]) {
 
   } else if (inputhist.find("Zmm")!=string::npos || inputhist.find("Zee")!=string::npos || inputhist.find("Zll")!=string::npos) {
       if (inputhist.find("2018")!=string::npos){
-        cb.cp().AddSyst(cb, "lumi_13TeV_2018", "lnN", SystMap<>::init(1.025));
+        cb.cp().AddSyst(cb, "lumi_13TeV_2018", "lnN", SystMap<>::init(1.015));
+        cb.cp().AddSyst(cb, "lumi_13TeV_1718", "lnN", SystMap<>::init(1.002));
+        cb.cp().AddSyst(cb, "lumi_13TeV_correlated", "lnN", SystMap<>::init(1.020));
         cb.cp().AddSyst(cb, "BR_hbb", "lnN", SystMapAsymm<>::init(0.9747, 1.0248));
 
         cb.cp().signals().AddSyst(cb, "pdf_Higgs_VHH", "lnN", SystMap<>::init(1.028));
         cb.cp().signals().AddSyst(cb, "QCDscale_VHH", "lnN", SystMapAsymm<>::init(0.973, 1.034));
 
         cb.cp().AddSyst(cb, "CMS_pileup_2018", "shape", SystMap<>::init(1.00));
+          
         cb.cp().AddSyst(cb, "CMS_btag_HF_2016_2017_2018", "shape", SystMap<>::init(1.00));
         cb.cp().AddSyst(cb, "CMS_btag_LF_2016_2017_2018", "shape", SystMap<>::init(1.00));
         cb.cp().AddSyst(cb, "CMS_btag_cferr1_2016_2017_2018", "shape", SystMap<>::init(1.00));
@@ -130,24 +133,45 @@ int main(int argc, char *argv[]) {
         cb.cp().AddSyst(cb, "CMS_btag_jes_2018", "shape", SystMap<>::init(1.00));
         cb.cp().AddSyst(cb, "CMS_PNet_2018", "shape", SystMap<>::init(1.00));
 
-//         cb.cp().AddSyst(cb, "CMS_res_j_2018", "shape", SystMap<>::init(1.00));
-//         cb.cp().AddSyst(cb, "CMS_eff_e_2018", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_res_j_2018", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_Abs", "shape", SystMap<>::init(1.00));
+        
+        cb.cp().AddSyst(cb, "CMS_scale_j_Abs_2018", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_BBEC1", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_BBEC1_2018", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_EC2", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_EC2_2018", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_FlavQCD", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_HF", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_HF_2018", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_RelBal", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_RelSample_2018", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_MSD_JMS_2018", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_MSD_JMR_2018", "shape", SystMap<>::init(1.00));
+        cb.cp().process(sig_procs).AddSyst(cb, "CMS_ZHHNNLO", "shape", SystMap<>::init(1.00));
+          
         cb.cp().AddSyst(cb, "CMS_eff_m_2018", "shape", SystMap<>::init(1.00));
-//         cb.cp().process({"DY"}).AddSyst(cb, "CMS_DYNLO_P0_", "shape", SystMap<>::init(1.00));
-//         cb.cp().process({"DY"}).AddSyst(cb, "CMS_DYNLO_P1_", "shape", SystMap<>::init(1.00));
-//         TT_prefit=1.0
-//         TTB_prefit=1.0
-//         cb.cp().channel(['Wen']).process(["TT"]).AddSyst(cb, "CMS_TT_norm"+str(year), "rateParam", ch.SystMap()(TT_prefit));
-//         cb.cp().channel(['Wen']).process(["TTB"]).AddSyst(cb, "CMS_TTB_norm"+str(year), "rateParam", ch.SystMap()(TTB_prefit));
+        cb.cp().process({"DY"}).AddSyst(cb, "CMS_DYNLO_P0_", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"DY"}).AddSyst(cb, "CMS_DYNLO_P1_", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"DY"}).AddSyst(cb, "CMS_DY_RwT", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"TT"}).AddSyst(cb, "CMS_TT_RwT", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"TTB"}).AddSyst(cb, "CMS_TTB_RwT", "shape", SystMap<>::init(1.00));
+        float TT_prefit=1.0;
+        float DY_prefit=1.0;
+        cb.cp().process({"TT","TTB"}).AddSyst(cb, "CMS_TT_norm_2016_2017_2018", "rateParam", SystMap<>::init(TT_prefit));
+        cb.cp().process({"DY"}).AddSyst(cb, "CMS_DY_norm_2016_2017_2018", "rateParam", SystMap<>::init(DY_prefit));
       }
       else if (inputhist.find("2017")!=string::npos){
-        cb.cp().AddSyst(cb, "lumi_13TeV_2017", "lnN", SystMap<>::init(1.025));
+        cb.cp().AddSyst(cb, "lumi_13TeV_2017", "lnN", SystMap<>::init(1.020));
+        cb.cp().AddSyst(cb, "lumi_13TeV_1718", "lnN", SystMap<>::init(1.006));
+        cb.cp().AddSyst(cb, "lumi_13TeV_correlated", "lnN", SystMap<>::init(1.009));
         cb.cp().AddSyst(cb, "BR_hbb", "lnN", SystMapAsymm<>::init(0.9747, 1.0248));
 
         cb.cp().signals().AddSyst(cb, "pdf_Higgs_VHH", "lnN", SystMap<>::init(1.028));
         cb.cp().signals().AddSyst(cb, "QCDscale_VHH", "lnN", SystMapAsymm<>::init(0.973, 1.034));
 
         cb.cp().AddSyst(cb, "CMS_pileup_2017", "shape", SystMap<>::init(1.00));
+          
         cb.cp().AddSyst(cb, "CMS_btag_HF_2016_2017_2018", "shape", SystMap<>::init(1.00));
         cb.cp().AddSyst(cb, "CMS_btag_LF_2016_2017_2018", "shape", SystMap<>::init(1.00));
         cb.cp().AddSyst(cb, "CMS_btag_cferr1_2016_2017_2018", "shape", SystMap<>::init(1.00));
@@ -159,18 +183,44 @@ int main(int argc, char *argv[]) {
         cb.cp().AddSyst(cb, "CMS_btag_jes_2017", "shape", SystMap<>::init(1.00));
         cb.cp().AddSyst(cb, "CMS_PNet_2017", "shape", SystMap<>::init(1.00));
 
-//         cb.cp().AddSyst(cb, "CMS_res_j_2017", "shape", SystMap<>::init(1.00));
-//         cb.cp().AddSyst(cb, "CMS_eff_e_2017", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_res_j_2017", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_Abs", "shape", SystMap<>::init(1.00));
+        
+        cb.cp().AddSyst(cb, "CMS_scale_j_Abs_2017", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_BBEC1", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_BBEC1_2017", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_EC2", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_EC2_2017", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_FlavQCD", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_HF", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_HF_2017", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_RelBal", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_RelSample_2017", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_MSD_JMS_2017", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_MSD_JMR_2017", "shape", SystMap<>::init(1.00));
+        cb.cp().process(sig_procs).AddSyst(cb, "CMS_ZHHNNLO", "shape", SystMap<>::init(1.00));
+          
         cb.cp().AddSyst(cb, "CMS_eff_m_2017", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"DY"}).AddSyst(cb, "CMS_DYNLO_P0_", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"DY"}).AddSyst(cb, "CMS_DYNLO_P1_", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"DY"}).AddSyst(cb, "CMS_DY_RwT", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"TT"}).AddSyst(cb, "CMS_TT_RwT", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"TTB"}).AddSyst(cb, "CMS_TTB_RwT", "shape", SystMap<>::init(1.00));
+        float TT_prefit=1.0;
+        float DY_prefit=1.0;
+        cb.cp().process({"TT","TTB"}).AddSyst(cb, "CMS_TT_norm_2016_2017_2018", "rateParam", SystMap<>::init(TT_prefit));
+        cb.cp().process({"DY"}).AddSyst(cb, "CMS_DY_norm_2016_2017_2018", "rateParam", SystMap<>::init(DY_prefit));
       }
       else if (inputhist.find("2016")!=string::npos){
-        cb.cp().AddSyst(cb, "lumi_13TeV_2016", "lnN", SystMap<>::init(1.025));
+        cb.cp().AddSyst(cb, "lumi_13TeV_2016", "lnN", SystMap<>::init(1.010));
+        cb.cp().AddSyst(cb, "lumi_13TeV_correlated", "lnN", SystMap<>::init(1.006));
         cb.cp().AddSyst(cb, "BR_hbb", "lnN", SystMapAsymm<>::init(0.9747, 1.0248));
 
         cb.cp().signals().AddSyst(cb, "pdf_Higgs_VHH", "lnN", SystMap<>::init(1.028));
         cb.cp().signals().AddSyst(cb, "QCDscale_VHH", "lnN", SystMapAsymm<>::init(0.973, 1.034));
 
         cb.cp().AddSyst(cb, "CMS_pileup_2016", "shape", SystMap<>::init(1.00));
+          
         cb.cp().AddSyst(cb, "CMS_btag_HF_2016_2017_2018", "shape", SystMap<>::init(1.00));
         cb.cp().AddSyst(cb, "CMS_btag_LF_2016_2017_2018", "shape", SystMap<>::init(1.00));
         cb.cp().AddSyst(cb, "CMS_btag_cferr1_2016_2017_2018", "shape", SystMap<>::init(1.00));
@@ -182,9 +232,33 @@ int main(int argc, char *argv[]) {
         cb.cp().AddSyst(cb, "CMS_btag_jes_2016", "shape", SystMap<>::init(1.00));
         cb.cp().AddSyst(cb, "CMS_PNet_2016", "shape", SystMap<>::init(1.00));
 
-//         cb.cp().AddSyst(cb, "CMS_res_j_2016", "shape", SystMap<>::init(1.00));
-//         cb.cp().AddSyst(cb, "CMS_eff_e_2016", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_res_j_2016", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_Abs", "shape", SystMap<>::init(1.00));
+        
+        cb.cp().AddSyst(cb, "CMS_scale_j_Abs_2016", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_BBEC1", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_BBEC1_2016", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_EC2", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_EC2_2016", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_FlavQCD", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_HF", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_HF_2016", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_RelBal", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_scale_j_RelSample_2016", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_MSD_JMS_2016", "shape", SystMap<>::init(1.00));
+        cb.cp().AddSyst(cb, "CMS_MSD_JMR_2016", "shape", SystMap<>::init(1.00));
+        cb.cp().process(sig_procs).AddSyst(cb, "CMS_ZHHNNLO", "shape", SystMap<>::init(1.00));
+          
         cb.cp().AddSyst(cb, "CMS_eff_m_2016", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"DY"}).AddSyst(cb, "CMS_DYNLO_P0_", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"DY"}).AddSyst(cb, "CMS_DYNLO_P1_", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"DY"}).AddSyst(cb, "CMS_DY_RwT", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"TT"}).AddSyst(cb, "CMS_TT_RwT", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"TTB"}).AddSyst(cb, "CMS_TTB_RwT", "shape", SystMap<>::init(1.00));
+        float TT_prefit=1.0;
+        float DY_prefit=1.0;
+        cb.cp().process({"TT","TTB"}).AddSyst(cb, "CMS_TT_norm_2016_2017_2018", "rateParam", SystMap<>::init(TT_prefit));
+        cb.cp().process({"DY"}).AddSyst(cb, "CMS_DY_norm_2016_2017_2018", "rateParam", SystMap<>::init(DY_prefit));
       }
     
 

@@ -51,37 +51,6 @@ train_var = {
     'No4_btag_pt' : No4_btag_pt,    
 }
 
-
-# VHH_H2H1_pt_ratio = array('f', [0])
-# VHH_HH_m = array('f', [0])
-# selLeptons_pt_0 = array('f', [0])
-# dilep_dPhi = array('f', [0])
-# dilep_dEta = array('f', [0])
-# ptl1OVERptl0 = array('f', [0])
-# ptl0OVERV_mass = array('f', [0])
-# VHH_V_H2_dPhi = array('f', [0])
-# VHH_HH_dR = array('f', [0])
-# VHH_H1_pT = array('f', [0])
-# V_pt = array('f', [0])
-# VHH_H1_BJet_dR = array('f', [0])
-# VHH_H2_BJet_dR = array('f', [0])
-
-# train_var = {
-#     'VHH_H2H1_pt_ratio' : VHH_H2H1_pt_ratio,
-#     'VHH_HH_m' : VHH_HH_m,
-#     'selLeptons_pt_0' : selLeptons_pt_0,
-#     'dilep_dPhi' : dilep_dPhi,
-#     'dilep_dEta' : dilep_dEta,
-#     'ptl1OVERptl0' : ptl1OVERptl0,
-#     'ptl0OVERV_mass' : ptl0OVERV_mass,
-#     'VHH_V_H2_dPhi' : VHH_V_H2_dPhi,
-#     'VHH_HH_dR' : VHH_HH_dR,
-#     'VHH_H1_pT' : VHH_H1_pT,
-#     'V_pt' : V_pt,
-#     'VHH_H1_BJet_dR' : VHH_H1_BJet_dR,
-#     'VHH_H2_BJet_dR' : VHH_H2_BJet_dR,
-# }
-
 R.TMVA.Tools.Instance()
 reader = R.TMVA.Reader()
 

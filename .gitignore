@@ -8,8 +8,16 @@
 
 safehouse/
 
-test_plot*/
+*test*/
 
 Pre_*/
 
 __pycache__/
+
+*Test*/
+
+*output*/
+
+*Sample*/
+
+
