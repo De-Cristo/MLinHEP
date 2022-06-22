@@ -59,7 +59,8 @@ time_start=timer.time()
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-m", "--MultThread",dest="MT",    type=int, default=16,   help="How many threads will be used (default = 16)" )
-parser.add_argument("-d", "--Direction", dest="dir",   type=str, default='./Application_Samples/', help="Direction of the training samples (default = ./Application_Samples/)")
+parser.add_argument("-d", "--Direction", dest="dir",   type=str, default='./TEST_SAMPLE/', help="Direction of the training samples (default = ./TEST_SAMPLE/)")
+parser.add_argument("-ct", "--CouplingType",dest="CT", type=str, default='C2V',help="CouplingType (default = C2V [Kl,CV]")
 args = parser.parse_args()
 
 if args.MT != 0:
@@ -71,51 +72,64 @@ else:
 path = os.path.abspath(args.dir)
 _file_pool = os.listdir(path)
 file_pool = []
+
 for _file in _file_pool:
-    if _file in file_list_all:
-        for _root in os.listdir(path+'/'+_file):
-            if '.root' in _root:
-                file_pool.append(path+'/'+_file+'/'+_root)
+    if '.root' in _file:
+        file_pool.append(path+'/'+_file)
     #endif
 #endloop
     
-XGBmodel = './XGB_Model/C2V_bdt.json'
+XGBmodel = './C2V_Training/XGB_Model/{}_bdt.json'.format(args.CT)
 
 xgbc = XGBClassifier()
 xgbc.load_model(XGBmodel)
 print('\033[1;33m {} models loaded \033[0m'.format(XGBmodel))
 
-def apply_c2v_bdt(file):
+def apply_bdt(file):
+    print(file)
     rdf_loop = R.RDataFrame('Events',file)
     np_rdf_loop = rdf_loop.AsNumpy()
     pd_rdf_loop = pd.DataFrame(np_rdf_loop)
     
-    train_var = ['VHH_H2H1_pt_ratio','selLeptons_pt_1', 'VHH_Vreco4j_HT',\
-                 'VHH_V_H2_dPhi', 'VHH_V_HH_dPhi', 'VHH_V_HH_pT_Ratio',\
+    train_var = ['VHH_H2H1_pt_ratio','VHH_HH_m','selLeptons_pt_0',\
+                 'dilep_dPhi','dilep_dEta','ptl1OVERptl0','ptl0OVERV_mass',\
+                 'VHH_V_H2_dPhi', 'VHH_HH_dR', \
+                 'VHH_H1_pT','V_pt', \
                  'VHH_H1_BJet_dR', 'VHH_H2_BJet_dR', \
-                 'VHH_H2_e',\
-                 'VHH_HH_m', 'VHH_HH_dR', \
                 ]
+
+#     train_var = ['VHH_H2H1_pt_ratio','selLeptons_pt_1', 'VHH_Vreco4j_HT',\
+#                  'VHH_V_H2_dPhi', 'VHH_V_HH_dPhi', 'VHH_V_HH_pT_Ratio',\
+#                  'VHH_H1_BJet_dR', 'VHH_H2_BJet_dR', \
+#                  'VHH_H2_e',\
+#                  'VHH_HH_m', 'VHH_HH_dR',\
+#                 ]
+    
     X = pd_rdf_loop[train_var]
     score_xgb = xgbc.predict_proba(X)[:,1]
         
-    data={"xgb_c2v_bdt_score" : score_xgb}
+    data={"xgb_{}_bdt_score_test".format(args.CT) : score_xgb}
     pd_score_xgb = pd.DataFrame(data)
 
     post_pd_rdf_loop = pd.concat([pd_rdf_loop,pd_score_xgb],axis=1)
     
     data = post_pd_rdf_loop.to_dict('list')
+        
     for _key,_list in data.items():
-        data[_key] = np.array(_list)
+        data[_key] = np.array(_list,dtype='float')
             
     post_rdf_loop = R.RDF.MakeNumpyDataFrame(data)
     post_rdf_loop.Snapshot('Events',file+'.dat')
+    
+    cmd = 'mv {0} {0}.bak'.format(file)
+    os.system(cmd)
+    
+    cmd = 'mv {0}.dat {0}'.format(file)
+    os.system(cmd)
 #end
 
-print(file_pool)
-
 with Pool(args.MT) as p:
-    p.map(apply_c2v_bdt, file_pool)
+    p.map(apply_bdt, file_pool)
 
 # for file in file_pool:
 #     rdf_loop = R.RDataFrame('Events',file)

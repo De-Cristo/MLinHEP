@@ -24,12 +24,6 @@ factory        = R.TMVA.Factory("TMVAClassification", outputFile,\
 
 dataloader     = R.TMVA.DataLoader("dataset")
 
-# variable("deta_2mu2bj", ";#Delta #eta ;",     [25, 0., 5.])
-# variable("pt2bj_ov_m2bj", ";pT(bb)/m(bb);",     [20, 0., 6.])
-# variable("pt2bj_ov_mbbmm", ";pT(bb)/m(bbmm);",     [20, 0., 1])
-# variable("pt2mu_ov_m2mu",       ";pT(bb)/m(bb);",   [30, 0., 6.])
-# variable("scalar_hh_pt",       ";H_{T}_HH [GeV];",             [20, 0., 1200.])
-
 dataloader.AddVariable("deta_2mu2bj", "deta_2mu2bj", "units", 'F' )
 dataloader.AddVariable("pt2bj_ov_m2bj", "pt2bj_ov_m2bj", "units", 'F' )
 dataloader.AddVariable("pt2bj_ov_mbbmm", "pt2bj_ov_mbbmm", "units", 'F' )
