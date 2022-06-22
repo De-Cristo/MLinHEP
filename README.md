@@ -3,9 +3,9 @@
 
 <!-- TOC -->
 
-- [1. VHHAnalysis](#1. VHHAnalysis)
-    - [1. XGBoost Tools](#1. XGBoost Tools)
-    - [2. Standard generation process in CMSSW](#2. Standard generation process in CMSSW)
+- [1. VHHAnalysis](#1.-VHHAnalysis)
+    - [1. XGBoost Tools](#1.-XGBoost-Tools)
+    - [2. Standard generation process in CMSSW](#2.-Standard-generation-process-in-CMSSW)
 <!-- /TOC -->
 
 
