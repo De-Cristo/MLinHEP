@@ -168,11 +168,16 @@ export DL_4b_SM_4="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWor
 combineCards.py card_hists_RunII_R_Zll_Klbdt_High_3b_ll_bin_SR_Z=card_hists_RunII_R_Zll_Klbdt_High_3b_ll_bin_SR_Z.txt card_hists_RunII_R_Zll_Klbdt_High_4b_ll_bin_SR_Z=card_hists_RunII_R_Zll_Klbdt_High_4b_ll_bin_SR_Z.txt card_hists_RunII_R_Zll_Klbdt_SM_3b_ll_bin_SR_Z=card_hists_RunII_R_Zll_Klbdt_SM_3b_ll_bin_SR_Z.txt card_hists_RunII_R_Zll_Klbdt_SM_4b_ll_bin_SR_Z=card_hists_RunII_R_Zll_Klbdt_SM_4b_ll_bin_SR_Z.txt card_hists_RunII_R_Zll_Klbdt_High_3b_ll_bin_CR_Z=card_hists_RunII_R_Zll_Klbdt_High_3b_ll_bin_CR_Z.txt card_hists_RunII_R_Zll_Klbdt_High_4b_ll_bin_CR_Z=card_hists_RunII_R_Zll_Klbdt_High_4b_ll_bin_CR_Z.txt card_hists_RunII_R_Zll_Klbdt_SM_3b_ll_bin_CR_Z=card_hists_RunII_R_Zll_Klbdt_SM_3b_ll_bin_CR_Z.txt card_hists_RunII_R_Zll_Klbdt_SM_4b_ll_bin_CR_Z=card_hists_RunII_R_Zll_Klbdt_SM_4b_ll_bin_CR_Z.txt card_hists_RunII_R_Zll_Klbdt_High_3b_ll_bin_SB_Z=card_hists_RunII_R_Zll_Klbdt_High_3b_ll_bin_SB_Z.txt card_hists_RunII_R_Zll_Klbdt_High_4b_ll_bin_SB_Z=card_hists_RunII_R_Zll_Klbdt_High_4b_ll_bin_SB_Z.txt card_hists_RunII_R_Zll_Klbdt_SM_3b_ll_bin_SB_Z=card_hists_RunII_R_Zll_Klbdt_SM_3b_ll_bin_SB_Z.txt card_hists_RunII_R_Zll_Klbdt_SM_4b_ll_bin_SB_Z=card_hists_RunII_R_Zll_Klbdt_SM_4b_ll_bin_SB_Z.txt card_hists_RunII_R_Zll_Klbdt_3b_ll_bin_TT=card_hists_RunII_R_Zll_Klbdt_3b_ll_bin_TT.txt card_hists_RunII_R_Zll_Klbdt_4b_ll_bin_TT=card_hists_RunII_R_Zll_Klbdt_4b_ll_bin_TT.txt > vhh4b_Zll.txt
 
 combineTool.py -M FitDiagnostics vhh4b_Zll.txt --saveShapes -t -1 --expectSignal=1 --saveWithUncertainties -n test --plots & 
- --absolute
+combineTool.py -M FitDiagnostics vhh4b_Zll.txt --saveShapes --expectSignal=1 --saveWithUncertainties -n test --plots & 
+combineTool.py -M FitDiagnostics vhh4b_Zll.txt --plots --saveNormalizations --saveWithUncertainties -n test --expectSignal=0 --saveShapes & 
+# --absolute
+ 
+text2workspace.py vhh4b_Zll.txt -m 125 -P HiggsAnalysis.CombinedLimit.PhysicsModel:multiSignalModel --PO 'map=.*/VHH_CV_1_C2V_1_kl_1_hbbhbb:0' --PO 'map=.*/VHH_CV_1_C2V_1_kl_2_hbbhbb:0' --PO 'map=.*/VHH_CV_1_C2V_1_kl_0_hbbhbb:0' --PO 'map=.*/VHH_CV_1_C2V_0_kl_1_hbbhbb:0' --PO 'map=.*/VHH_CV_1_C2V_2_kl_1_hbbhbb:0' --PO 'map=.*/VHH_CV_0p5_C2V_1_kl_1_hbbhbb:0' --PO 'map=.*/VHH_CV_1p5_C2V_1_kl_1_hbbhbb:0' --PO 'map=.*/VHH_CV_1_C2V_1_kl_20_hbbhbb:r[1,-200,200]'
+
 text2workspace.py vhh4b_Zll.txt -m 125 -P HiggsAnalysis.CombinedLimit.PhysicsModel:multiSignalModel --PO 'map=.*/VHH_CV_1_C2V_1_kl_1_hbbhbb:r[1,-200,200]' --PO 'map=.*/VHH_CV_1_C2V_1_kl_2_hbbhbb:0' --PO 'map=.*/VHH_CV_1_C2V_1_kl_0_hbbhbb:0' --PO 'map=.*/VHH_CV_1_C2V_0_kl_1_hbbhbb:0' --PO 'map=.*/VHH_CV_1_C2V_2_kl_1_hbbhbb:0' --PO 'map=.*/VHH_CV_0p5_C2V_1_kl_1_hbbhbb:0' --PO 'map=.*/VHH_CV_1p5_C2V_1_kl_1_hbbhbb:0' --PO 'map=.*/VHH_CV_1_C2V_1_kl_20_hbbhbb:0'
-combineTool.py -M Impacts -d vhh4b_Zll.root -t -1 --expectSignal=1 --doInitialFit --allPars -m 125 -n t0 --cminDefaultMinimizerStrategy 0 --rMin -400 --rMax 400 
-combineTool.py -M Impacts -d vhh4b_Zll.root -o impacts_t0.json -t -1 --expectSignal=1 --doFits -m 125 -n t0 --parallel 20 --task-name t0 --cminDefaultMinimizerStrategy 0 --rMin -400 --rMax 400 >& /dev/null
-combineTool.py -M Impacts -d vhh4b_Zll.root -m 125 -n t0 -o impacts_t0.json
+combineTool.py -M Impacts -d datacards/vhh4b_RunII.root -t -1 --expectSignal=1 --doInitialFit --allPars -m 125 -n t0 --cminDefaultMinimizerStrategy 0 --rMin -500 --rMax 500 
+combineTool.py -M Impacts -d datacards/vhh4b_RunII.root -o impacts_t0.json -t -1 --expectSignal=1 --doFits -m 125 -n t0 --parallel 20 --task-name t0 --cminDefaultMinimizerStrategy 0 --rMin -500 --rMax 500 >& /dev/null
+combineTool.py -M Impacts -d datacards/vhh4b_RunII.root -m 125 -n t0 -o impacts_t0.json
 plotImpacts.py -i  impacts_t0.json -o  impacts_t0
 rm *paramFit*
 
@@ -180,7 +185,51 @@ export DL_Flat="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkAr
 export DL="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0620_2022/DL*/*.txt | sed 's/ /,/g')"
 export DL_SR="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0620_2022/DL*SR/*.txt | sed 's/ /,/g')"
 export DL_CR="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0620_2022/DL*CR/*.txt | sed 's/ /,/g')"
+export DL_CS="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0620_2022/DL*CS/*.txt | sed 's/ /,/g')"
 export DL_add_TT="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0620_2022/DL*TT/*.txt /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0620_2022/DL*SR/*.txt | sed 's/ /,/g')"
 export DL_add_SB="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0620_2022/DL*SB/*.txt /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0620_2022/DL*SR/*.txt | sed 's/ /,/g')"
 export DL_add_TT_SB="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0620_2022/DL*TT/*.txt /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0620_2022/DL*SR/*.txt /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0620_2022/DL*SB/*.txt | sed 's/ /,/g')"
 export DL_add_CR="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0620_2022/DL*CR/*.txt /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0620_2022/DL*SR/*.txt | sed 's/ /,/g')"
+
+
+export DL_zpt="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0629_2022/DL*/*.txt | sed 's/ /,/g')"
+export DL_SR_zpt="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0629_2022/DL*SR/*.txt | sed 's/ /,/g')"
+export DL_CR_zpt="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0629_2022/DL*CR/*.txt | sed 's/ /,/g')"
+export DL_CS_zpt="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0629_2022/DL*CS/*.txt | sed 's/ /,/g')"
+export DL_add_TT_zpt="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0629_2022/DL*TT/*.txt /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0629_2022/DL*SR/*.txt | sed 's/ /,/g')"
+export DL_add_SB_zpt="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0629_2022/DL*SB/*.txt /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0629_2022/DL*SR/*.txt | sed 's/ /,/g')"
+export DL_add_TT_SB_zpt="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0629_2022/DL*TT/*.txt /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0629_2022/DL*SR/*.txt /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0629_2022/DL*SB/*.txt | sed 's/ /,/g')"
+export DL_add_CR_zpt="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0629_2022/DL*CR/*.txt /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0629_2022/DL*SR/*.txt | sed 's/ /,/g')"
+
+export lumi300="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/forLicheng/lumi300/*.txt | sed 's/ /,/g')"
+export lumi450="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/forLicheng/lumi450/*.txt | sed 's/ /,/g')"
+export lumi3000="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/forLicheng/lumi3000/*.txt | sed 's/ /,/g')"
+
+
+
+export DL_data_SR="$(echo //data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0720_2022/DL_0720_SR_data/*.txt | sed 's/ /,/g')"
+export DL_data_CR="$(echo //data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0720_2022/DL_0720_CR_data/*.txt | sed 's/ /,/g')"
+export DL_data_SB="$(echo //data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0720_2022/DL_0720_SB_data/*.txt | sed 's/ /,/g')"
+export DL_data_TT="$(echo //data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0720_2022/DL_0720_TT_data/*.txt | sed 's/ /,/g')"
+export DL_data="$(echo //data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0720_2022/DL_0720_*_data/*.txt | sed 's/ /,/g')"
+
+export DL_MC_SR="$(echo //data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0720_2022/DL_0720_SR_MC/*.txt | sed 's/ /,/g')"
+export DL_MC_CR="$(echo //data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0720_2022/DL_0720_CR_MC/*.txt | sed 's/ /,/g')"
+export DL_MC_SB="$(echo //data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0720_2022/DL_0720_SB_MC/*.txt | sed 's/ /,/g')"
+export DL_MC_TT="$(echo //data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0720_2022/DL_0720_TT_MC/*.txt | sed 's/ /,/g')"
+export DL_MC="$(echo //data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0720_2022/DL_0720_*_MC/*.txt | sed 's/ /,/g')"
+find * -name "card*.txt" -type f -exec sh -c "echo '* autoMCStats 0' >> {}" \;
+
+
+export DL_data="$(echo //data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0720_2022/combine_all_data/*.txt | sed 's/ /,/g')"
+export DL_MC="$(echo //data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0720_2022/combine_all_signal/*.txt | sed 's/ /,/g')"
+export DL_data_true="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0728_2022/data_for_scan/*.txt | sed 's/ /,/g')"
+
+export DL_50="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0810_2022/*.txt | sed 's/ /,/g')"
+
+export DL_zpt_nb="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/0815/combine/*.txt | sed 's/ /,/g')"
+export DL_zpt_34b="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/00815/combine/*.txt | sed 's/ /,/g')"
+export DL_gitlab_zpt_norm="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/00720/combine/*.txt | sed 's/ /,/g')"
+
+export DL_gitlab="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/hig-22-006/datacards/DL/*.txt | sed 's/ /,/g')"
+export DL_corr="$(echo /data/pubfs/zhanglic/workspace/CMSSW_10_2_13/src/MyWorkArea/000/datacards/DL/*.txt | sed 's/ /,/g')"
