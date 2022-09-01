@@ -30,6 +30,7 @@ cmsDriver.py Configuration/GenProduction/python/HIG-RunIIFall18wmLHEGS-02890-fra
     --conditions 102X_upgrade2018_realistic_v11 \
     --beamspot Realistic25ns13TeVEarly2018Collision \
 #     --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed="int(${SEED})"\\nprocess.source.numberEventsInLuminosityBlock="cms.untracked.uint32(100)" \
+    --customise_commands nprocess.source.numberEventsInLuminosityBlock="cms.untracked.uint32(100)"
     --step LHE,GEN,SIM \
     --geometry DB:Extended \
     --era Run2_2018 \
