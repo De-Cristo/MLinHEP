@@ -1,0 +1,41 @@
+# config.yaml
+features:
+  - events_dilep_m
+  - events_dilep_pt
+  - events_dilep_dr
+  - events_dilep_deltaPhi
+  - events_dilep_deltaEta
+  - events_dibjet_m
+  - events_dibjet_pt
+  - events_dibjet_dr
+  - events_dibjet_deltaPhi
+  - events_dibjet_deltaEta
+  - events_dibjet_pt_max
+  - events_dibjet_pt_min
+  - events_dibjet_mass_max
+  - events_dibjet_mass_min
+  - events_dibjet_BvsL_max
+  - events_dibjet_BvsL_min
+  - events_dibjet_CvsB_max
+  - events_dibjet_CvsB_min
+  - events_VHbb_pt_ratio
+  - events_VHbb_deltaPhi
+  - events_VHbb_deltaR
+
+
+label_column: label
+
+paths:
+  train_dir: data/train
+  model_path: models/lgbm_model.txt
+  output_dir: results
+
+hyperparameters:
+  learning_rate: 0.05
+  num_leaves: 31
+  max_depth: 6
+  subsample: 0.8
+  colsample_bytree: 0.8
+  reg_alpha: 0.1
+  reg_lambda: 0.1
+  n_estimators: 500
