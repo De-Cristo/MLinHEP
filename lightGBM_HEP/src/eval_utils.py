@@ -241,3 +241,50 @@ def plot_prediction_score_distribution(model, X_train, y_train, X_val, y_val, ou
 
     return train_signal_scores, train_background_scores, val_signal_scores, val_background_scores
 
+def plot_feature_distributions(X_test, y_test, features, output_dir):
+    """
+    Generate and save the input feature distribution plots in PRL style.
+
+    Parameters:
+    - X_test: Test feature set (array-like or DataFrame).
+    - y_test: True labels for the test set.
+    - features: List of feature names.
+    - output_dir: Directory to save the plots.
+    """
+    print("Generating input feature distributions in PRL style...")
+    
+    # Ensure X_test is a DataFrame
+    if not isinstance(X_test, pd.DataFrame):
+        X_test = pd.DataFrame(X_test, columns=features)
+    
+    # Create masks for signal and background
+    signal_mask = y_test == 1
+    background_mask = y_test == 0
+
+    for feature in features:
+        # Create PRL-style plot
+        plt.figure(figsize=(3.5, 2.5))
+        
+        # Plot signal and background distributions
+        plt.hist(X_test.loc[signal_mask, feature], bins=50, alpha=0.6, label='Signal', color='blue', density=True, edgecolor='black')
+        plt.hist(X_test.loc[background_mask, feature], bins=50, alpha=0.6, label='Background', color='red', density=True, edgecolor='black')
+
+        # Add labels and formatting
+        plt.xlabel(feature, fontsize=10)
+        plt.ylabel('Density', fontsize=10)
+        plt.tick_params(axis='both', labelsize=8)
+        plt.legend(fontsize=8, loc='best')
+
+        # Ensure tight layout
+        plt.tight_layout()
+
+        # Save in EPS and PNG formats
+        feature_dist_eps_path = os.path.join(output_dir, f"{feature}_distribution.eps")
+        feature_dist_png_path = os.path.join(output_dir, f"{feature}_distribution.png")
+        plt.savefig(feature_dist_eps_path, format='eps')
+        plt.savefig(feature_dist_png_path, format='png', dpi=300)
+        print(f"Feature distribution for {feature} saved to {feature_dist_eps_path} and {feature_dist_png_path}")
+
+        plt.close()
+
+

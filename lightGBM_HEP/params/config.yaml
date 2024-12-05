@@ -5,7 +5,7 @@ features:
   - events_dilep_dr
   - events_dilep_deltaPhi
   - events_dilep_deltaEta
-  - events_dibjet_m
+  # - events_dibjet_m
   - events_dibjet_pt
   - events_dibjet_dr
   - events_dibjet_deltaPhi

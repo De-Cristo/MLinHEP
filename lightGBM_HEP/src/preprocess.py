@@ -43,8 +43,10 @@ def preprocess_data(input_dir, features, label_column="label", test_size=0.2):
     y = dataset[label_column]
 
     # Normalize features
-    scaler = StandardScaler()
-    X_scaled = scaler.fit_transform(X)
+    # scaler = StandardScaler()
+    # X_scaled = scaler.fit_transform(X)
+
+    X_scaled = X
 
     # Train-test split
     X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=test_size, random_state=42)

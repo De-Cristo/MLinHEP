@@ -27,7 +27,7 @@ if __name__ == "__main__":
     X_train, X_test, y_train, y_test = preprocess_data(train_dir, features, label_column)
     
     # Train model with Optuna
-    model, study = train_model(X_train, y_train, model_path)
+    model, study = train_model(X_train, y_train, model_path, features)
     # model, study = train_model(X_train, y_train, model_path, hyperparameters)
     
     # Evaluate model

@@ -11,6 +11,7 @@ def objective(trial, X_train, y_train):
     param = {
         'objective': 'binary',
         'metric': 'auc',
+        'verbose': 1,
         'boosting_type': 'gbdt',
         # 'learning_rate': trial.suggest_float('learning_rate', 0.05, 0.1),
         # 'num_leaves': trial.suggest_int('num_leaves', 7, 31),
@@ -19,7 +20,7 @@ def objective(trial, X_train, y_train):
         # 'colsample_bytree': trial.suggest_float('colsample_bytree', 0.5, 1.0),
         # 'reg_alpha': trial.suggest_float('reg_alpha', 0.0, 10.0),
         # 'reg_lambda': trial.suggest_float('reg_lambda', 0.0, 10.0),
-        'learning_rate': 0.05,
+        'learning_rate': 0.03,
         'num_leaves': 31,
         'max_depth': 5,
         'subsample': 0.8,
@@ -42,7 +43,7 @@ def objective(trial, X_train, y_train):
     auc = roc_auc_score(y_valid_split, y_pred)
     return auc
 
-def train_model(X_train, y_train, model_path):
+def train_model(X_train, y_train, model_path, features):
     """
     Optimize LightGBM hyperparameters using Optuna and train the final model.
     """
@@ -55,8 +56,9 @@ def train_model(X_train, y_train, model_path):
     # Train the final model with the best parameters
     print("Training final model with best parameters...")
     best_params = study.best_params
-    final_model = LGBMClassifier(**best_params, n_estimators=800)
-    final_model.fit(X_train, y_train)
+    final_model = LGBMClassifier(**best_params, n_estimators=1200)
+    final_model.fit(X_train, y_train, feature_name=features)
+    # final_model.fit(X_train, y_train)
     
     # Save the model
     os.makedirs(os.path.dirname(model_path), exist_ok=True)
